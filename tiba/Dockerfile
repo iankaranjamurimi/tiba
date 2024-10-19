@@ -1,14 +1,17 @@
-FROM ubuntu:latest
+# Use OpenJDK as the base image
+FROM openjdk:21
+
+# Add metadata
 LABEL authors="user"
 
-#FROM openjdk:21
-
+# Define the JAR_FILE argument
 ARG JAR_FILE=target/*.jar
 
-COPY ./target/tiba-0.0.1-SNAPSHOT.jar tiba.jar
+# Copy the application JAR
+COPY ../../../../../../target/tiba-0.0.1-SNAPSHOT.jar tiba.jar
 
-#ENTRYPOINT ["java", "-jar", "tiba.jar"]
-
+# Expose the port your application runs on
 EXPOSE 8080
 
-ENTRYPOINT ["top", "-b"]
+# Set the entrypoint to run the Java application
+ENTRYPOINT ["java", "-jar", "tiba.jar"]
