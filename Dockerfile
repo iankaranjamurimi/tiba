@@ -1,15 +1,9 @@
-FROM maven:3.8.7-openjdk-21 AS build
-WORKDIR /app
-
-COPY ./pom.xml ./pom.xml
-COPY ./src ./src
-
-RUN mvn clean package -DskipTests
-
 FROM openjdk:21-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/tiba-0.0.1-SNAPSHOT.jar tiba.jar
+COPY ./target/tiba-0.0.1-SNAPSHOT.jar tiba.jar
+
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "tiba.jar"]
