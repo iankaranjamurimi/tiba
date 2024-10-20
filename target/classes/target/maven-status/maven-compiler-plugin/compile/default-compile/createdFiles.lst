@@ -1,0 +1,15 @@
+com\tiba\tiba\Controllers\SignUpController.class
+com\tiba\tiba\DTO\SignUpDTO.class
+com\tiba\tiba\Controllers\PatientController.class
+com\tiba\tiba\DTO\PatientDTO.class
+com\tiba\tiba\Entities\Patient.class
+com\tiba\tiba\Repositories\PatientRepository.class
+com\tiba\tiba\Services\PatientService.class
+com\tiba\tiba\Services\GlobalExceptionHandler.class
+com\tiba\tiba\DTO\LogInDTO.class
+com\tiba\tiba\Controllers\UserController.class
+com\tiba\tiba\Services\UserService.class
+com\tiba\tiba\Repositories\UserRepository.class
+com\tiba\tiba\Entities\User.class
+com\tiba\tiba\TibaApplication.class
+com\tiba\tiba\Services\SignUpService.class
