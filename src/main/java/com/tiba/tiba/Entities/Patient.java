@@ -21,25 +21,19 @@ public class Patient {
 
     private String contactNumber;
 
-
-    @Column(nullable = true)
     private String emergencyContactNumber;
 
-    @Column(nullable = true)
     private String address;
 
-    @Column(unique = true, nullable = true)
     private String idNumber;
 
-    @Column(nullable = true)
     private String gender;
 
-    @Column(nullable = true)
     private Integer age;
 
 
     @Past  (message = "ie. the DOB must be in the past")
-    @Column(nullable = true)
+
     private LocalDate dateOfBirth;
 
 

@@ -20,7 +20,6 @@ public class User {
     @Column(nullable = false)
     private String firstName;
 
-    @Column(nullable = true)
     private String middleName;
 
     private String lastName;

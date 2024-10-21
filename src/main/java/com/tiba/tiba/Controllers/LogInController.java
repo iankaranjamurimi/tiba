@@ -2,6 +2,7 @@ package com.tiba.tiba.Controllers;
 
 
 import com.tiba.tiba.DTO.LogInDTO;
+import com.tiba.tiba.DTO.UserLogInResponseDTO;
 import com.tiba.tiba.Entities.User;
 
 
@@ -23,30 +24,60 @@ import java.util.Optional;
 public class LogInController {
 
     @Autowired
-
     private UserRepository userRepository;
 
 
-
     // Constructor
-    public LogInController(UserRepository userRepository)
-    {
+    public LogInController(UserRepository userRepository) {
         this.userRepository = userRepository; //this.passwordEncoder = passwordEncoder;
 
     }
 
     @PostMapping("/logIn")
-    public ResponseEntity<String> logIn(@RequestBody LogInDTO request) {
+
+    public ResponseEntity<LogInResponseController<UserLogInResponseDTO>> logIn(@RequestBody LogInDTO request) {
+        // Validate request
         if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
-            return ResponseEntity.badRequest().body("Email and password are required");
+            return ResponseEntity.badRequest()
+                    .body(LogInResponseController.error("Email and password are required"));
         }
 
+// public ResponseEntity<String> logIn(@RequestBody LogInDTO request) {
+// if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
+// return ResponseEntity.badRequest().body("Email and password are required");
+// }
+
+
+        // Find user
         Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
         if (existingUser.isEmpty()) {
-            return ResponseEntity.badRequest().body("User not found");
+            return ResponseEntity.badRequest()
+                    .body(LogInResponseController.error("User not found"));
         }
+// Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
+// if (existingUser.isEmpty()) {
+// return ResponseEntity.badRequest().body("User not found");
+//  }
 
-        return ResponseEntity.ok("logged in successfully");
+//    return ResponseEntity.ok("logged in successfully");
+//}
+
+
+        // Convert User to UserResponseDTO
+        UserLogInResponseDTO userResponse = convertToDTO(existingUser.get());
+
+        // Return successful response
+        return ResponseEntity.ok(LogInResponseController.success("Logged in successfully", userResponse));
     }
-
+    private UserLogInResponseDTO convertToDTO(User user) {
+        UserLogInResponseDTO dto = new UserLogInResponseDTO();
+        dto.setId(Long.valueOf(user.getId())); // Convert Integer to Long if needed
+        dto.setEmail(user.getEmail());
+        dto.setFirstName(user.getFirstName());
+        dto.setMiddleName(user.getMiddleName());
+        dto.setLastName(user.getLastName());
+        return dto;
+    }
 }
+
+

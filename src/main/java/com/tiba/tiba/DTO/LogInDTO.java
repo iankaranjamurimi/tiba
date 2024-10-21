@@ -15,4 +15,5 @@ public class LogInDTO {
     private String email;
     private String password;
 
+
 }
