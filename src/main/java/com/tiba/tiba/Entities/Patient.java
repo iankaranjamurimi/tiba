@@ -18,25 +18,28 @@ public class Patient {
     @GeneratedValue
     private Integer id;
 
-    @Column(nullable = false)
+
     private String contactNumber;
 
-    @Column(nullable = false)
+
+    @Column(nullable = true)
     private String emergencyContactNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String address;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = true)
     private String idNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String gender;
 
+    @Column(nullable = true)
     private Integer age;
 
+
     @Past  (message = "ie. the DOB must be in the past")
-    @Column
+    @Column(nullable = true)
     private LocalDate dateOfBirth;
 
 

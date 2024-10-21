@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-//http://localhost:8080/tiba/auth/log_in
+//http://localhost:8080/tiba/auth/logIn
 @RestController
 @RequestMapping("/tiba/auth")
 public class LogInController {

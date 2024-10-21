@@ -1,5 +1,6 @@
 package com.tiba.tiba.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -30,6 +31,7 @@ public class SignUpDTO {
 
     @NotBlank(message = "Middle name is mandatory")
     @Size(max = 10, message = "Middle name should be at most 10 characters")
+    @JsonProperty("middlename")
     private String middleName;
 
     @NotBlank(message = "The Last name is mandatory")
@@ -50,10 +52,10 @@ public class SignUpDTO {
     private String gender;
 
 
-
     @NotBlank(message = "Contact Number is mandatory")
     @Size(max = 10, message = "Contact Number should be at most 10 characters")
     private String contactNumber;
+
 
 
     public @Email(message = "Email should be valid") @NotBlank(message = "Email is mandatory") String getEmail() {
@@ -86,7 +88,6 @@ public class SignUpDTO {
      public @NotBlank(message = "Gender is mandatory") @Size(max = 6, message = "Gender should be at most 6 characters") String getGender() {
         return gender;
  }
-
 
 
     public @NotBlank(message = "Contact Number is mandatory") @Size(max = 10, message = "Last name should be at most 10 characters") String getContactNumber() {
