@@ -4,10 +4,9 @@ package com.tiba.tiba.Controllers;
 import com.tiba.tiba.DTO.LogInDTO;
 import com.tiba.tiba.Entities.User;
 
-import com.tiba.tiba.Repositories.PatientRepository;
+
 import com.tiba.tiba.Repositories.UserRepository;
-import com.tiba.tiba.Services.PatientService;
-import com.tiba.tiba.Services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
