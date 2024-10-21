@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//http://localhost:8080/tiba/patients/{id}
 @RestController
-@RequestMapping("/patients")
+@RequestMapping("tiba/patients")
 public class PatientController {
 
     @Autowired
