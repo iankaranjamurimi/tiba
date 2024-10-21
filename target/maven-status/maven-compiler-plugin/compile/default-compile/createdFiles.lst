@@ -7,9 +7,9 @@ com\tiba\tiba\Repositories\PatientRepository.class
 com\tiba\tiba\Services\PatientService.class
 com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\DTO\LogInDTO.class
-com\tiba\tiba\Controllers\UserController.class
 com\tiba\tiba\Services\UserService.class
 com\tiba\tiba\Repositories\UserRepository.class
+com\tiba\tiba\Controllers\LogInController.class
 com\tiba\tiba\Entities\User.class
 com\tiba\tiba\TibaApplication.class
 com\tiba\tiba\Services\SignUpService.class
