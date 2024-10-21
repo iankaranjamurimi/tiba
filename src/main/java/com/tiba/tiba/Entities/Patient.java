@@ -27,6 +27,9 @@ public class Patient {
     @Column(nullable = false)
     private String address;
 
+    @Column(nullable = false, unique = true)
+    private String idNumber;
+
     @Column(nullable = false)
     private String gender;
 

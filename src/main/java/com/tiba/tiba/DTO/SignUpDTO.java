@@ -28,9 +28,18 @@ public class SignUpDTO {
     @Size(max = 10, message = "First name should be at most 10 characters")
     private String firstname;
 
+    @NotBlank(message = "Middle name is mandatory")
+    @Size(max = 10, message = "Middle name should be at most 10 characters")
+    private String middleName;
+
     @NotBlank(message = "The Last name is mandatory")
     @Size(max = 10, message = "Last name should be at most 10 characters")
     private String lastname;
+
+    @NotBlank(message = "The National Id Number is mandatory")
+    @Size(max = 10, message = "The National Id Number should be at most 10 characters")
+    private String idNumber;
+
 
     @NotBlank(message = "Date of Birth is mandatory")
     @Size(max = 10, message = "DOB should be at most 10 characters")
@@ -40,17 +49,11 @@ public class SignUpDTO {
     @Size(max = 10, message = "Gender should be at most 6 characters")
     private String gender;
 
-    @NotBlank(message = "Address is mandatory")
-    @Size(max = 10, message = "Address should be at most 10 characters")
-    private String address;
+
 
     @NotBlank(message = "Contact Number is mandatory")
     @Size(max = 10, message = "Contact Number should be at most 10 characters")
     private String contactNumber;
-
-    @NotBlank(message = "Emergency Contact Number is mandatory")
-    @Size(max = 10, message = "Emergency Contact Number should be at most 10 characters")
-    private String emergencyContactNumber;
 
 
     public @Email(message = "Email should be valid") @NotBlank(message = "Email is mandatory") String getEmail() {
@@ -65,9 +68,18 @@ public class SignUpDTO {
         return firstname;
     }
 
+    public @NotBlank(message = "middle name is mandatory") @Size(max = 10, message = "middle name should be at most 10 characters") String getMiddleName() {
+        return middleName;
+    }
+
     public @NotBlank(message = "Last name is mandatory") @Size(max = 10, message = "Last name should be at most 10 characters") String getLastname() {
         return lastname;
     }
+
+    public @NotBlank(message = "The National Id Number is mandatory") @Size(max = 10, message = "The National Id Number should be at most 10 characters") String getIdNumber() {
+        return idNumber;
+    }
+
     public @NotBlank(message = "Date of Birth is mandatory") @Size(max = 10, message = "Date of Birth should be at most 10 characters") LocalDate getDateOfBirth() {
         return dateOfBirth;
  }
@@ -75,19 +87,13 @@ public class SignUpDTO {
         return gender;
  }
 
-    public @NotBlank(message = "Address is mandatory") @Size(max = 10, message = "Address should be at most 10 characters") String getAddress() {
-        return address;
-    }
-
 
 
     public @NotBlank(message = "Contact Number is mandatory") @Size(max = 10, message = "Last name should be at most 10 characters") String getContactNumber() {
         return contactNumber;
     }
 
-    public @NotBlank(message = "Emergency Contact Number is mandatory") @Size(max = 10, message = "Last name should be at most 10 characters") String getEmergencyContactNumber() {
-        return emergencyContactNumber;
-    }
+
 
 
 }

@@ -25,14 +25,14 @@ public class SignUpService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setFirstName(request.getFirstname());
+        user.setMiddleName(request.getMiddleName());
         user.setLastName(request.getLastname());
 
         Patient patient = new Patient();
         patient.setDateOfBirth(request.getDateOfBirth());
         patient.setGender(request.getGender());
-        patient.setAddress(request.getAddress());
+        patient.setIdNumber(request.getIdNumber());
         patient.setContactNumber(request.getContactNumber());
-        patient.setEmergencyContactNumber(request.getEmergencyContactNumber());
 
         user.setPatient(patient);
         patient.setUser(user);

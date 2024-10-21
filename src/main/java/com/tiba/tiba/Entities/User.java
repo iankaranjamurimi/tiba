@@ -17,7 +17,11 @@ public class User {
     @GeneratedValue
     private Integer id;
 
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
+    private String middleName;
 
     private String lastName;
 
@@ -26,6 +30,8 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Patient patient;
