@@ -26,15 +26,13 @@ public class LogInController {
     @Autowired
 
     private UserRepository userRepository;
-    private UserService userService;
+
 
 
     // Constructor
-    public LogInController(UserRepository userRepository,PatientRepository patientRepository, PatientService patientService)
+    public LogInController(UserRepository userRepository)
     {
         this.userRepository = userRepository; //this.passwordEncoder = passwordEncoder;
-        this.userService = new UserService(userRepository);
-
 
     }
 
@@ -45,7 +43,7 @@ public class LogInController {
         }
 
         Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
-        if (!existingUser.isPresent()) {
+        if (existingUser.isEmpty()) {
             return ResponseEntity.badRequest().body("User not found");
         }
 
