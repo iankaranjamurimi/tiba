@@ -39,9 +39,6 @@ public class Config {
                                 .requestMatchers(
                                         "/api/open/**",
                                         "/api/**",
-                                        "/api/open/students/login/**",
-                                        "/api/open/uber/**",
-                                        "/uber/callback/**",
                                         "/api/open/ov1/**",
                                         "/v2/**",
                                         "/v3/**",

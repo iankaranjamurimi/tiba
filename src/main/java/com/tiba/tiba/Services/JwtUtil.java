@@ -7,12 +7,14 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
 
-@Service  // Changed from @SpringBootApplication to @Service
+@Component
+@Service
 public class JwtUtil {
     private final Logger logger = LoggerFactory.getLogger(JwtUtil.class);  // Fixed logger initialization
 
