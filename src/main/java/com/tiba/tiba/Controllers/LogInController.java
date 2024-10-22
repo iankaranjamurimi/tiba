@@ -20,7 +20,7 @@ import java.util.Optional;
 
 //http://localhost:8080/tiba/auth/logIn
 @RestController
-@RequestMapping("/tiba/auth")
+@RequestMapping("/api/open/")
 public class LogInController {
 
     @Autowired

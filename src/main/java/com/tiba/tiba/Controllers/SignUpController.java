@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @Valid
 @RestController
 //http://localhost:8080/tiba/auth/signup
-@RequestMapping("/tiba/auth")
+@RequestMapping("/api/open")
 public class SignUpController {
 
     @Autowired
