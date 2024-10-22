@@ -19,7 +19,6 @@ public class TibaApplication {
 	}
 
 
-
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
