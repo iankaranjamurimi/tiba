@@ -9,9 +9,7 @@ import lombok.Setter;
 @Setter
 public class UserLogInResponseDTO {
     private Long id;
-    private String email;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String token;
+
 }
 

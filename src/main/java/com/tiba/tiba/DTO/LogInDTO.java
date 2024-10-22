@@ -13,7 +13,7 @@ import lombok.Setter;
 public class LogInDTO {
 
     private String email;
-    private String password;
+    private String Token;
 
 
 }

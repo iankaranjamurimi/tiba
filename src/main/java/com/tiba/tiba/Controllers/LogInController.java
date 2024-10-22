@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 //http://localhost:8080/tiba/auth/logIn
+//https://tiba.onrender.com/swagger-ui/index.html#/log-in-controller/logIn
 @RestController
 @RequestMapping("/api/open/")
 public class LogInController {
@@ -37,7 +38,7 @@ public class LogInController {
 
     public ResponseEntity<LogInResponseController<UserLogInResponseDTO>> logIn(@RequestBody LogInDTO request) {
         // Validate request
-        if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
+        if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getToken())) {
             return ResponseEntity.badRequest()
                     .body(LogInResponseController.error("Email and password are required"));
         }
@@ -72,10 +73,11 @@ public class LogInController {
     private UserLogInResponseDTO convertToDTO(User user) {
         UserLogInResponseDTO dto = new UserLogInResponseDTO();
         dto.setId(Long.valueOf(user.getId())); // Convert Integer to Long if needed
-        dto.setEmail(user.getEmail());
-        dto.setFirstName(user.getFirstName());
-        dto.setMiddleName(user.getMiddleName());
-        dto.setLastName(user.getLastName());
+        dto.setToken(user.getPassword());
+//        dto.setEmail(user.getEmail());
+//        dto.setFirstName(user.getFirstName());
+//        dto.setMiddleName(user.getMiddleName());
+//        dto.setLastName(user.getLastName());
         return dto;
     }
 }

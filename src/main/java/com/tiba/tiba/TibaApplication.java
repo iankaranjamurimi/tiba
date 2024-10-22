@@ -20,10 +20,7 @@ public class TibaApplication {
 		SpringApplication.run(TibaApplication.class, args);
 	}
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+
 
 	@Bean
 	public RestTemplate restTemplate() {

@@ -66,6 +66,7 @@ public class SignUpDTO {
         return password;
     }
 
+
     public @NotBlank(message = "First name is mandatory") @Size(max = 10, message = "First name should be at most 10 characters") String getFirstname() {
         return firstname;
     }
