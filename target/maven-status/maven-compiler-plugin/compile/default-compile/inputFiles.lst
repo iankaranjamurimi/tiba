@@ -12,7 +12,6 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\PatientRep
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\UserRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\Config.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\SecurityConfig.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\GlobalExceptionHandler.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\JwtUtil.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\PatientService.java

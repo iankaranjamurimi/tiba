@@ -15,6 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+
 import java.io.IOException;
 import java.util.*;
 
@@ -50,16 +51,17 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                 log.info("Extracted token: {}", authToken);
 
                 try {
-                    String username = jwtUtil.extractEmail(authToken);
+                    String username = jwtUtil.getEmailFromToken(authToken);
                     log.info("Username extracted from token: {}", username);
 
-                    if (!jwtUtil.validateToken(authToken, username)) {
+                    if (!jwtUtil.validateToken(authToken)) {
                         log.warn("Invalid token for username: {}", username);
                         sendErrorResponse(response, "Invalid token");
                         return;
                     }
 
                     Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(username, null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);

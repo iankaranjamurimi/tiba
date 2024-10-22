@@ -37,18 +37,3 @@ public class User {
 
 
 }
-/*spring.application.name=tiba
-
-spring.datasource.username=postgres
-spring.datasource.password=pksXDJtwPji5k8Er
-spring.datasource.url=jdbc:postgresql://barely-mindful-suricate.data-1.use1.tembo.io:5432/postgres
-spring.h2.console.enabled=true
-
-spring.jpa.show-sql=true
-spring.jpa.generate-ddl=true
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.database=postgresql
-spring.jpa.open-in-view=false
-spring.jpa.properties.hibernate.format_sql=true
-
-*/
