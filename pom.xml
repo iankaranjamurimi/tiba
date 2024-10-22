@@ -15,15 +15,15 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>21</java.version> <!-- Updated Java version to 21 -->
 	</properties>
 
 	<dependencies>
 		<!-- Spring Boot Starters -->
-	<!--	<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>-->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -87,11 +87,11 @@
 		</dependency>
 
 		<!-- JSON -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20210307</version>
-		</dependency>-->
+		</dependency>
 
 		<!-- Swagger and OpenAPI -->
 		<dependency>
@@ -115,11 +115,11 @@
 		</dependency>
 
 		<!-- Testing -->
-	<!--	<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency> -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
