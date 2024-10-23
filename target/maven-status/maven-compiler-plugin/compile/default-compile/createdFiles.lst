@@ -14,10 +14,8 @@ com\tiba\tiba\Controllers\HospitalStaffController.class
 com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\DTO\LoginResponseDTO.class
 com\tiba\tiba\DTO\PatientDTO.class
-com\tiba\tiba\SecurityConfig\WebConfig$1.class
 com\tiba\tiba\Services\JwtUtil.class
 com\tiba\tiba\Services\PatientService.class
-com\tiba\tiba\SecurityConfig\WebConfig.class
 com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.class
 com\tiba\tiba\DTO\LogInDTO.class
 com\tiba\tiba\Services\UserService.class

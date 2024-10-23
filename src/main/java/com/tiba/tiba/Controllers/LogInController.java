@@ -68,7 +68,7 @@ public class LogInController {
     private UserLogInResponseDTO convertToDTO(User user) {
         UserLogInResponseDTO dto = new UserLogInResponseDTO();
         dto.setId(Long.valueOf(user.getId())); // Convert Integer to Long if needed
-        dto.setToken(user.getPassword());
+        dto.setToken(jwtUtil.generateToken(user.getEmail()));
 
 
         return dto;

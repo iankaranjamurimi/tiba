@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 @Valid
 @RestController
-//http://localhost:8080/tiba/auth/signup
+//http://localhost:5050/api/open/signup
 //https://tiba.onrender.com/swagger-ui/index.html#/log-in-controller/logIn
 @RequestMapping("/api/open")
 public class SignUpController {
