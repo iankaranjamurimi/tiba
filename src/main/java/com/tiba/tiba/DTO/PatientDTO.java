@@ -12,13 +12,15 @@ public class PatientDTO {
 
 
         private Integer id;
-        private String ContactNumber;
-        private String EmergencyContactNumber;
-        private String Address;
-        private String Gender;
+        private Integer age;
+        private String contactNumber;
+        private String emergencyContactNumber;
+        private String idNumber;
+        private String address;
+        private String gender;
 
         @Past(message = "The Date of birth must be in the past")
-        private LocalDate DateOfBirth;
+        private LocalDate dateOfBirth;
 
         private Integer userId;
     }

@@ -1,12 +1,14 @@
 package com.tiba.tiba.Services;
 
 
+import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,6 +16,12 @@ public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    public Optional<Patient> getPatientByIdNumber(String idNumber) {
+        return patientRepository.findByIdNumber(idNumber);
+
+
+    }
 
     public List<com.tiba.tiba.Entities.Patient> getAllPatients() {
         return patientRepository.findAll().stream()
@@ -56,6 +64,8 @@ public class PatientService {
         patient.setGender(patientDTO.getGender());
         patient.setDateOfBirth(patientDTO.getDateOfBirth());
         patient.setUser(new User());
-               return patient;
+        return patient;
     }
+
+
 }
