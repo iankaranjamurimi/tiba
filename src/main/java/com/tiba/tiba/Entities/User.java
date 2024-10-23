@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Set;
+
+
 @Entity
 @Getter
 @Setter
@@ -31,12 +35,29 @@ public class User {
     private String password;
 
 
+    @ElementCollection(targetClass = UserRole.class)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<UserRole> roles;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Patient patient;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HospitalStaff hospitalStaff;
+
+
+    public enum UserRole {
+
+        PATIENT,
+        DOCTOR,
+        TRIAGE_NURSE,
+        RECEPTIONIST,
+        LAB_TECHNICIAN,
+        IMAGING_TECHNICIAN,
+        HOSPITAL_ADMIN,
+        SUPER_ADMIN
+    }
 
 
 }

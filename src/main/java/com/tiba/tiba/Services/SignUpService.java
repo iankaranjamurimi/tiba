@@ -9,6 +9,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class SignUpService {
 
@@ -33,6 +36,12 @@ public class SignUpService {
         patient.setGender(request.getGender());
         patient.setIdNumber(request.getIdNumber());
         patient.setContactNumber(request.getContactNumber());
+
+        Set<User.UserRole> roles = new HashSet<>();
+        for (User.UserRole roleName : request.getRoles()) {
+            roles.add(User.UserRole.valueOf(String.valueOf(roleName))); // Convert string to UserRole enum
+        }
+        user.setRoles(roles);
 
         user.setPatient(patient);
         patient.setUser(user);

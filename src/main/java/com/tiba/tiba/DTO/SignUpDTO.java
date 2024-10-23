@@ -1,6 +1,7 @@
 package com.tiba.tiba.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.tiba.tiba.Entities.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @Getter
@@ -55,6 +57,8 @@ public class SignUpDTO {
     @NotBlank(message = "Contact Number is mandatory")
     @Size(max = 10, message = "Contact Number should be at most 10 characters")
     private String contactNumber;
+
+    private Set<User.UserRole> roles;
 
 
 

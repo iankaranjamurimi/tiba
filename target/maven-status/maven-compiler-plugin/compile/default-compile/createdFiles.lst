@@ -5,6 +5,7 @@ com\tiba\tiba\Entities\HospitalStaff.class
 com\tiba\tiba\Entities\Patient.class
 com\tiba\tiba\Repositories\HospitalStaffRepository.class
 com\tiba\tiba\Repositories\PatientRepository.class
+com\tiba\tiba\Entities\User$UserRole.class
 com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\Services\HospitalStaffService.class
 com\tiba\tiba\DTO\UserLogInResponseDTO.class
