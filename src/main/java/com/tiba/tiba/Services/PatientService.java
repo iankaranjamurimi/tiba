@@ -68,7 +68,5 @@ public class PatientService {
     }
 
 
-    public boolean doesPatientExistByIdNumber(String idNumber) {
-        return patientRepository.findByIdNumber(idNumber).isPresent();
-    }
+
 }
