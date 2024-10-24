@@ -3,6 +3,7 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.DTO.SignUpDTO;
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
+import com.tiba.tiba.Entities.UserRole;
 import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -36,12 +37,7 @@ public class SignUpService {
         patient.setGender(request.getGender());
         patient.setIdNumber(request.getIdNumber());
         patient.setContactNumber(request.getContactNumber());
-
-        Set<User.UserRole> roles = new HashSet<>();
-        for (User.UserRole roleName : request.getRoles()) {
-            roles.add(User.UserRole.valueOf(String.valueOf(roleName))); // Convert string to UserRole enum
-        }
-        user.setRoles(roles);
+        user.setRoles(request.getRoles());
 
         user.setPatient(patient);
         patient.setUser(user);

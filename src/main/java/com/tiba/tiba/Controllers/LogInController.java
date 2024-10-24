@@ -59,19 +59,22 @@ public class LogInController {
                     .body(LoginResponseDTO.error("User not found"));
         }
 
+
+//        System.out.println(existingUser.get());
         // Convert User to UserResponseDTO
         UserLogInResponseDTO userResponse = convertToDTO(existingUser.get());
+        //System.out.println(userResponse);
 
-        // Return successful response
-        return ResponseEntity.ok(LoginResponseDTO.success("Logged in successfully", userResponse));
+        // successful log in response
+        return ResponseEntity.ok().body(new LoginResponseDTO<>(true, "Logged in successfully", userResponse));
     }
     private UserLogInResponseDTO convertToDTO(User user) {
         UserLogInResponseDTO dto = new UserLogInResponseDTO();
-        dto.setId(Long.valueOf(user.getId())); // Convert Integer to Long if needed
-        dto.setToken(jwtUtil.generateToken(user.getEmail()));
-
-
+        dto.setId(Long.valueOf(user.getId()));
+        dto.setToken(jwtUtil.generateToken(user.getEmail(), user.getRoles()));
+        dto.setRoles(user.getRoles());
         return dto;
     }
-}
+    }
+
 

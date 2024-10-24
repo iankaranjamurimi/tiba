@@ -2,6 +2,7 @@ package com.tiba.tiba.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tiba.tiba.Entities.User;
+import com.tiba.tiba.Entities.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -10,6 +11,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.management.relation.Role;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -58,7 +60,9 @@ public class SignUpDTO {
     @Size(max = 10, message = "Contact Number should be at most 10 characters")
     private String contactNumber;
 
-    private Set<User.UserRole> roles;
+    @NotBlank(message = "the role is mandatory")
+    @Size(max = 20, message = "the role should be at most 20 characters")
+    private UserRole roles;
 
 
 
@@ -98,6 +102,10 @@ public class SignUpDTO {
     public @NotBlank(message = "Contact Number is mandatory") @Size(max = 10, message = "Last name should be at most 10 characters") String getContactNumber() {
         return contactNumber;
     }
+
+//    public @NotBlank(message = "The role is mandatory") @Size(max = 20, message = "The role should be at most 20 characters") String getRoles() {
+//        return Roles;
+//    }
 
 
 

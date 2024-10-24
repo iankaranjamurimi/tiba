@@ -16,7 +16,7 @@ public class UserService {
 
 
     // Constructor injection
-    public UserService(UserRepository userRepository/*, PasswordEncoder passwordEncoder*/) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
 
     }

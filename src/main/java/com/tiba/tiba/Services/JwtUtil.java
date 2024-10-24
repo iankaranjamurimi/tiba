@@ -1,5 +1,7 @@
 package com.tiba.tiba.Services;
 
+import com.tiba.tiba.Entities.User;
+import com.tiba.tiba.Entities.UserRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,6 +15,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Component
 public class JwtUtil {
@@ -23,10 +26,12 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private Long expiration;
 
+
     // Generate token for user
-    public String generateToken(String email) {
+    public String generateToken(String email, UserRole roles) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", email);
+        claims.put("roles", roles);
         return createToken(claims);
     }
 
