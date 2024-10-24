@@ -11,6 +11,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserLogInResponseDT
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\HospitalStaff.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Patient.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\User.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\UserRole.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalStaffRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\PatientRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\UserRepository.java

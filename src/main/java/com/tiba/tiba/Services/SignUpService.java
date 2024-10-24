@@ -3,15 +3,13 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.DTO.SignUpDTO;
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
-import com.tiba.tiba.Entities.UserRole;
+
 import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 public class SignUpService {

@@ -5,7 +5,6 @@ com\tiba\tiba\Entities\HospitalStaff.class
 com\tiba\tiba\Entities\Patient.class
 com\tiba\tiba\Repositories\HospitalStaffRepository.class
 com\tiba\tiba\Repositories\PatientRepository.class
-com\tiba\tiba\Entities\User$UserRole.class
 com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\Services\HospitalStaffService.class
 com\tiba\tiba\DTO\UserLogInResponseDTO.class
@@ -15,6 +14,7 @@ com\tiba\tiba\Controllers\HospitalStaffController.class
 com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\DTO\LoginResponseDTO.class
 com\tiba\tiba\DTO\PatientDTO.class
+com\tiba\tiba\Entities\UserRole.class
 com\tiba\tiba\Services\JwtUtil.class
 com\tiba\tiba\Services\PatientService.class
 com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.class

@@ -1,6 +1,6 @@
 package com.tiba.tiba.Services;
 
-import com.tiba.tiba.Entities.User;
+
 import com.tiba.tiba.Entities.UserRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -15,7 +15,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
 
 @Component
 public class JwtUtil {
