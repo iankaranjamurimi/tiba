@@ -2,9 +2,11 @@ com\tiba\tiba\Controllers\SignUpController.class
 com\tiba\tiba\SecurityConfig\Config.class
 com\tiba\tiba\DTO\SignUpDTO.class
 com\tiba\tiba\Entities\HospitalStaff.class
+com\tiba\tiba\Entities\SuperAdmin.class
 com\tiba\tiba\Entities\Patient.class
 com\tiba\tiba\Repositories\HospitalStaffRepository.class
 com\tiba\tiba\Repositories\PatientRepository.class
+com\tiba\tiba\Entities\HospitalAdmin.class
 com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\Services\HospitalStaffService.class
 com\tiba\tiba\DTO\UserLogInResponseDTO.class
@@ -17,6 +19,7 @@ com\tiba\tiba\DTO\PatientDTO.class
 com\tiba\tiba\Entities\UserRole.class
 com\tiba\tiba\Services\JwtUtil.class
 com\tiba\tiba\Services\PatientService.class
+com\tiba\tiba\Entities\Hospital.class
 com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.class
 com\tiba\tiba\DTO\LogInDTO.class
 com\tiba\tiba\Services\UserService.class

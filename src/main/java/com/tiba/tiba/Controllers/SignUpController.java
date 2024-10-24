@@ -1,7 +1,5 @@
 package com.tiba.tiba.Controllers;
-
 import com.tiba.tiba.DTO.SignUpDTO;
-
 import com.tiba.tiba.Services.SignUpService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Valid
 @RestController
 //http://localhost:5050/api/open/signup
+//http://localhost:5050/api/open/logIn
 //https://tiba.onrender.com/swagger-ui/index.html#/log-in-controller/logIn
 @RequestMapping("/api/open")
 public class SignUpController {

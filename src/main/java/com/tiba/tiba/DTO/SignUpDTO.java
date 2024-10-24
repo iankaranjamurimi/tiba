@@ -103,11 +103,4 @@ public class SignUpDTO {
         return contactNumber;
     }
 
-//    public @NotBlank(message = "The role is mandatory") @Size(max = 20, message = "The role should be at most 20 characters") String getRoles() {
-//        return Roles;
-//    }
-
-
-
-
 }

@@ -13,8 +13,6 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Table(name = "Users")
 public class User {
-
-
     @Id
     @GeneratedValue
     private Integer id;
@@ -42,6 +40,11 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HospitalStaff hospitalStaff;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private HospitalAdmin hospitalAdmin;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private SuperAdmin superAdmin;
 
 
 }

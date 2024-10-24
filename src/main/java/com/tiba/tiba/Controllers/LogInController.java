@@ -59,11 +59,8 @@ public class LogInController {
                     .body(LoginResponseDTO.error("User not found"));
         }
 
-
-//        System.out.println(existingUser.get());
         // Convert User to UserResponseDTO
         UserLogInResponseDTO userResponse = convertToDTO(existingUser.get());
-        //System.out.println(userResponse);
 
         // successful log in response
         return ResponseEntity.ok().body(new LoginResponseDTO<>(true, "Logged in successfully", userResponse));
@@ -75,6 +72,6 @@ public class LogInController {
         dto.setRoles(user.getRoles());
         return dto;
     }
-    }
+}
 
 

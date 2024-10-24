@@ -8,7 +8,6 @@ import lombok.*;
 @Setter
 @RequiredArgsConstructor
 public class HospitalStaff {
-
     @Id
     @GeneratedValue
     private Integer id;

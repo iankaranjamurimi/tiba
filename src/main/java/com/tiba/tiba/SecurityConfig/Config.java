@@ -1,7 +1,4 @@
 package com.tiba.tiba.SecurityConfig;
-
-
-
 import com.tiba.tiba.Services.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -69,7 +66,8 @@ public class Config {
                                         "/swagger-ui.html",
                                         "/tiba/a/signup",
                                         "/tiba/auth/logIn",
-                                        "/tiba/patients/existsIdNumber"
+                                        "/tiba/patients/exists/{idNumber}",
+                                        "/tiba/patients/firstname/check/**"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )

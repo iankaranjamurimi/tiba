@@ -1,12 +1,10 @@
 package com.tiba.tiba.Services;
 
-
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

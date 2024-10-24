@@ -8,8 +8,11 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LoginResponseDTO.ja
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\SignUpDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserLogInResponseDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Hospital.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\HospitalAdmin.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\HospitalStaff.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Patient.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\SuperAdmin.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\User.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\UserRole.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalStaffRepository.java

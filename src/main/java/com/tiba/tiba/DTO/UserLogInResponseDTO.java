@@ -12,7 +12,6 @@ import lombok.Setter;
 public class UserLogInResponseDTO {
     private Long id;
     private String token;
-    //private String roles;
     private UserRole roles;
 
 
