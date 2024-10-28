@@ -1,9 +1,10 @@
 com\tiba\tiba\Controllers\SignUpController.class
 com\tiba\tiba\SecurityConfig\Config.class
+com\tiba\tiba\DTO\LogInResponseDTO.class
 com\tiba\tiba\DTO\SignUpDTO.class
+com\tiba\tiba\DTO\UserSignUpResponseDTO.class
 com\tiba\tiba\Entities\HospitalStaff.class
 com\tiba\tiba\Entities\SuperAdmin.class
-com\tiba\tiba\DTO\HospitalAdminSignUpDTO.class
 com\tiba\tiba\Entities\Patient.class
 com\tiba\tiba\Repositories\HospitalStaffRepository.class
 com\tiba\tiba\Repositories\PatientRepository.class
@@ -14,12 +15,12 @@ com\tiba\tiba\Services\HospitalAdminService.class
 com\tiba\tiba\Services\HospitalStaffService.class
 com\tiba\tiba\DTO\UserLogInResponseDTO.class
 com\tiba\tiba\Repositories\UserRepository.class
+com\tiba\tiba\Repositories\HospitalRepository.class
 com\tiba\tiba\Entities\Appointment.class
 com\tiba\tiba\Repositories\HospitalAdminRepository.class
 com\tiba\tiba\Entities\User.class
 com\tiba\tiba\Controllers\HospitalStaffController.class
 com\tiba\tiba\Controllers\PatientController.class
-com\tiba\tiba\DTO\LoginResponseDTO.class
 com\tiba\tiba\DTO\PatientDTO.class
 com\tiba\tiba\Entities\UserRole.class
 com\tiba\tiba\Services\JwtUtil.class
@@ -30,6 +31,7 @@ com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.class
 com\tiba\tiba\DTO\LogInDTO.class
 com\tiba\tiba\Services\UserService.class
 com\tiba\tiba\DTO\HospitalStaffDTO.class
+com\tiba\tiba\DTO\SignUpResponseDTO.class
 com\tiba\tiba\Controllers\LogInController.class
 com\tiba\tiba\DTO\HospitalAdminDTO.class
 com\tiba\tiba\TibaApplication.class

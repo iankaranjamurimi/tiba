@@ -4,18 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tiba.tiba.Entities.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class HospitalAdminDTO {
 
     @Email(message = "Email should be valid")
@@ -29,7 +26,7 @@ public class HospitalAdminDTO {
 
     @NotBlank(message = "First name is mandatory")
     @Size(max = 10, message = "First name should be at most 10 characters")
-    private String firstname;
+    private String firstName;
 
     @NotBlank(message = "Middle name is mandatory")
     @Size(max = 10, message = "Middle name should be at most 10 characters")
@@ -38,7 +35,7 @@ public class HospitalAdminDTO {
 
     @NotBlank(message = "The Last name is mandatory")
     @Size(max = 10, message = "Last name should be at most 10 characters")
-    private String lastname;
+    private String lastName;
 
     @NotBlank(message = "The National Id Number is mandatory")
     @Size(max = 10, message = "The National Id Number should be at most 10 characters")
@@ -63,7 +60,6 @@ public class HospitalAdminDTO {
     private UserRole roles;
 
 
-
     public @Email(message = "Email should be valid") @NotBlank(message = "Email is mandatory") String getEmail() {
         return email;
     }
@@ -75,7 +71,7 @@ public class HospitalAdminDTO {
 
 
     public @NotBlank(message = "First name is mandatory") @Size(max = 10, message = "First name should be at most 10 characters") String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public @NotBlank(message = "middle name is mandatory") @Size(max = 10, message = "middle name should be at most 10 characters") String getMiddleName() {
@@ -83,7 +79,7 @@ public class HospitalAdminDTO {
     }
 
     public @NotBlank(message = "Last name is mandatory") @Size(max = 10, message = "Last name should be at most 10 characters") String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public @NotBlank(message = "The National Id Number is mandatory") @Size(max = 10, message = "The National Id Number should be at most 10 characters") String getIdNumber() {
@@ -103,5 +99,36 @@ public class HospitalAdminDTO {
 
     }
 
+    public@NotBlank(message = "Hospital Name is mandatory") @Size(max = 20, message = "Hospital name should be at most 20 characters")String getHospitalName() {
+        return "hospitalName";
+    }
+
+    public String getHospitalAddress() {
+        return "hospitalAddress";
+    }
+
+    public String getHospitalLocation() {
+        return "hospitalLocation";
+    }
+
+    public String getHospitalContactNumber() {
+        return "hospitalContactNumber";
+    }
+
+    public String getFirstName() {
+        return "firstName";
+    }
+
+    public String getLastName() {
+        return "lastName";
+    }
+
+    public String getAddress() {
+        return "address";
+    }
+
+    public String Email() {
+            return "email";
+    }
 }
 

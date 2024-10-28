@@ -2,7 +2,7 @@ package com.tiba.tiba.Controllers;
 
 
 import com.tiba.tiba.DTO.LogInDTO;
-import com.tiba.tiba.DTO.LoginResponseDTO;
+import com.tiba.tiba.DTO.SignUpResponseDTO;
 import com.tiba.tiba.DTO.UserLogInResponseDTO;
 import com.tiba.tiba.Entities.User;
 
@@ -45,25 +45,25 @@ public class LogInController {
 
     @PostMapping("/logIn")
 
-    public ResponseEntity<LoginResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody LogInDTO request) {
+    public ResponseEntity<SignUpResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody LogInDTO request) {
         // Validate request
         if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
             return ResponseEntity.badRequest()
-                    .body(LoginResponseDTO.error("Email and password are required"));
+                    .body(SignUpResponseDTO.error("Email and password are required"));
         }
 
         // Find user
         Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
         if (existingUser.isEmpty()) {
             return ResponseEntity.badRequest()
-                    .body(LoginResponseDTO.error("User not found"));
+                    .body(SignUpResponseDTO.error("User not found"));
         }
 
         // Convert User to UserResponseDTO
         UserLogInResponseDTO userResponse = convertToDTO(existingUser.get());
 
         // successful log in response
-        return ResponseEntity.ok().body(new LoginResponseDTO<>(true, "Logged in successfully", userResponse));
+        return ResponseEntity.ok().body(new SignUpResponseDTO<>(true, "Logged in successfully", userResponse));
     }
     private UserLogInResponseDTO convertToDTO(User user) {
         UserLogInResponseDTO dto = new UserLogInResponseDTO();

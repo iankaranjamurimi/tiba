@@ -17,11 +17,14 @@ public class User {
     @GeneratedValue
     private Integer id;
 
+
     @Column(nullable = false)
     private String firstName;
 
+    @Column(nullable = false)
     private String middleName;
 
+    @Column(nullable = false)
     private String lastName;
 
     @Column(unique = true, nullable = false)

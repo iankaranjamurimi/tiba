@@ -1,5 +1,7 @@
 package com.tiba.tiba.Controllers;
+import com.tiba.tiba.DTO.UserSignUpResponseDTO;
 import com.tiba.tiba.DTO.SignUpDTO;
+
 import com.tiba.tiba.Services.SignUpService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +24,33 @@ public class SignUpController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@Valid @RequestBody SignUpDTO request) {
+    public ResponseEntity<UserSignUpResponseDTO> signup(@Valid @RequestBody SignUpDTO request) {
         try {
-            // Hash password before passing to service
             String hashedPassword = passwordEncoder.encode(request.getPassword());
             request.setPassword(hashedPassword);
 
             signUpService.registerUser(request);
-            return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+
+            return new ResponseEntity<>(new UserSignUpResponseDTO("signed in successfully"), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new UserSignUpResponseDTO(e.getMessage()), HttpStatus.BAD_REQUEST);
         }
+
     }
 }
+
+
+//    @PostMapping("/signup")
+//    public ResponseEntity<String> signup(@Valid @RequestBody SignUpDTO request) {
+//        try {
+//            // Hash password before passing to service
+//            String hashedPassword = passwordEncoder.encode(request.getPassword());
+//            request.setPassword(hashedPassword);
+//
+//            signUpService.registerUser(request);
+//            return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
+//    }
+//}

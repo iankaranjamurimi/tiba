@@ -19,12 +19,14 @@ public class Patient {
     private Integer id;
 
 
+    @Column(nullable = false)
     private String contactNumber;
 
     private String emergencyContactNumber;
 
     private String address;
 
+    @Column(nullable = false)
     private String idNumber;
 
     private String gender;
@@ -39,8 +41,5 @@ public class Patient {
     @JoinColumn(name = "user_id")
     private User user;
 
-//    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-//    private Appointment appointment;
-//
 
 }

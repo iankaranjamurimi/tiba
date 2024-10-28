@@ -4,14 +4,15 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\LogInContro
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\PatientController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\SignUpController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalAdminDTO.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalAdminSignUpDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalStaffDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInDTO.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LoginResponseDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\SignUpDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\SignUpResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserLogInResponseDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserSignUpResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Appointment.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Hospital.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\HospitalAdmin.java
@@ -21,6 +22,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\SuperAdmin.jav
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\User.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\UserRole.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalAdminRepository.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalStaffRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\PatientRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\UserRepository.java
