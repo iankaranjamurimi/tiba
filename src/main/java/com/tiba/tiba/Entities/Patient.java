@@ -38,4 +38,9 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+//    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+//    private Appointment appointment;
+//
+
 }
