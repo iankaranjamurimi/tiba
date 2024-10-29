@@ -15,8 +15,7 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue
-    private Integer id;
-
+    private Long id;
 
     @Column(nullable = false)
     private String firstName;
@@ -49,8 +48,6 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HospitalAdmin hospitalAdmin;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private SuperAdmin superAdmin;
 
 
 }

@@ -5,9 +5,13 @@ import com.tiba.tiba.Entities.HospitalStaff;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.HospitalStaffRepository;
 import com.tiba.tiba.Repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -19,30 +23,62 @@ public class HospitalStaffService {
     @Autowired
     private UserRepository userRepository;
 
-    public HospitalStaffDTO createHospitalStaff(HospitalStaffDTO hospitalStaffDTO) {
-        HospitalStaff hospitalStaff = new HospitalStaff();
-        hospitalStaff.setEmail(hospitalStaffDTO.getEmail());
-        hospitalStaff.setPhoneNumber(hospitalStaffDTO.getPhoneNumber());
-        hospitalStaff.setSpecialization(hospitalStaffDTO.getSpecialization());
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
-        // Fetch the User entity using userId
-        Optional<User> user = userRepository.findById(hospitalStaffDTO.getHospitalStaff_Id());
-        user.ifPresent(hospitalStaff::setUser );
+@Transactional
+    public void registerHospitalStaff(HospitalStaffDTO hospitalStaffDTO) {
+
+//    if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+//        throw new RuntimeException("Email already exists!");
+//    }
+
+                // Create and save User
+                User user = new User();
+                user.setFirstName(hospitalStaffDTO.getFirstName());
+                user.setMiddleName(hospitalStaffDTO.getMiddleName());
+                user.setLastName(hospitalStaffDTO.getLastName());
+                user.setEmail(hospitalStaffDTO.getEmail());
+                user.setPassword(passwordEncoder.encode(hospitalStaffDTO.getPassword()));
+                user.setRoles(hospitalStaffDTO.getRoles());
+//                user.setRoles(UserRole.HOSPITAL_STAFF);
+
+             userRepository.save(user);
+
+                //Create and save HospitalStaff
+
+                HospitalStaff hospitalStaff = new HospitalStaff();
+                hospitalStaff.setPhoneNumber(hospitalStaffDTO.getPhoneNumber());
+                hospitalStaff.setGender(hospitalStaffDTO.getGender());
+                hospitalStaff.setIdNumber(hospitalStaffDTO.getIdNumber());
+                hospitalStaff.setDateOfBirth(LocalDate.parse(hospitalStaffDTO.getDateOfBirth(), DateTimeFormatter.ofLocalizedPattern("yyyy-mm-dd")).atStartOfDay());
+                hospitalStaff.setAddress(hospitalStaffDTO.getAddress());
+                hospitalStaff.setNationality(hospitalStaffDTO.getNationality());
+                hospitalStaff.setUser (user);
+
+
+               hospitalStaffRepository.save(hospitalStaff);
+
+               userRepository.save(user);
+
+
+        // Fetch the User entity using user Email
+        //renamed user to users
+        Optional<User> users = userRepository.findByEmail(hospitalStaffDTO.getEmail());
+        users.ifPresent(hospitalStaff::setUser );
 
         hospitalStaff = hospitalStaffRepository.save(hospitalStaff);
-        return convertToDTO(hospitalStaff);
+        convertToDTO(hospitalStaff);
     }
 
-    public HospitalStaffDTO getHospitalStaff(Integer id) {
-        Optional<HospitalStaff> hospitalStaff = hospitalStaffRepository.findById(id);
+    public HospitalStaffDTO getHospitalStaff(Integer idNumber) {
+        Optional<HospitalStaff> hospitalStaff = hospitalStaffRepository.findByIdNumber(idNumber);
         return hospitalStaff.map(this::convertToDTO).orElse(null);
     }
 
     private HospitalStaffDTO convertToDTO(HospitalStaff hospitalStaff) {
         HospitalStaffDTO dto = new HospitalStaffDTO();
-        dto.setEmail(hospitalStaff.getEmail());
         dto.setPhoneNumber(hospitalStaff.getPhoneNumber());
-        dto.setSpecialization(hospitalStaff.getSpecialization());
         return dto;
     }
 }

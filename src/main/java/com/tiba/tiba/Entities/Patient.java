@@ -16,8 +16,7 @@ import java.time.LocalDate;
 public class Patient {
     @Id
     @GeneratedValue
-    private Integer id;
-
+    private Long id;
 
     @Column(nullable = false)
     private String contactNumber;

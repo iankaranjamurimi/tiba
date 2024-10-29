@@ -28,7 +28,7 @@ public class PatientService {
     }
 
     public com.tiba.tiba.Entities.Patient getPatientById(Integer id) {
-        return patientRepository.findById(id)
+        return patientRepository.findById(Long.valueOf(id))
                 .map(this::convertToDTO)
                 .orElse(null);
     }
@@ -39,7 +39,7 @@ public class PatientService {
     }
 
     public void deletePatient(Integer id) {
-        patientRepository.deleteById(id);
+        patientRepository.deleteById(Long.valueOf(id));
     }
 
     private com.tiba.tiba.Entities.Patient convertToDTO(com.tiba.tiba.Entities.Patient patient) {

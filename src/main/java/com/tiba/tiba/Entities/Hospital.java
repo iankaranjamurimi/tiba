@@ -16,7 +16,7 @@ public class Hospital {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     private String hospitalName;
 
@@ -25,6 +25,10 @@ public class Hospital {
     private String hospitalLocation;
 
     private String hospitalContactNumber;
+
+    @OneToOne
+    @JoinColumn(name = "hospitalAdmin_id")
+    private HospitalAdmin hospitalAdmin;
 
 
     public static void setIdNumber(@NotBlank(message = "The National Id Number is mandatory") @Size(max = 10, message = "The National Id Number should be at most 10 characters") String idNumber) {

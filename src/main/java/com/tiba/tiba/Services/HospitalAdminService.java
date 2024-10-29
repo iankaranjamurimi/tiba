@@ -27,23 +27,26 @@ public class HospitalAdminService {
     @Transactional
     public void registerUser (@Valid HospitalAdminDTO request) {
         // Check if the email already exists
-        if (hospitalAdminRepository.findByEmail(request.Email()).isPresent()) {
+        if (userRepository.findByEmail(request.Email()).isPresent()) {
             throw new RuntimeException("Email already exists!");
         }
 
+        User user = new User();
+        user.setFirstName(request.getFirstName());
+        user.setMiddleName(request.getMiddleName());
+        user.setLastName(request.getLastName());
+        user.setPassword(request.getPassword());
+        user.setEmail(request.getEmail());
+        user.setRoles(request.getRoles());
+
+
         HospitalAdmin hospitalAdmin = new HospitalAdmin();
-        HospitalAdmin.setEmail(request.getEmail());
         hospitalAdmin.setContactNumber(request.getContactNumber());
         hospitalAdmin.setIdNumber(request.getIdNumber());
         hospitalAdmin.setGender(request.getGender());
         hospitalAdmin.setAddress(request.getAddress());
         hospitalAdmin.setDateOfBirth(request.getDateOfBirth());
 
-        User user = new User();
-        user.setFirstName(request.getFirstName());
-        user.setMiddleName(request.getMiddleName());
-        user.setLastName(request.getLastName());
-        user.setEmail(request.getEmail());
 
         // Hospital
         Hospital hospital = new Hospital();
@@ -57,6 +60,12 @@ public class HospitalAdminService {
         hospitalAdmin.setUser(user);
         hospitalAdmin.setHospital(hospital);
         hospital.setHospitalAdmin(hospitalAdmin);
+
+        // Save the hospital admin
+        userRepository.save(user);
+
+        // Save the hospital
+        hospitalRepository.save(hospital);
 
         // Save the hospital admin
         hospitalAdminRepository.save(hospitalAdmin);

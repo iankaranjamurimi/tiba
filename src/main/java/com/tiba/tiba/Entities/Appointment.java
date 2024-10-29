@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -15,7 +13,7 @@ import java.util.Date;
 public class Appointment {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     private LocalDateTime date;
 

@@ -67,7 +67,8 @@ public class Config {
                                         "/tiba/a/signup",
                                         "/tiba/auth/logIn",
                                         "/tiba/patients/exists/{idNumber}",
-                                        "/tiba/patients/firstname/check/**"
+                                        "/tiba/patients/firstname/check/**",
+                                        "/api/open/create/hospitalstaff"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )

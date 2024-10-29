@@ -65,7 +65,7 @@ public class PatientController {
         if (patientService.getPatientById(id) == null) {
             return ResponseEntity.notFound().build();
         }
-        patientDTO.setId(id);
+        patientDTO.setId(Long.valueOf(id));
         return ResponseEntity.ok(patientService.savePatient(patientDTO));
     }
 

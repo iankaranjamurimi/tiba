@@ -16,12 +16,11 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Table(name = "hospital_admin")
 public class HospitalAdmin {
-
     @Id
     @GeneratedValue
     private Integer id;
 
-    private String email;
+//    private String email;
 
     @Column(nullable = false)
     private String contactNumber;
@@ -42,6 +41,7 @@ public class HospitalAdmin {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
 
 
     public static void setEmail(@Email(message = "Email should be valid") @NotBlank(message = "Email is mandatory") String email) {

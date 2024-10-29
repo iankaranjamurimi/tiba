@@ -30,7 +30,7 @@ public class HospitalAdminDTO {
 
     @NotBlank(message = "Middle name is mandatory")
     @Size(max = 10, message = "Middle name should be at most 10 characters")
-    @JsonProperty("middlename")
+    @JsonProperty("middleName")
     private String middleName;
 
     @NotBlank(message = "The Last name is mandatory")
