@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -51,7 +50,8 @@ public class HospitalStaffService {
                 hospitalStaff.setPhoneNumber(hospitalStaffDTO.getPhoneNumber());
                 hospitalStaff.setGender(hospitalStaffDTO.getGender());
                 hospitalStaff.setIdNumber(hospitalStaffDTO.getIdNumber());
-                hospitalStaff.setDateOfBirth(LocalDate.parse(hospitalStaffDTO.getDateOfBirth(), DateTimeFormatter.ofLocalizedPattern("yyyy-mm-dd")).atStartOfDay());
+                hospitalStaff.setDateOfBirth(LocalDate.parse(hospitalStaffDTO.getDateOfBirth()));
+                //hospitalStaff.setDateOfBirth(LocalDate.from(LocalDate.parse(hospitalStaffDTO.getDateOfBirth(), DateTimeFormatter.ofLocalizedPattern("yyyy-mm-dd")).atStartOfDay()));
                 hospitalStaff.setAddress(hospitalStaffDTO.getAddress());
                 hospitalStaff.setNationality(hospitalStaffDTO.getNationality());
                 hospitalStaff.setUser (user);

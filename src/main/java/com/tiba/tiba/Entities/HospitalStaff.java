@@ -2,8 +2,7 @@ package com.tiba.tiba.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -20,7 +19,7 @@ public class HospitalStaff {
 
     private Integer idNumber;
 
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     private String address;
 
