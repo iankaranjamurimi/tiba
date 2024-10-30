@@ -6,7 +6,7 @@ import com.tiba.tiba.Entities.HospitalAdmin;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.HospitalAdminRepository;
 import com.tiba.tiba.Repositories.HospitalRepository;
-import com.tiba.tiba.Repositories.UserRepository;
+import com.tiba.tiba.Repositories.UserSignUpRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class HospitalAdminService {
     private HospitalAdminRepository hospitalAdminRepository;
 
     @Autowired
-    UserRepository userRepository;
+    UserSignUpRepository userSignUpRepository;
 
     @Autowired
     HospitalRepository hospitalRepository;
@@ -27,7 +27,7 @@ public class HospitalAdminService {
     @Transactional
     public void registerUser (@Valid HospitalAdminDTO request) {
         // Check if the email already exists
-        if (userRepository.findByEmail(request.Email()).isPresent()) {
+        if (userSignUpRepository.findByEmail(request.Email()).isPresent()) {
             throw new RuntimeException("Email already exists!");
         }
 
@@ -62,7 +62,7 @@ public class HospitalAdminService {
         hospital.setHospitalAdmin(hospitalAdmin);
 
         // Save the hospital admin
-        userRepository.save(user);
+        userSignUpRepository.save(user);
 
         // Save the hospital
         hospitalRepository.save(hospital);

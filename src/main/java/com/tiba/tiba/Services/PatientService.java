@@ -18,7 +18,6 @@ public class PatientService {
     public Optional<Patient> getPatientByIdNumber(String idNumber) {
         return patientRepository.findByIdNumber(idNumber);
 
-
     }
 
     public List<com.tiba.tiba.Entities.Patient> getAllPatients() {
@@ -66,5 +65,7 @@ public class PatientService {
     }
 
 
-
+    public <TriageAssignment> TriageAssignment assignToTriage(Long patientId, String nurseId) {
+        return null;
+    }
 }

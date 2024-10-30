@@ -32,7 +32,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-
     @Enumerated(EnumType.STRING)
     private UserRole roles;
 
@@ -40,14 +39,10 @@ public class User {
     private Patient patient;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private HospitalAdmin hospital;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HospitalStaff hospitalStaff;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HospitalAdmin hospitalAdmin;
-
 
 
 }

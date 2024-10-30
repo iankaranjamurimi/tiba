@@ -33,12 +33,34 @@ public class Patient {
     private Integer age;
 
     @Past  (message = "ie. the DOB must be in the past")
-
     private LocalDate dateOfBirth;
 
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    private MedicalRecords medicalRecords;
 
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Allergies allergies;
+
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Appointments appointments;
+
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Prescription prescription;
+
+
+    public Object getMedicalHistory() {
+        return null;
+    }
+
+    public Object getLastVisitDate() {
+        return null;
+    }
+
+    public boolean isPresent() {
+        return false;
+    }
 }

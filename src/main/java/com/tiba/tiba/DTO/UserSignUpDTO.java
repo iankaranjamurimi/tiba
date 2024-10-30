@@ -11,15 +11,13 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
 import java.time.LocalDate;
-
 
 @Data
 @Getter
 @Setter
 @AllArgsConstructor
-public class SignUpDTO {
+public class UserSignUpDTO {
 
    @Email(message = "Email should be valid")
     @NotBlank(message = "The Email is mandatory")

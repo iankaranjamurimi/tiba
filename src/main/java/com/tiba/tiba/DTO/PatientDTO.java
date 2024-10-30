@@ -23,5 +23,17 @@ public class PatientDTO {
         private LocalDate dateOfBirth;
 
         private Integer userId;
-    }
+
+        public PatientDTO() {
+
+        }
+
+        public void setMedicalHistory(Object medicalHistory) {
+
+        }
+
+        public void setLastVisitDate(Object lastVisitDate) {
+
+        }
+}
 

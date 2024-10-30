@@ -4,30 +4,32 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Appointment {
+public class Allergies {
+
     @Id
     @GeneratedValue
     private Long id;
 
-    private LocalDateTime date;
+    private String allergen;
 
-    //private String status;
+    private String reaction_type;
 
-    private String reason;
+    private String severity;//mild, moderate, severe
+
+    private Date date;// diagnosed date
 
     private String notes;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "patient_id")
     private Patient patient;
-
-//    @OneToOne
-//    private HospitalStaff hospitalStaff;
 
 
 }

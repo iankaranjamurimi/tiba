@@ -1,13 +1,13 @@
 package com.tiba.tiba.Controllers;
 
 
-import com.tiba.tiba.DTO.LogInDTO;
+import com.tiba.tiba.DTO.UserLogInDTO;
 import com.tiba.tiba.DTO.SignUpResponseDTO;
 import com.tiba.tiba.DTO.UserLogInResponseDTO;
 import com.tiba.tiba.Entities.User;
 
 
-import com.tiba.tiba.Repositories.UserRepository;
+import com.tiba.tiba.Repositories.UserSignUpRepository;
 
 import com.tiba.tiba.Services.JwtUtil;
 import com.tiba.tiba.Services.UserService;
@@ -28,7 +28,7 @@ import java.util.Optional;
 public class LogInController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserSignUpRepository userSignUpRepository;
 
 
     @Autowired
@@ -38,14 +38,14 @@ public class LogInController {
     private JwtUtil jwtUtil;
 
     // Constructor
-    public LogInController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public LogInController(UserSignUpRepository userSignUpRepository) {
+        this.userSignUpRepository = userSignUpRepository;
 
     }
 
     @PostMapping("/logIn")
 
-    public ResponseEntity<SignUpResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody LogInDTO request) {
+    public ResponseEntity<SignUpResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody UserLogInDTO request) {
         // Validate request
         if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
             return ResponseEntity.badRequest()
@@ -53,7 +53,7 @@ public class LogInController {
         }
 
         // Find user
-        Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
+        Optional<User> existingUser = userSignUpRepository.findByEmail(request.getEmail());
         if (existingUser.isEmpty()) {
             return ResponseEntity.badRequest()
                     .body(SignUpResponseDTO.error("User not found"));

@@ -28,4 +28,14 @@ public class HospitalStaff {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne(mappedBy = "hospitalStaff", cascade = CascadeType.ALL)
+    private MedicalRecords medicalRecords;
+
+    @OneToOne(mappedBy = "hospitalStaff", cascade = CascadeType.ALL)
+    private Prescription prescription;
+
+//    license_number VARCHAR(50),
+//    license_expiry DATE,
+//    status VARCHAR(20) DEFAULT 'active'
 }

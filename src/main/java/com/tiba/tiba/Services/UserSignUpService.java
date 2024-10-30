@@ -1,23 +1,23 @@
 package com.tiba.tiba.Services;
 
-import com.tiba.tiba.DTO.SignUpDTO;
+import com.tiba.tiba.DTO.UserSignUpDTO;
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
-import com.tiba.tiba.Repositories.UserRepository;
+import com.tiba.tiba.Repositories.UserSignUpRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SignUpService {
+public class UserSignUpService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserSignUpRepository userSignUpRepository;
 
     @Transactional
-    public void registerUser(@Valid SignUpDTO request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+    public void registerUser(@Valid UserSignUpDTO request) {
+        if (userSignUpRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new RuntimeException("Email already exists!");
         }
 
@@ -38,6 +38,6 @@ public class SignUpService {
         user.setPatient(patient);
         patient.setUser(user);
 
-        userRepository.save(user);
+        userSignUpRepository.save(user);
     }
 }

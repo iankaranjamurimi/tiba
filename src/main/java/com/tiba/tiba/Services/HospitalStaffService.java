@@ -4,7 +4,7 @@ import com.tiba.tiba.DTO.HospitalStaffDTO;
 import com.tiba.tiba.Entities.HospitalStaff;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.HospitalStaffRepository;
-import com.tiba.tiba.Repositories.UserRepository;
+import com.tiba.tiba.Repositories.UserSignUpRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,7 +20,7 @@ public class HospitalStaffService {
     private HospitalStaffRepository hospitalStaffRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserSignUpRepository userSignUpRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -42,7 +42,7 @@ public class HospitalStaffService {
                 user.setRoles(hospitalStaffDTO.getRoles());
 //                user.setRoles(UserRole.HOSPITAL_STAFF);
 
-             userRepository.save(user);
+             userSignUpRepository.save(user);
 
                 //Create and save HospitalStaff
 
@@ -59,12 +59,12 @@ public class HospitalStaffService {
 
                hospitalStaffRepository.save(hospitalStaff);
 
-               userRepository.save(user);
+               userSignUpRepository.save(user);
 
 
         // Fetch the User entity using user Email
         //renamed user to users
-        Optional<User> users = userRepository.findByEmail(hospitalStaffDTO.getEmail());
+        Optional<User> users = userSignUpRepository.findByEmail(hospitalStaffDTO.getEmail());
         users.ifPresent(hospitalStaff::setUser );
 
         hospitalStaff = hospitalStaffRepository.save(hospitalStaff);
