@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class PatientDTO {
 
 
-        private Integer id;
+        private Long id;
         private Integer age;
         private String contactNumber;
         private String emergencyContactNumber;

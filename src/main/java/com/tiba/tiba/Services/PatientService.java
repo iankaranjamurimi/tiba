@@ -65,7 +65,5 @@ public class PatientService {
     }
 
 
-    public <TriageAssignment> TriageAssignment assignToTriage(Long patientId, String nurseId) {
-        return null;
-    }
+
 }

@@ -52,10 +52,6 @@ public class Config {
                                 .requestMatchers(
                                         "/api/open/**",
                                         "/api/**",
-                                        "/api/open/ov1/**",
-                                        "/v2/**",
-                                        "/v3/**",
-                                        "/v3/api-docs/**",
                                         "/swagger-resources",
                                         "/swagger-resources/**",
                                         "/configuration/ui",
@@ -64,11 +60,8 @@ public class Config {
                                         "/swagger-ui/**",
                                         "/webjars/**",
                                         "/swagger-ui.html",
-                                        "/tiba/a/signup",
-                                        "/tiba/auth/logIn",
-                                        "/tiba/patients/exists/{idNumber}",
-                                        "/tiba/patients/firstname/check/**",
-                                        "/api/open/create/hospitalstaff"
+                                        "/api/open/vitals"
+
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )

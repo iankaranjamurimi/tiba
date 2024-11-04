@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class LabResults {
     @Id
     @GeneratedValue
-    private Long resultId;
+    private Long id;
     private String testName;
     private String testCode;
     private String resultValue;

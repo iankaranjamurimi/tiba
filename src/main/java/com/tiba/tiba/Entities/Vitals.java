@@ -26,9 +26,11 @@ public class Vitals {
 
     private Integer oxygenSaturation;
 
+    private Integer weight;
+
 
     @OneToOne
-    @JoinColumn(name = "medicalRecords_id")
+    @JoinColumn(name = "medicalRecords_Id")
     private MedicalRecords medicalRecords;
 //    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 }

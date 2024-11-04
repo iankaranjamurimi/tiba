@@ -52,15 +52,4 @@ public class Patient {
     private Prescription prescription;
 
 
-    public Object getMedicalHistory() {
-        return null;
-    }
-
-    public Object getLastVisitDate() {
-        return null;
-    }
-
-    public boolean isPresent() {
-        return false;
-    }
 }

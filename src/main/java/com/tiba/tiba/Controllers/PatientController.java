@@ -78,11 +78,6 @@ public class PatientController {
         return ResponseEntity.noContent().build();
     }
 
-//    @PostMapping("/submit")
-//    public ResponseEntity<Void> submitPatientProfile(@RequestBody Patient patient) {
-//        patientService.submitPatientProfile(patient);
-//        return ResponseEntity.ok().build();
-//    }
 
     //https://tiba.onrender.com/swagger-ui/index.html#/patient-controller/getPatientById
 }

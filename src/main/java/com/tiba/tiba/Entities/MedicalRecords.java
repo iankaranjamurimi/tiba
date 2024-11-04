@@ -40,6 +40,14 @@ public class MedicalRecords {
     @OneToOne(mappedBy = "medicalRecords", cascade = CascadeType.ALL)
     private LabResults labResults;
 
+    public void setFollowUpDate(LocalDate followUpDate) {
+
+    }
+
+    public void setFollowUpRequired(Boolean followUpRequired) {
+
+    }
+
 //    follow_up_required BOOLEAN DEFAULT false,
 //    follow_up_date DATE
 
