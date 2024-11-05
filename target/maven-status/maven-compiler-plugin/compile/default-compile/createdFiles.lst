@@ -30,6 +30,7 @@ com\tiba\tiba\Services\VitalsService.class
 com\tiba\tiba\Controllers\LogInController.class
 com\tiba\tiba\DTO\HospitalAdminDTO.class
 com\tiba\tiba\TibaApplication.class
+com\tiba\tiba\Utility\SwaggerConf.class
 com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.class
 com\tiba\tiba\SecurityConfig\Config.class
 com\tiba\tiba\DTO\LogInResponseDTO.class
