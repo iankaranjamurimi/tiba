@@ -43,6 +43,9 @@ public class Patient {
     private MedicalRecords medicalRecords;
 
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Vitals vitals;
+
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Allergies allergies;
 
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)

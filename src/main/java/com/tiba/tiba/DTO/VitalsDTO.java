@@ -19,5 +19,6 @@ public class VitalsDTO {
     private Integer oxygenSaturation;
     private Integer weight;
     private Long medicalRecordsId;
+    private Long patientId;
 
 }

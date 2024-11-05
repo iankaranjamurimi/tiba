@@ -32,5 +32,11 @@ public class Vitals {
     @OneToOne
     @JoinColumn(name = "medicalRecords_Id")
     private MedicalRecords medicalRecords;
-//    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+    @OneToOne
+    @JoinColumn(name = "patient_Id")
+    private Patient patient;
+
+
+
 }
