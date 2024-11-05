@@ -53,6 +53,7 @@ com\tiba\tiba\DTO\LabResultsDTO.class
 com\tiba\tiba\Entities\UserRole.class
 com\tiba\tiba\Services\JwtUtil.class
 com\tiba\tiba\Controllers\HospitalAdminController.class
+com\tiba\tiba\SecurityConfig\WebConfig.class
 com\tiba\tiba\Repositories\VitalsRepository.class
 com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.class
 com\tiba\tiba\Entities\Vitals.class

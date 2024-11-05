@@ -24,7 +24,7 @@ public class MedicalRecords {
     @Column(columnDefinition = "TEXT")
     private String treatment;
 
-    private String medication;
+//    private String medication;
 
     private LocalDate submittedAt;
 

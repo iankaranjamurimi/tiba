@@ -21,4 +21,5 @@ public class VitalsDTO {
     private Long medicalRecordsId;
     private Long patientId;
 
+
 }

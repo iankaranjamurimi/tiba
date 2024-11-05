@@ -28,8 +28,8 @@ public class MedicalRecordsService {
         Patient patient = patientRepository.findById(dto.getPatientId())
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getPatientId()));
 
-        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaff_id())
-                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaff_id()));
+        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
+                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
 
         MedicalRecords medicalRecords = new MedicalRecords();
         updateMedicalRecordFromDTO(medicalRecords, dto, patient, staff);
@@ -46,8 +46,8 @@ public class MedicalRecordsService {
         Patient patient = patientRepository.findById(dto.getPatientId())
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getPatientId()));
 
-        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaff_id())
-                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaff_id()));
+        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
+                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
 
         updateMedicalRecordFromDTO(existingRecord, dto, patient, staff);
         MedicalRecords updatedRecord = medicalRecordsRepository.save(existingRecord);
@@ -76,11 +76,11 @@ public class MedicalRecordsService {
         record.setNotes(dto.getNotes());
         record.setDiagnosis(dto.getDiagnosis());
         record.setTreatment(dto.getTreatment());
-        record.setMedication(dto.getMedication());
+//        record.setMedication(dto.getMedication());
         record.setSubmittedAt(dto.getSubmittedAt());
         record.setSubmittedBy(dto.getSubmittedBy());
-        record.setFollowUpRequired(dto.getFollowUpRequired());
-        record.setFollowUpDate(dto.getFollowUpDate());
+//        record.setFollowUpRequired(dto.getFollowUpRequired());
+//        record.setFollowUpDate(dto.getFollowUpDate());
         record.setPatient(patient);
         record.setHospitalStaff(staff);
     }
@@ -90,65 +90,10 @@ public class MedicalRecordsService {
         dto.setNotes(record.getNotes());
         dto.setDiagnosis(record.getDiagnosis());
         dto.setTreatment(record.getTreatment());
-        dto.setMedication(record.getMedication());
         dto.setSubmittedAt(record.getSubmittedAt());
         dto.setSubmittedBy(record.getSubmittedBy());
-        dto.setFollowUpRequired(record.getFollowUpRequired());
-        dto.setFollowUpDate(record.getFollowUpDate());
         dto.setPatientId(record.getPatient().getId());
-        dto.setHospitalStaff_id(record.getHospitalStaff().getId());
+        dto.setHospitalStaffId(record.getHospitalStaff().getId());
         return dto;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//package com.tiba.tiba.Services;
-//
-//import com.tiba.tiba.DTO.MedicalRecordsUpdateDTO;
-//import com.tiba.tiba.Entities.MedicalRecords;
-//import com.tiba.tiba.Repositories.MedicalRecordsRepository;
-//import jakarta.transaction.Transactional;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//@Service
-//public class MedicalRecordsService {
-//
-//    @Autowired
-//    private MedicalRecordsRepository medicalRecordsRepository;
-//
-//    @Transactional
-//    public MedicalRecords updateMedicalRecords(Long id, MedicalRecordsUpdateDTO updateDTO) {
-//        MedicalRecords medicalRecords = medicalRecordsRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Medical Records not found"));
-//        medicalRecords.setNotes(updateDTO.getNotes());
-//        medicalRecords.setDiagnosis(updateDTO.getDiagnosis());
-//        medicalRecords.setTreatment(updateDTO.getTreatment());
-//        medicalRecords.setMedication(updateDTO.getMedication());
-//        medicalRecords.setSubmittedAt(updateDTO.getSubmittedAt());
-//        medicalRecords.setSubmittedBy(updateDTO.getSubmittedBy());
-////        medicalRecords.setFollowUpRequired(updateDTO.getFollowUpRequired());
-////        medicalRecords.setFollowUpDate(updateDTO.getFollowUpDate());
-//
-//        return medicalRecordsRepository.save(medicalRecords);
-//        }
-//
-//    public MedicalRecords MedicalRecords(Long id, MedicalRecordsUpdateDTO updateDTO) {
-//        return null;
-//    }
-//}

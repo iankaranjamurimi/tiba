@@ -37,6 +37,9 @@ public class Vitals {
     @JoinColumn(name = "patient_Id")
     private Patient patient;
 
+    @OneToOne
+    @JoinColumn(name = "hospital_Id")
+    private Hospital hospital;
 
 
 }

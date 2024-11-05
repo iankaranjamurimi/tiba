@@ -40,11 +40,12 @@ public class VitalsService {
         vitals.setMedicalRecords(medicalRecords);
         vitals.setPatient(new Patient());
 
-        // Save and return the vitals form
+        // Save and return vitals
         return vitalsRepository.save(vitals);
     }
 
     public List<Vitals> getVitalsByPatientId(Long patientId) {
+
         // Fetch medical records associated with the patient
         MedicalRecords medicalRecords = medicalRecordsRepository.findByPatientId(patientId)
                 .orElseThrow(() -> new RuntimeException("Medical Record not found for patient ID: " + patientId));

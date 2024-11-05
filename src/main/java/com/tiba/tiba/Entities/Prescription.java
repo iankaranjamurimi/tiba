@@ -22,9 +22,9 @@ public class Prescription {
     private String frequency;
     private String duration;
     private Integer quantity;
-    private Integer refills = 0; // Default value
+    private Integer refills = 0;
     private LocalDate prescribedDate;
-    private String status = "active"; // Default value
+    private String status = "active";
     private String notes;
 
     @OneToOne

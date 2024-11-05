@@ -16,7 +16,7 @@ import java.util.List;
 public class MedicalRecordsController {
     private final MedicalRecordsService medicalRecordsService;
 
-    @PostMapping("/create/medicalRecords/{id}")
+    @PostMapping("/create/medicalRecords")
     public ResponseEntity<MedicalRecordsUpdateDTO> createMedicalRecord(
             @Valid @RequestBody MedicalRecordsUpdateDTO medicalRecordsDTO) {
         return new ResponseEntity<>(
