@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Data
 public class AllergiesDTO {
-    private Long id;
+//    private Long id;
     private String allergen;
     private String reaction_type;
     private String severity;

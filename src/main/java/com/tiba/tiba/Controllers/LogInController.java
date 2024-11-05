@@ -30,7 +30,6 @@ public class LogInController {
     @Autowired
     private UserSignUpRepository userSignUpRepository;
 
-
     @Autowired
     private UserService userService;
 
@@ -43,7 +42,7 @@ public class LogInController {
 
     }
 
-    @PostMapping("/logIn")
+    @PostMapping("/user/logIn")
 
     public ResponseEntity<SignUpResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody UserLogInDTO request) {
         // Validate request

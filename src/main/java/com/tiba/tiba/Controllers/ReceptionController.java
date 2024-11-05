@@ -52,24 +52,3 @@ public class ReceptionController {
 
     }
 }
-
-//    @PostMapping("/triage/{patientId}/send-to-triage")
-//    public ResponseEntity<Map<String, Object>> sendToTriage(
-//            @PathVariable Long patientId,
-//            @RequestParam(required = false) String nurseId) {
-//
-//        Map<String, Object> response = new HashMap<>();
-//
-//        try {
-//
-//            response.put("success", true);
-//            response.put("message", "Patient successfully sent to triage.");
-//
-//            return ResponseEntity.ok(response);
-//        } catch (Exception e) {
-//            response.put("success", false);
-//            response.put("message", "Patient not found.");
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-//        }
-//    }
-//}

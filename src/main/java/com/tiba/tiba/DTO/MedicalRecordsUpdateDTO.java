@@ -1,9 +1,7 @@
 package com.tiba.tiba.DTO;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
+import lombok.Data;
 import java.time.LocalDate;
 
 @Data
@@ -17,4 +15,8 @@ public class MedicalRecordsUpdateDTO {
         private String submittedBy;
         private Boolean followUpRequired;
         private LocalDate followUpDate;
+        private Long patientId;
+        private Long hospitalStaff_id;
+
+        
 }

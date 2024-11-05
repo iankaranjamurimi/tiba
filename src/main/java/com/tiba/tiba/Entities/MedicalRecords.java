@@ -2,7 +2,7 @@ package com.tiba.tiba.Entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -10,16 +10,18 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class MedicalRecords {
     @Id
     @GeneratedValue
     private Long id;
 
+    @Column(columnDefinition = "TEXT")
     private String notes;
 
     private String diagnosis;
 
+    @Column(columnDefinition = "TEXT")
     private String treatment;
 
     private String medication;
@@ -37,21 +39,24 @@ public class MedicalRecords {
     @JoinColumn(name = "hospitalStaff_id")
     private HospitalStaff hospitalStaff;
 
+
     @OneToOne(mappedBy = "medicalRecords", cascade = CascadeType.ALL)
     private LabResults labResults;
 
-    public void setFollowUpDate(LocalDate followUpDate) {
-
-    }
 
     public void setFollowUpRequired(Boolean followUpRequired) {
 
     }
 
-//    follow_up_required BOOLEAN DEFAULT false,
-//    follow_up_date DATE
+    public Boolean getFollowUpRequired() {
+            return null;
+    }
 
+    public LocalDate getFollowUpDate() {
+            return null;
+    }
 
+    public void setFollowUpDate(LocalDate followUpDate) {
 
-
+    }
 }

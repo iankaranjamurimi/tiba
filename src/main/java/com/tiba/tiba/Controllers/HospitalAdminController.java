@@ -21,7 +21,7 @@ public class HospitalAdminController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    @PostMapping("/hospitaladmin")
+    @PostMapping("/create/hospitaladmin")
         public ResponseEntity<String> signup(@Valid @RequestBody HospitalAdminDTO request) {
             try {
                 // Hashing the password before passing it to service

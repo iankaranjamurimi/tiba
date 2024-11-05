@@ -27,13 +27,8 @@ public class HospitalStaffController {
         }
     }
 
-//    @PostMapping("/hospitalstaff")
-//    public ResponseEntity<HospitalStaffDTO> createHospitalStaff(@RequestBody HospitalStaffDTO hospitalStaffDTO) {
-//        HospitalStaffDTO createdStaff = hospitalStaffService.createHospitalStaff(hospitalStaffDTO);
-//        return ResponseEntity.ok(createdStaff);
-//    }
 
-    @GetMapping("/{id}")
+    @GetMapping("/hospitalstaff/{id}")
     public ResponseEntity<HospitalStaffDTO> getHospitalStaff(@PathVariable Integer id) {
         HospitalStaffDTO hospitalStaffDTO = hospitalStaffService.getHospitalStaff(id);
         if (hospitalStaffDTO != null) {

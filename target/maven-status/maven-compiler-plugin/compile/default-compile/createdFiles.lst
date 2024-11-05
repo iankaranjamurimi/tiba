@@ -15,6 +15,7 @@ com\tiba\tiba\Repositories\AllergiesRepository.class
 com\tiba\tiba\Repositories\HospitalAdminRepository.class
 com\tiba\tiba\Controllers\UserSignUpController.class
 com\tiba\tiba\DTO\TriageAssignmentResponseDTO.class
+com\tiba\tiba\Services\MedicalRecordsService.class
 com\tiba\tiba\DTO\PatientDTO.class
 com\tiba\tiba\Entities\Allergies.class
 com\tiba\tiba\Services\PatientService.class
@@ -42,11 +43,10 @@ com\tiba\tiba\Services\HospitalStaffService.class
 com\tiba\tiba\Controllers\ReceptionController.class
 com\tiba\tiba\Controllers\VitalsController.class
 com\tiba\tiba\Services\UserSignUpService.class
-com\tiba\tiba\Controllers\MedicalRecordsUpdateController.class
 com\tiba\tiba\Entities\User.class
 com\tiba\tiba\DTO\UserSignUpDTO.class
 com\tiba\tiba\Controllers\HospitalStaffController.class
-com\tiba\tiba\Services\MedicalRecordsUpdateService.class
+com\tiba\tiba\Controllers\MedicalRecordsController.class
 com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\Repositories\LabResultsRepository.class
 com\tiba\tiba\DTO\LabResultsDTO.class
