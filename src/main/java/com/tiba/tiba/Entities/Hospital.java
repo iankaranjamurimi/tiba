@@ -30,8 +30,8 @@ public class Hospital {
     @JoinColumn(name = "hospitalAdmin_id")
     private HospitalAdmin hospitalAdmin;
 
-    @OneToOne(mappedBy = "hospital", cascade = CascadeType.ALL)
-    private Vitals vitals;
+//    @OneToOne(mappedBy = "hospital", cascade = CascadeType.ALL)
+//    private Vitals vitals;
 
 
     public static void setIdNumber(@NotBlank(message = "The National Id Number is mandatory") @Size(max = 10, message = "The National Id Number should be at most 10 characters") String idNumber) {

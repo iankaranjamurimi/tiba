@@ -27,7 +27,9 @@ public class Prescription {
     private String status = "active";
     private String notes;
 
-    @OneToOne
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
 

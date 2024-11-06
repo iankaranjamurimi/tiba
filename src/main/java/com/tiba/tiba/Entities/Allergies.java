@@ -27,7 +27,7 @@ public class Allergies {
 
     private String notes;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
 

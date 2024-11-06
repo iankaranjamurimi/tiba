@@ -2,26 +2,28 @@ package com.tiba.tiba.Entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class MedicalRecords {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(columnDefinition = "TEXT")
+//    @Column(columnDefinition = "TEXT")
     private String notes;
 
     private String diagnosis;
 
-    @Column(columnDefinition = "TEXT")
+//    @Column(columnDefinition = "TEXT")
     private String treatment;
 
 //    private String medication;
@@ -30,33 +32,19 @@ public class MedicalRecords {
 
     private String submittedBy;
 
-
-    @OneToOne
+    // Many medical records belong to one patient
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    @OneToOne
+    // Many medical records belong to one hospitalstaff
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospitalStaff_id")
     private HospitalStaff hospitalStaff;
 
+    // One medical record can have many lab results
+    @OneToMany(mappedBy = "medicalRecords", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LabResults> labResults = new ArrayList<>();
 
-    @OneToOne(mappedBy = "medicalRecords", cascade = CascadeType.ALL)
-    private LabResults labResults;
 
-
-    public void setFollowUpRequired(Boolean followUpRequired) {
-
-    }
-
-    public Boolean getFollowUpRequired() {
-            return null;
-    }
-
-    public LocalDate getFollowUpDate() {
-            return null;
-    }
-
-    public void setFollowUpDate(LocalDate followUpDate) {
-
-    }
 }

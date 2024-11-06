@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,20 +41,21 @@ public class Patient {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-    private MedicalRecords medicalRecords;
+    // One Patient many medical records
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MedicalRecords> medicalRecords = new ArrayList<>();
 
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Vitals vitals;
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-    private Allergies allergies;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Allergies> allergies = new ArrayList<>();
+
 
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Appointments appointments;
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-    private Prescription prescription;
-
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prescription> prescription  = new ArrayList<>();
 
 }
