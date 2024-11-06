@@ -42,8 +42,6 @@ public class HospitalAdmin {
     @JoinColumn(name = "user_id")
     private User user;
 
-
-
     public static void setEmail(@Email(message = "Email should be valid") @NotBlank(message = "Email is mandatory") String email) {
 
     }

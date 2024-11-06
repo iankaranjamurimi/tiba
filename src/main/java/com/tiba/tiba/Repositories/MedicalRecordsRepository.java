@@ -14,4 +14,5 @@ public interface MedicalRecordsRepository extends JpaRepository<MedicalRecords, 
 
 Optional<MedicalRecords> findByPatientId(Long patientId);
 List<MedicalRecords> findByPatient(Patient patient);
+
 }

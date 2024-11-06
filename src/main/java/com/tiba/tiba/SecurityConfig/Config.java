@@ -60,7 +60,9 @@ public class Config {
                                         "/swagger-ui/**",
                                         "/webjars/**",
                                         "/swagger-ui.html",
-                                        "/api/open/vitals"
+                                        "/api/open/vitals",
+                                        "/swagger-ui/**",
+                                        "/api-docs/**"
 
                                 ).permitAll()
                                 .anyRequest().authenticated()

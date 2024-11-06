@@ -35,7 +35,6 @@ com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.class
 com\tiba\tiba\SecurityConfig\Config.class
 com\tiba\tiba\DTO\LogInResponseDTO.class
 com\tiba\tiba\DTO\UserSignUpResponseDTO.class
-com\tiba\tiba\Entities\SuperAdmin.class
 com\tiba\tiba\DTO\TriageAssignmentDTO.class
 com\tiba\tiba\Repositories\HospitalStaffRepository.class
 com\tiba\tiba\Entities\HospitalAdmin.class
