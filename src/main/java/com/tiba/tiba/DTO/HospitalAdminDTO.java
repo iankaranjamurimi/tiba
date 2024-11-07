@@ -1,6 +1,5 @@
 package com.tiba.tiba.DTO;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tiba.tiba.Entities.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

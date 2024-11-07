@@ -42,12 +42,7 @@ public class HospitalAdmin {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public static void setEmail(@Email(message = "Email should be valid") @NotBlank(message = "Email is mandatory") String email) {
 
-    }
 
-    public static void setPassword(@NotBlank(message = "Password is mandatory") @Size(min = 6, message = "Password should be at least 6 characters") String password) {
-
-    }
 
 }
