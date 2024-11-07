@@ -29,7 +29,7 @@ public class UserSignUpDTO {
     @Size(max = 10, message = "First name should be at most 10 characters")
     private String firstname;
 
-    @NotBlank(message = "Middle name is mandatory")
+
     @Size(max = 10, message = "Middle name should be at most 10 characters")
     @JsonProperty("middlename")
     private String middleName;

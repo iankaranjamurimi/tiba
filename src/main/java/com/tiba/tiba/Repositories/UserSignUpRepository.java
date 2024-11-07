@@ -9,4 +9,5 @@ public interface UserSignUpRepository extends JpaRepository<com.tiba.tiba.Entiti
 
     Optional<com.tiba.tiba.Entities.User> findByEmail(String email);
 
+
 }

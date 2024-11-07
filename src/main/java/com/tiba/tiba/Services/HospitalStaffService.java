@@ -26,11 +26,11 @@ public class HospitalStaffService {
     private BCryptPasswordEncoder passwordEncoder;
 
 @Transactional
-    public void registerHospitalStaff(HospitalStaffDTO hospitalStaffDTO) {
+    public void registerHospitalStaff(HospitalStaffDTO hospitalStaffDTO ) {
 
-//    if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-//        throw new RuntimeException("Email already exists!");
-//    }
+    if (userSignUpRepository.findByEmail(hospitalStaffDTO.getEmail()).isPresent()) {
+        throw new RuntimeException("Email already exists!");
+    }
 
                 // Create and save User
                 User user = new User();
@@ -40,7 +40,7 @@ public class HospitalStaffService {
                 user.setEmail(hospitalStaffDTO.getEmail());
                 user.setPassword(passwordEncoder.encode(hospitalStaffDTO.getPassword()));
                 user.setRoles(hospitalStaffDTO.getRoles());
-//                user.setRoles(UserRole.HOSPITAL_STAFF);
+
 
              userSignUpRepository.save(user);
 

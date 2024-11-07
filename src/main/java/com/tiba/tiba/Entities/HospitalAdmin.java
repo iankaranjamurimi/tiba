@@ -23,7 +23,7 @@ public class HospitalAdmin {
 //    private String email;
 
     @Column(nullable = false)
-    private String contactNumber;
+    private String phoneNumber;
 
     private String idNumber;
 

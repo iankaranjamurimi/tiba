@@ -10,6 +10,7 @@ import com.tiba.tiba.Repositories.UserSignUpRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,8 +25,12 @@ public class HospitalAdminService {
     @Autowired
     HospitalRepository hospitalRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Transactional
     public void registerUser (@Valid HospitalAdminDTO request) {
+
         // Check if the email already exists
         if (userSignUpRepository.findByEmail(request.Email()).isPresent()) {
             throw new RuntimeException("Email already exists!");
@@ -35,18 +40,17 @@ public class HospitalAdminService {
         user.setFirstName(request.getFirstName());
         user.setMiddleName(request.getMiddleName());
         user.setLastName(request.getLastName());
-        user.setPassword(request.getPassword());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
         user.setRoles(request.getRoles());
 
 
         HospitalAdmin hospitalAdmin = new HospitalAdmin();
-        hospitalAdmin.setContactNumber(request.getContactNumber());
+        hospitalAdmin.setPhoneNumber(request.getPhoneNumber());
         hospitalAdmin.setIdNumber(request.getIdNumber());
         hospitalAdmin.setGender(request.getGender());
         hospitalAdmin.setAddress(request.getAddress());
         hospitalAdmin.setDateOfBirth(request.getDateOfBirth());
-
 
         // Hospital
         Hospital hospital = new Hospital();
@@ -56,18 +60,24 @@ public class HospitalAdminService {
         hospital.setHospitalContactNumber(request.getHospitalContactNumber());
 
 
-        // Set relationships
+        // Setting relationships
         hospitalAdmin.setUser(user);
         hospitalAdmin.setHospital(hospital);
         hospital.setHospitalAdmin(hospitalAdmin);
 
-        // Save the hospital admin
+        // Save hospital admin
         userSignUpRepository.save(user);
 
-        // Save the hospital
+        // Save  hospital
         hospitalRepository.save(hospital);
 
-        // Save the hospital admin
+        // Save hospital admin
         hospitalAdminRepository.save(hospitalAdmin);
+
+//        userSignUpRepository.save(user);
+
+//        user.setHospitalAdmin(hospitalAdmin);
+//        hospitalAdmin.setUser(user);
     }
+
 }
