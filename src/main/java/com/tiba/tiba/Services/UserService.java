@@ -34,4 +34,8 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userSignUpRepository.save(user);
     }
+
+    public boolean verifyPassword(String password, String password1) {
+            return false;
+    }
 }

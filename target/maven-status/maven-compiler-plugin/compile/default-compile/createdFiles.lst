@@ -13,6 +13,7 @@ com\tiba\tiba\Controllers\AllergiesController.class
 com\tiba\tiba\DTO\AllergiesDTO.class
 com\tiba\tiba\Repositories\UserRepository.class
 com\tiba\tiba\Repositories\HospitalRepository.class
+com\tiba\tiba\Controllers\HospitalStaffController$ApiResponse.class
 com\tiba\tiba\Repositories\AllergiesRepository.class
 com\tiba\tiba\Repositories\HospitalAdminRepository.class
 com\tiba\tiba\Controllers\UserSignUpController.class
@@ -53,6 +54,7 @@ com\tiba\tiba\Entities\User.class
 com\tiba\tiba\DTO\UserSignUpDTO.class
 com\tiba\tiba\Controllers\HospitalStaffController.class
 com\tiba\tiba\Controllers\MedicalRecordsController.class
+com\tiba\tiba\Controllers\HospitalAdminController$ApiResponse.class
 com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\DTO\PrescriptionDTO.class
 com\tiba\tiba\Repositories\LabResultsRepository.class

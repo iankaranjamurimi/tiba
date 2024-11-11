@@ -13,6 +13,7 @@ import com.tiba.tiba.Services.JwtUtil;
 import com.tiba.tiba.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,19 +59,32 @@ public class LogInController {
                     .body(SignUpResponseDTO.error("User not found"));
         }
 
+        // Validate password
+        User user = existingUser.get();
+        if (!userService.verifyPassword(request.getPassword(), user.getPassword())) {
+            return ResponseEntity.badRequest()
+                    .body(SignUpResponseDTO.error("Invalid password"));
+        }
+
         // Convert User to UserResponseDTO
         UserLogInResponseDTO userResponse = convertToDTO(existingUser.get());
 
         // successful log in response
         return ResponseEntity.ok().body(new SignUpResponseDTO<>(true, "Logged in successfully", userResponse));
     }
+
     private UserLogInResponseDTO convertToDTO(User user) {
         UserLogInResponseDTO dto = new UserLogInResponseDTO();
-        dto.setId(Long.valueOf(user.getId()));
+        dto.setId(user.getId());
         dto.setToken(jwtUtil.generateToken(user.getEmail(), user.getRoles()));
         dto.setRoles(user.getRoles());
         return dto;
     }
-}
 
+    private boolean verifyPassword(String rawPassword, String hashedPassword) {
+        // Use a secure password hashing and verification mechanism, such as BCrypt
+        // Example using BCrypt:
+        return BCrypt.checkpw(rawPassword, hashedPassword);
+    }
+}
 
