@@ -1,8 +1,6 @@
 package com.tiba.tiba.Controllers;
 import com.tiba.tiba.DTO.UserSignUpResponseDTO;
 import com.tiba.tiba.DTO.UserSignUpDTO;
-
-import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Services.UserSignUpService;
 import jakarta.validation.Valid;

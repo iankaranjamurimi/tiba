@@ -2,10 +2,8 @@ package com.tiba.tiba.Services;
 
 import com.tiba.tiba.DTO.AllergiesDTO;
 import com.tiba.tiba.Entities.Allergies;
-import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.AllergiesRepository;
-import com.tiba.tiba.Repositories.PatientRepository;
 import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
