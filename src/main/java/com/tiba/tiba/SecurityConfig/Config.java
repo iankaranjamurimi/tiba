@@ -34,7 +34,7 @@ public class Config {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowCredentials(true); // Changed to true as recommended
+//        configuration.setAllowCredentials(true); // Changed to true as recommended
         configuration.addAllowedOriginPattern("*"); // Using pattern instead of fixed origin
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
