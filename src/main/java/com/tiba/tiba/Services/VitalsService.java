@@ -5,7 +5,6 @@ import com.tiba.tiba.Entities.Vitals;
 import com.tiba.tiba.Repositories.UserRepository;
 import com.tiba.tiba.Repositories.VitalsRepository;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
-import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,15 +34,14 @@ public class VitalsService {
         return convertToDTO(savedVitals);
     }
 
-//    public VitalsDTO getVitalsById(Long userId) {
-//        Vitals vitals = vitalsRepository.findByUserId(userId)
-//                .orElseThrow(() -> new RuntimeException("Vitals not found with id: " + userId));
-//        return convertToDTO(vitals);
-//    }
+    public VitalsDTO getVitalsById(Long id) {
+        Vitals vitals = vitalsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vitals not found with id: " + id));
+        return convertToDTO(vitals);
+    }
 
     public List<VitalsDTO> getVitalsByUserId(Long userId) {
         List<Vitals> vitalsList = vitalsRepository.findByUserId(userId);
-
         return vitalsList.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

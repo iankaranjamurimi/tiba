@@ -32,10 +32,10 @@ public class MedicalRecordsController {
         return ResponseEntity.ok(medicalRecordsService.updateMedicalRecord(id, medicalRecordsDTO));
     }
 
-    @GetMapping("/medicalRecords/{patientId}")
+    @GetMapping("/medicalRecords/{userId}")
     public ResponseEntity<List<MedicalRecordsUpdateDTO>> getPatientMedicalRecords(
-            @PathVariable Long patientId) {
-        return ResponseEntity.ok(medicalRecordsService.getPatientMedicalRecords(patientId));
+            @PathVariable Long userId) {
+        return ResponseEntity.ok(medicalRecordsService.getPatientMedicalRecords(userId));
     }
 
     @GetMapping("/{id}")

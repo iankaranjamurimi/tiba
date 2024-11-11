@@ -22,19 +22,19 @@ public class VitalsController {
         return new ResponseEntity<>(createdVitals, HttpStatus.CREATED);
     }
 
-//    @GetMapping("/vitals/{id}")
-//    public ResponseEntity<VitalsDTO> getVitalsById(@PathVariable Long id) {
-//        VitalsDTO vitals = vitalsService.getVitalsById(id);
-//        return ResponseEntity.ok(vitals);
-//    }
+    @GetMapping("/vitals/{id}")
+    public ResponseEntity<VitalsDTO> getVitalsById(@PathVariable Long id) {
+        VitalsDTO vitals = vitalsService.getVitalsById(id);
+        return ResponseEntity.ok(vitals);
+    }
 
-    @GetMapping("/g/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<VitalsDTO>> getVitalsByUserId(@PathVariable Long userId) {
         List<VitalsDTO> vitalsList = vitalsService.getVitalsByUserId(userId);
         return ResponseEntity.ok(vitalsList);
     }
 
-    @PutMapping("/u/{id}")
+    @PutMapping("/p/{id}")
     public ResponseEntity<VitalsDTO> updateVitals(@PathVariable Long id, @RequestBody VitalsDTO vitalsDTO) {
         VitalsDTO updatedVitals = vitalsService.updateVitals(id, vitalsDTO);
         return ResponseEntity.ok(updatedVitals);
