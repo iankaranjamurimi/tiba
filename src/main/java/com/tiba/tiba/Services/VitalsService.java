@@ -3,7 +3,6 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.DTO.VitalsDTO;
 import com.tiba.tiba.Entities.Vitals;
 import com.tiba.tiba.Repositories.UserRepository;
-import com.tiba.tiba.Repositories.UserSignUpRepository;
 import com.tiba.tiba.Repositories.VitalsRepository;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
 import org.springframework.beans.factory.annotation.Autowired;

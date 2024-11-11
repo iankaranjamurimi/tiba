@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public interface VitalsRepository extends JpaRepository<Vitals, Long> {
-    List<Vitals> findByMedicalRecordsId(Long medicalRecordsId);
 
     List<Vitals> findByUserId(Long userId);
 }

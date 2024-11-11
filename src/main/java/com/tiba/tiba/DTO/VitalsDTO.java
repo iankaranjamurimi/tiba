@@ -1,6 +1,5 @@
 package com.tiba.tiba.DTO;
 
-import com.tiba.tiba.Entities.User;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
