@@ -33,7 +33,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         // A list of allowed paths is defined
-        List<String> pathsAllowed = Arrays.asList("/api/open", "/api/", "/swagger-ui/**", "/api-docs/**","**/swagger-ui/**");
+        List<String> pathsAllowed = Arrays.asList("/api/open/**", "/api/", "/swagger-ui/**", "/api-docs/**","**/swagger-ui/**");
 
         if (isAllowedPath(pathsAllowed, request.getServletPath()) ||
                 request.getServletPath().contains("docs") ||
