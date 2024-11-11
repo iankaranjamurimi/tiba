@@ -1,10 +1,14 @@
 package com.tiba.tiba.Services;
 
+import com.tiba.tiba.Repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.tiba.tiba.Repositories.UserSignUpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -13,6 +17,8 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     private final UserSignUpRepository userSignUpRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     // Constructor injection
@@ -20,6 +26,7 @@ public class UserService {
         this.userSignUpRepository = userSignUpRepository;
 
     }
+
 
     public com.tiba.tiba.Entities.User sign_upNewUser(com.tiba.tiba.Entities.User user) {
 

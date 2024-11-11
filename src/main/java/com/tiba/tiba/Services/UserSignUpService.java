@@ -9,6 +9,10 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserSignUpService {
 
@@ -21,7 +25,7 @@ public class UserSignUpService {
             throw new RuntimeException("Email already exists!");
         }
 
-        User user = new User();
+           User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setFirstName(request.getFirstname());
@@ -39,5 +43,9 @@ public class UserSignUpService {
         patient.setUser(user);
 
         userSignUpRepository.save(user);
+    }
+
+    public List<User> getAllUsers() {
+        return new ArrayList<>(userSignUpRepository.findAll());
     }
 }
