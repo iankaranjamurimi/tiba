@@ -3,8 +3,10 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.DTO.AllergiesDTO;
 import com.tiba.tiba.Entities.Allergies;
 import com.tiba.tiba.Entities.Patient;
+import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.AllergiesRepository;
 import com.tiba.tiba.Repositories.PatientRepository;
+import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -16,27 +18,27 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AllergiesService {
     private final AllergiesRepository allergiesRepository;
-    private final PatientRepository patientRepository;
+    private final UserRepository userRepository;
 
     @Transactional
-    public AllergiesDTO updateAllergies(Long patientId, AllergiesDTO allergiesDTO) {
+    public AllergiesDTO updateAllergies(Long userId, AllergiesDTO allergiesDTO) {
         // find the patient
-        Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
 
         // Create new allergies if it doesn't exist, or update existing ones
         Allergies allergies;
 
         // Only try to find existing allergies if we have a valid ID
-        if (allergiesDTO.getPatientId() != null && allergiesDTO.getPatientId() > 0) {
+        if (allergiesDTO.getUserId() != null && allergiesDTO.getUserId() > 0) {
             try {
-                allergies = allergiesRepository.findById(allergiesDTO.getPatientId())
+                allergies = allergiesRepository.findById(allergiesDTO.getUserId())
                         .orElseGet(() -> {
-                            log.info("Creating new allergy record as ID {} was not found", allergiesDTO.getPatientId());
+                            log.info("Creating new allergy record as ID {} was not found", allergiesDTO.getUserId());
                             return new Allergies();
                         });
             } catch (Exception e) {
-                log.error("Error finding allergy with ID: {}", allergiesDTO.getPatientId(), e);
+                log.error("Error finding allergy with ID: {}", allergiesDTO.getUserId(), e);
                 allergies = new Allergies();
             }
         } else {
@@ -45,7 +47,7 @@ public class AllergiesService {
         }
 
         // Update the allergies entity with DTO values
-        updateAllergiesFromDTO(allergies, allergiesDTO, patient);
+        updateAllergiesFromDTO(allergies, allergiesDTO, user);
 
         // Save and return
         try {
@@ -57,18 +59,18 @@ public class AllergiesService {
         }
     }
 
-    private void updateAllergiesFromDTO(Allergies allergies, AllergiesDTO dto, Patient patient) {
+    private void updateAllergiesFromDTO(Allergies allergies, AllergiesDTO dto, User user) {
         allergies.setAllergen(dto.getAllergen());
         allergies.setReaction_type(dto.getReaction_type());
         allergies.setSeverity(dto.getSeverity());
         allergies.setDate(dto.getDate());
         allergies.setNotes(dto.getNotes());
-        allergies.setPatient(patient);
+        allergies.setUser(user);
     }
 
     private AllergiesDTO convertToDTO(Allergies allergies) {
         AllergiesDTO dto = new AllergiesDTO();
-        dto.setPatientId(allergies.getPatient().getId());
+        dto.setUserId(allergies.getUser().getId());
         dto.setAllergen(allergies.getAllergen());
         dto.setReaction_type(allergies.getReaction_type());
         dto.setSeverity(allergies.getSeverity());

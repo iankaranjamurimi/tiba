@@ -28,8 +28,8 @@ public class Allergies {
     private String notes;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }

@@ -1,14 +1,14 @@
 package com.tiba.tiba.DTO;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @Getter
 @Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class LabResultsDTO {
 
 //    private Long resultId;
@@ -24,11 +24,11 @@ public class LabResultsDTO {
     private Long medicalRecordsId;
 
 
-    public Long getMedicalRecordsId() {
-        return null;
-    }
-
-    public void setMedicalRecordsId(Long id) {
-
-    }
+//    public Long getMedicalRecordsId() {
+//        return null;
+//    }
+//
+//    public void setMedicalRecordsId(Long id) {
+//
+//    }
 }

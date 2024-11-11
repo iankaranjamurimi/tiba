@@ -41,18 +41,9 @@ public class Patient {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // One Patient many medical records
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MedicalRecords> medicalRecords = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Allergies> allergies = new ArrayList<>();
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-    private Appointments appointments;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Prescription> prescription  = new ArrayList<>();
 
 }

@@ -31,14 +31,12 @@ public class HospitalStaff {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // One Patient many medical records
-    @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MedicalRecords> medicalRecords = new ArrayList<>();
+//    // One Patient many medical records
+//    @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<MedicalRecords> medicalRecords = new ArrayList<>();
 
     @OneToOne(mappedBy = "hospitalStaff", cascade = CascadeType.ALL)
     private Prescription prescription;
 
-//    license_number VARCHAR(50),
-//    license_expiry DATE,
-//    status VARCHAR(20) DEFAULT 'active'
+
 }

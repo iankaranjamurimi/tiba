@@ -28,8 +28,8 @@ public class Prescription {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToOne
     @JoinColumn(name = "hospitalStaff_id")

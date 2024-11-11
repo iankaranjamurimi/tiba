@@ -16,7 +16,7 @@ public class Appointments {
     @Id
     @GeneratedValue
     private Long appointmentId;
-    private Long providerId;
+    private Long hospitalStaffId;
     private String appointmentType;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -25,8 +25,8 @@ public class Appointments {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @OneToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }

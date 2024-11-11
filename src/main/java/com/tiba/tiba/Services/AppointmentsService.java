@@ -34,14 +34,14 @@ public class AppointmentsService {
     }
 
     public List<AppointmentsDTO> getAppointmentsByProvider(Long providerId) {
-        List<Appointments> appointments = appointmentsRepository.findByProviderId(providerId);
+        List<Appointments> appointments = appointmentsRepository.findByHospitalStaffId(providerId);
         return appointments.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<AppointmentsDTO> getAppointmentsByPatient(Long patientId) {
-        List<Appointments> appointments = appointmentsRepository.findByPatientId(patientId);
+    public List<AppointmentsDTO> getAppointmentsByUser(Long userId) {
+        List<Appointments> appointments = appointmentsRepository.findByUserId(userId);
         return appointments.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());

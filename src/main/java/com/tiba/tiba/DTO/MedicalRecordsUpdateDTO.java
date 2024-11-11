@@ -15,8 +15,8 @@ public class MedicalRecordsUpdateDTO {
         private String submittedBy;
 //        private Boolean followUpRequired;
 //        private LocalDate followUpDate;
-        private Long patientId;
-        private Long hospitalStaffId;
+        private Long userId;
+//        private Long hospitalStaffId;
 
         
 }

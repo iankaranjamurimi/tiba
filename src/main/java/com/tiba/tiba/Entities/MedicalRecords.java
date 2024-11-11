@@ -32,15 +32,15 @@ public class MedicalRecords {
 
     private String submittedBy;
 
-    // Many medical records belong to one patient
+    // Many medical records belong to one user
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    // Many medical records belong to one hospitalstaff
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hospitalStaff_id")
-    private HospitalStaff hospitalStaff;
+//    // Many medical records       to one hospitalstaff
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "hospitalStaff_id")
+//    private HospitalStaff hospitalStaff;
 
     // One medical record can have many lab results
     @OneToMany(mappedBy = "medicalRecords", cascade = CascadeType.ALL, orphanRemoval = true)

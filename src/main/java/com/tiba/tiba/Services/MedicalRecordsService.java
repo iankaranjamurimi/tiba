@@ -3,11 +3,11 @@ package com.tiba.tiba.Services;
 
 import com.tiba.tiba.DTO.MedicalRecordsUpdateDTO;
 import com.tiba.tiba.Entities.MedicalRecords;
-import com.tiba.tiba.Entities.Patient;
-import com.tiba.tiba.Entities.HospitalStaff;
+import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
 import com.tiba.tiba.Repositories.PatientRepository;
 import com.tiba.tiba.Repositories.HospitalStaffRepository;
+import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,17 +22,18 @@ public class MedicalRecordsService {
     private final MedicalRecordsRepository medicalRecordsRepository;
     private final PatientRepository patientRepository;
     private final HospitalStaffRepository hospitalStaffRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public MedicalRecordsUpdateDTO createMedicalRecord(MedicalRecordsUpdateDTO dto) {
-        Patient patient = patientRepository.findById(dto.getPatientId())
-                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getPatientId()));
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getUserId()));
 
-        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
-                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
+//        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
+//                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
 
         MedicalRecords medicalRecords = new MedicalRecords();
-        updateMedicalRecordFromDTO(medicalRecords, dto, patient, staff);
+        updateMedicalRecordFromDTO(medicalRecords, dto, user); /*staff*/
 
         MedicalRecords savedRecord = medicalRecordsRepository.save(medicalRecords);
         return convertToDTO(savedRecord);
@@ -43,23 +44,23 @@ public class MedicalRecordsService {
         MedicalRecords existingRecord = medicalRecordsRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Medical record not found with id: " + id));
 
-        Patient patient = patientRepository.findById(dto.getPatientId())
-                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getPatientId()));
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getUserId()));
 
-        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
-                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
+//        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
+//                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
 
-        updateMedicalRecordFromDTO(existingRecord, dto, patient, staff);
+        updateMedicalRecordFromDTO(existingRecord, dto, user); /*staff*/
         MedicalRecords updatedRecord = medicalRecordsRepository.save(existingRecord);
         return convertToDTO(updatedRecord);
     }
 
     @Transactional(readOnly = true)
-    public List<MedicalRecordsUpdateDTO> getPatientMedicalRecords(Long patientId) {
-        Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
+    public List<MedicalRecordsUpdateDTO> getPatientMedicalRecords(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + userId));
 
-        return medicalRecordsRepository.findByPatient (patient).stream()
+        return medicalRecordsRepository.findByuserId (user.getId()).stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -72,7 +73,7 @@ public class MedicalRecordsService {
     }
 
     private void updateMedicalRecordFromDTO(MedicalRecords record, MedicalRecordsUpdateDTO dto,
-                                            Patient patient, HospitalStaff staff) {
+                                            User user) {
         record.setNotes(dto.getNotes());
         record.setDiagnosis(dto.getDiagnosis());
         record.setTreatment(dto.getTreatment());
@@ -81,8 +82,8 @@ public class MedicalRecordsService {
         record.setSubmittedBy(dto.getSubmittedBy());
 //        record.setFollowUpRequired(dto.getFollowUpRequired());
 //        record.setFollowUpDate(dto.getFollowUpDate());
-        record.setPatient(patient);
-        record.setHospitalStaff(staff);
+        record.setUser(user);
+//        record.setHospitalStaff(staff);
     }
 
     private MedicalRecordsUpdateDTO convertToDTO(MedicalRecords record) {
@@ -92,8 +93,8 @@ public class MedicalRecordsService {
         dto.setTreatment(record.getTreatment());
         dto.setSubmittedAt(record.getSubmittedAt());
         dto.setSubmittedBy(record.getSubmittedBy());
-        dto.setPatientId(record.getPatient().getId());
-        dto.setHospitalStaffId(record.getHospitalStaff().getId());
+        dto.setUserId(record.getUser().getId());
+//        dto.setHospitalStaffId(record.getHospitalStaff().getId());
         return dto;
     }
 }

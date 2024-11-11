@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class AppointmentsDTO {
     private Long appointmentsId;
     private Long hospitalStaffId;
-    private Long patientId;
+    private Long userId;
     private String appointmentType;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
