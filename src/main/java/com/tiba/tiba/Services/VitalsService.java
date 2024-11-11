@@ -1,18 +1,21 @@
 package com.tiba.tiba.Services;
 
 import com.tiba.tiba.DTO.VitalsDTO;
-import com.tiba.tiba.Entities.MedicalRecords;
-import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Entities.Vitals;
-import com.tiba.tiba.Repositories.MedicalRecordsRepository;
+import com.tiba.tiba.Repositories.UserRepository;
+import com.tiba.tiba.Repositories.UserSignUpRepository;
 import com.tiba.tiba.Repositories.VitalsRepository;
-import jakarta.transaction.Transactional;
+import com.tiba.tiba.Repositories.MedicalRecordsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class VitalsService {
 
     @Autowired
@@ -21,14 +24,47 @@ public class VitalsService {
     @Autowired
     private MedicalRecordsRepository medicalRecordsRepository;
 
-    @Transactional
-    public Vitals addVitals(VitalsDTO vitalsDTO) {
-        // Finding the  associated medical record
-
-        MedicalRecords medicalRecords = medicalRecordsRepository.findById(vitalsDTO.getMedicalRecordsId())
-                .orElseThrow(() -> new RuntimeException("Medical Record not found"));
+    @Autowired
+    private UserRepository userRepository;
 
 
+
+    public VitalsDTO createVitals(VitalsDTO vitalsDTO) {
+        Vitals vitals = convertToEntity(vitalsDTO);
+        Vitals savedVitals = vitalsRepository.save(vitals);
+        return convertToDTO(savedVitals);
+    }
+
+    public VitalsDTO getVitalsById(Long id) {
+        Vitals vitals = vitalsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vitals not found with id: " + id));
+        return convertToDTO(vitals);
+    }
+
+    public List<VitalsDTO> getVitalsByUserId(Long userId) {
+        List<Vitals> vitalsList = vitalsRepository.findByUserId(userId);
+        return vitalsList.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public VitalsDTO updateVitals(Long id, VitalsDTO vitalsDTO) {
+        Vitals existingVitals = vitalsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vitals not found with id: " + id));
+
+        updateVitalsEntity(existingVitals, vitalsDTO);
+        Vitals updatedVitals = vitalsRepository.save(existingVitals);
+        return convertToDTO(updatedVitals);
+    }
+
+    public void deleteVitals(Long id) {
+        if (!vitalsRepository.existsById(id)) {
+            throw new RuntimeException("Vitals not found with id: " + id);
+        }
+        vitalsRepository.deleteById(id);
+    }
+
+    private Vitals convertToEntity(VitalsDTO vitalsDTO) {
         Vitals vitals = new Vitals();
         vitals.setTemperature(vitalsDTO.getTemperature());
         vitals.setBpSystolic(vitalsDTO.getBpSystolic());
@@ -37,24 +73,59 @@ public class VitalsService {
         vitals.setRespiratoryRate(vitalsDTO.getRespiratoryRate());
         vitals.setOxygenSaturation(vitalsDTO.getOxygenSaturation());
         vitals.setWeight(vitalsDTO.getWeight());
-        vitals.setMedicalRecords(medicalRecords);
-        vitals.setPatient(new Patient());
 
-        // Save and return vitals
-        return vitalsRepository.save(vitals);
+        // Set relationships
+        if (vitalsDTO.getMedicalRecordsId() != null) {
+            vitals.setMedicalRecords(medicalRecordsRepository.findById(vitalsDTO.getMedicalRecordsId())
+                    .orElseThrow(() -> new RuntimeException("Medical Record not found")));
+        }
+
+        if (vitalsDTO.getUserId() != null) {
+            vitals.setUser(userRepository.findById(vitalsDTO.getUserId())
+                    .orElseThrow(() -> new RuntimeException("User not found")));
+        }
+
+        return vitals;
     }
 
-    public List<Vitals> getVitalsByPatientId(Long patientId) {
+    private VitalsDTO convertToDTO(Vitals vitals) {
+        VitalsDTO vitalsDTO = new VitalsDTO();
+        vitalsDTO.setTemperature(vitals.getTemperature());
+        vitalsDTO.setBpSystolic(vitals.getBpSystolic());
+        vitalsDTO.setBpDiastolic(vitals.getBpDiastolic());
+        vitalsDTO.setHeartRate(vitals.getHeartRate());
+        vitalsDTO.setRespiratoryRate(vitals.getRespiratoryRate());
+        vitalsDTO.setOxygenSaturation(vitals.getOxygenSaturation());
+        vitalsDTO.setWeight(vitals.getWeight());
 
-        // Fetch medical records associated with the patient
-        MedicalRecords medicalRecords = medicalRecordsRepository.findByPatientId(patientId)
-                .orElseThrow(() -> new RuntimeException("Medical Record not found for patient ID: " + patientId));
+        if (vitals.getMedicalRecords() != null) {
+            vitalsDTO.setMedicalRecordsId(vitals.getMedicalRecords().getId());
+        }
 
-        // Retrieve vitals associated with the medical records
-        return vitalsRepository.findByMedicalRecordsId(medicalRecords.getId());
+        if (vitals.getUser() != null) {
+            vitalsDTO.setUserId(vitals.getUser().getId());
+        }
+
+        return vitalsDTO;
     }
 
-    public List<VitalsDTO> getAllVitals() {
-            return null;
+    private void updateVitalsEntity(Vitals vitals, VitalsDTO vitalsDTO) {
+        vitals.setTemperature(vitalsDTO.getTemperature());
+        vitals.setBpSystolic(vitalsDTO.getBpSystolic());
+        vitals.setBpDiastolic(vitalsDTO.getBpDiastolic());
+        vitals.setHeartRate(vitalsDTO.getHeartRate());
+        vitals.setRespiratoryRate(vitalsDTO.getRespiratoryRate());
+        vitals.setOxygenSaturation(vitalsDTO.getOxygenSaturation());
+        vitals.setWeight(vitalsDTO.getWeight());
+
+        if (vitalsDTO.getMedicalRecordsId() != null) {
+            vitals.setMedicalRecords(medicalRecordsRepository.findById(vitalsDTO.getMedicalRecordsId())
+                    .orElseThrow(() -> new RuntimeException("Medical Record not found")));
+        }
+
+        if (vitalsDTO.getUserId() != null) {
+            vitals.setUser(userRepository.findById(vitalsDTO.getUserId())
+                    .orElseThrow(() -> new RuntimeException("User not found")));
+        }
     }
 }

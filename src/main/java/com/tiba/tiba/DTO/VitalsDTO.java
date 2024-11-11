@@ -1,5 +1,6 @@
 package com.tiba.tiba.DTO;
 
+import com.tiba.tiba.Entities.User;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,6 @@ public class VitalsDTO {
     private Integer oxygenSaturation;
     private Integer weight;
     private Long medicalRecordsId;
-    private Long patientId;
-
+    private Long userId;
 
 }

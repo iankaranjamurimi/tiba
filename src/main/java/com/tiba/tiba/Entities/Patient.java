@@ -45,12 +45,9 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MedicalRecords> medicalRecords = new ArrayList<>();
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-    private Vitals vitals;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Allergies> allergies = new ArrayList<>();
-
 
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Appointments appointments;

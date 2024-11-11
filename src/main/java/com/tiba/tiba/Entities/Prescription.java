@@ -16,8 +16,6 @@ public class Prescription {
     @GeneratedValue
     private Long prescriptionId;
 
-
-//    private Long medicationId;
     private String dosage;
     private String frequency;
     private String duration;

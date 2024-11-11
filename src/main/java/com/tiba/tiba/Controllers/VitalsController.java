@@ -1,9 +1,9 @@
 package com.tiba.tiba.Controllers;
 
 import com.tiba.tiba.DTO.VitalsDTO;
-import com.tiba.tiba.Entities.Vitals;
 import com.tiba.tiba.Services.VitalsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,39 +16,36 @@ public class VitalsController {
     @Autowired
     private VitalsService vitalsService;
 
-    @PutMapping("/vitals")
-    public ResponseEntity<Vitals> addVitals(@RequestBody VitalsDTO vitalsDTO) {
-        Vitals savedVitals = vitalsService.addVitals(vitalsDTO);
-        return ResponseEntity.ok(savedVitals);
+    @PostMapping("/vitals")
+    public ResponseEntity<VitalsDTO> createVitals(@RequestBody VitalsDTO vitalsDTO) {
+        VitalsDTO createdVitals = vitalsService.createVitals(vitalsDTO);
+        return new ResponseEntity<>(createdVitals, HttpStatus.CREATED);
     }
 
-    @GetMapping("vitals/{patientId}")
-    public List<Vitals> getVitalsByPatientId(@PathVariable Long patientId) {
-        return vitalsService.getVitalsByPatientId(patientId);
+    @GetMapping("/vitals/{id}")
+    public ResponseEntity<VitalsDTO> getVitalsById(@PathVariable Long id) {
+        VitalsDTO vitals = vitalsService.getVitalsById(id);
+        return ResponseEntity.ok(vitals);
     }
-//    @GetMapping("/{medicalRecordId}")
-//        public ResponseEntity<VitalsDTO> getVitalsByMedicalRecordId(@PathVariable Long medicalRecordId) {
-//            return vitalsService.getVitalsByMedicalRecordId(medicalRecordId)
-//                    .map(ResponseEntity::ok)
-//                    .orElse(ResponseEntity.notFound().build());
-//    }
-//
-//        @PostMapping
-//        public ResponseEntity<VitalsDTO> createVitals(@RequestBody VitalsDTO vitalsDTO) {
-//            return ResponseEntity.ok(vitalsService.saveVitals(vitalsDTO));
-//        }
-//
-//        @PutMapping("/{medicalRecordId}")
-//        public ResponseEntity<VitalsDTO> updateVitals(
-//                @PathVariable Long medicalRecordId,
-//                @RequestBody VitalsDTO vitalsDTO) {
-//            return ResponseEntity.ok(vitalsService.updateVitals(medicalRecordId, vitalsDTO));
-//        }
-//
-//        @DeleteMapping("/{medicalRecordId}")
-//        public ResponseEntity<Void> deleteVitals(@PathVariable Long medicalRecordId) {
-//            vitalsService.deleteVitals(medicalRecordId);
-//            return ResponseEntity.noContent().build();
-//        }
-//    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<VitalsDTO>> getVitalsByUserId(@PathVariable Long userId) {
+        List<VitalsDTO> vitalsList = vitalsService.getVitalsByUserId(userId);
+        return ResponseEntity.ok(vitalsList);
     }
+
+    @PutMapping("/p/{id}")
+    public ResponseEntity<VitalsDTO> updateVitals(@PathVariable Long id, @RequestBody VitalsDTO vitalsDTO) {
+        VitalsDTO updatedVitals = vitalsService.updateVitals(id, vitalsDTO);
+        return ResponseEntity.ok(updatedVitals);
+    }
+
+    @DeleteMapping("/d/{id}")
+    public ResponseEntity<Void> deleteVitals(@PathVariable Long id) {
+        vitalsService.deleteVitals(id);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+
+

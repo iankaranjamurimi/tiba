@@ -29,17 +29,19 @@ public class Vitals {
     private Integer weight;
 
 
-    @OneToOne
-    @JoinColumn(name = "medicalRecords_Id")
+    @ManyToOne
+    @JoinColumn(name = "medical_Records_id")
     private MedicalRecords medicalRecords;
 
-    @OneToOne
-    @JoinColumn(name = "patient_Id")
-    private Patient patient;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 //    @OneToOne
-//    @JoinColumn(name = "hospital_Id")
-//    private Hospital hospital;
+//    @JoinColumn(name = "medicalRecords_id")
+//    private Patient patient
+
 
 
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface VitalsRepository extends JpaRepository<Vitals, Long> {
     List<Vitals> findByMedicalRecordsId(Long medicalRecordsId);
 
+    List<Vitals> findByUserId(Long userId);
 }
