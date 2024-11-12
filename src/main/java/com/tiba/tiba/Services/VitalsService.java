@@ -2,6 +2,7 @@ package com.tiba.tiba.Services;
 
 import com.tiba.tiba.DTO.VitalsDTO;
 import com.tiba.tiba.Entities.Vitals;
+import com.tiba.tiba.Repositories.AllergiesRepository;
 import com.tiba.tiba.Repositories.UserRepository;
 import com.tiba.tiba.Repositories.VitalsRepository;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
@@ -11,21 +12,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class VitalsService {
 
-    @Autowired
-    private VitalsRepository vitalsRepository;
+    private final VitalsRepository vitalsRepository;
+    private final MedicalRecordsRepository medicalRecordsRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private MedicalRecordsRepository medicalRecordsRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
+    public VitalsService(VitalsRepository vitalsRepository, MedicalRecordsRepository medicalRecordsRepository, UserRepository userRepository) {
+        this.vitalsRepository = vitalsRepository;
+        this.medicalRecordsRepository = medicalRecordsRepository;
+        this.userRepository = userRepository;
+    }
 
 
     public VitalsDTO createVitals(VitalsDTO vitalsDTO) {
@@ -41,7 +43,7 @@ public class VitalsService {
     }
 
     public List<VitalsDTO> getVitalsByUserId(Long userId) {
-        List<Vitals> vitalsList = vitalsRepository.findByUserId(userId);
+        Optional<Vitals> vitalsList = vitalsRepository.findByUserId(userId);
         return vitalsList.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

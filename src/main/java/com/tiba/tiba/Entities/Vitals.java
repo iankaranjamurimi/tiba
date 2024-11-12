@@ -28,6 +28,10 @@ public class Vitals {
 
     private Integer weight;
 
+    private Integer height;
+
+    private String bloodGroup;
+
 
     @ManyToOne
     @JoinColumn(name = "medical_Records_id")

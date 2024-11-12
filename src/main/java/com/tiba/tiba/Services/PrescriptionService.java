@@ -29,7 +29,7 @@ public class PrescriptionService {
 
     private Prescription mapDtoToEntity(PrescriptionDTO prescriptionDTO) {
         Prescription prescription = new Prescription();
-        prescription.setPrescriptionId(prescriptionDTO.getPrescriptionId());
+//        prescription.setPrescriptionId(prescriptionDTO.getPrescriptionId());
         prescription.setDosage(prescriptionDTO.getDosage());
         // Map other fields
         return prescription;
@@ -37,7 +37,7 @@ public class PrescriptionService {
 
     private PrescriptionDTO mapEntityToDto(Prescription prescription) {
         PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
-        prescriptionDTO.setPrescriptionId(prescription.getPrescriptionId());
+//        prescriptionDTO.setPrescriptionId(prescription.getPrescriptionId());
         prescriptionDTO.setDosage(prescription.getDosage());
         // Map other fields
         return prescriptionDTO;
