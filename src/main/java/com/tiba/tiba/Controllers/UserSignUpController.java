@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 //http://localhost:5050/api/open/signup
 //http://localhost:5050/api/open/logIn
-//https://tiba.onrender.com/swagger-ui/index.html#/log-in-controller/logIn
 @RequestMapping("/api/open")
 public class UserSignUpController {
 
