@@ -44,6 +44,10 @@ public class VitalsAllergiesService {
                     .map(Allergies::getAllergen)
                     .collect(Collectors.toList());
             medicalDTO.setAllergies(allergyNames);
+            List<String> allergyMedication = allergiesList.stream()
+                    .map(Allergies::getTreatmentMedication)
+                    .collect(Collectors.toList());
+            medicalDTO.setAllergies(allergyMedication);
 
             return medicalDTO;
         }

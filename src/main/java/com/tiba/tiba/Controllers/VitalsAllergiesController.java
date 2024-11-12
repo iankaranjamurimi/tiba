@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/medical")
+@RequestMapping("/api/open")
 public class VitalsAllergiesController {
 
     private final VitalsAllergiesService vitalsAllergiesService;
@@ -21,7 +21,7 @@ public class VitalsAllergiesController {
         this.vitalsAllergiesService = vitalsAllergiesService;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/medical/{userId}")
     public ResponseEntity<Vitals_AllergiesDTO> getUserMedicalInfo(@PathVariable Long userId) {
         try {
             Vitals_AllergiesDTO medicalInfo = vitalsAllergiesService.getUserMedicalInfo(userId);

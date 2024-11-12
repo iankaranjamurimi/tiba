@@ -21,6 +21,8 @@ public class Allergies {
 
     private String reaction_type;
 
+    private String treatmentMedication;
+
     private String severity;//mild, moderate, severe
 
     private Date date;// diagnosed date

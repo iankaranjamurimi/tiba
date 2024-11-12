@@ -11,16 +11,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+    public boolean verifyPassword(String rawPassword, String hashedPassword) {
+        // Use the password encoder to match the raw password with the hashed password
+        return passwordEncoder.matches(rawPassword, hashedPassword);
+    }
 
     private final UserSignUpRepository userSignUpRepository;
-    @Autowired
-    private UserRepository userRepository;
 
 
     // Constructor injection
-    public UserService(UserSignUpRepository userSignUpRepository) {
+    public UserService(PasswordEncoder passwordEncoder, UserSignUpRepository userSignUpRepository, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
         this.userSignUpRepository = userSignUpRepository;
 
     }
@@ -33,7 +35,5 @@ public class UserService {
         return userSignUpRepository.save(user);
     }
 
-    public boolean verifyPassword(String password, String password1) {
-            return false;
-    }
+
 }

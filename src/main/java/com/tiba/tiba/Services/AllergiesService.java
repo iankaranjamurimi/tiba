@@ -60,6 +60,7 @@ public class AllergiesService {
     private void updateAllergiesFromDTO(Allergies allergies, AllergiesDTO dto, User user) {
         allergies.setAllergen(dto.getAllergen());
         allergies.setReaction_type(dto.getReaction_type());
+        allergies.setTreatmentMedication(dto.getTreatmentMedication());
         allergies.setSeverity(dto.getSeverity());
         allergies.setDate(dto.getDate());
         allergies.setNotes(dto.getNotes());
@@ -71,6 +72,7 @@ public class AllergiesService {
         dto.setUserId(allergies.getUser().getId());
         dto.setAllergen(allergies.getAllergen());
         dto.setReaction_type(allergies.getReaction_type());
+        dto.setTreatmentMedication(allergies.getTreatmentMedication());
         dto.setSeverity(allergies.getSeverity());
         dto.setDate(allergies.getDate());
         dto.setNotes(allergies.getNotes());

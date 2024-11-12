@@ -7,6 +7,7 @@ import java.util.Date;
 public class AllergiesDTO {
     private String allergen;
     private String reaction_type;
+    private String treatmentMedication;
     private String severity;
     private Date date;
     private String notes;

@@ -13,7 +13,6 @@ import com.tiba.tiba.Services.JwtUtil;
 import com.tiba.tiba.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -81,10 +80,5 @@ public class LogInController {
         return dto;
     }
 
-    private boolean verifyPassword(String rawPassword, String hashedPassword) {
-        // Use a secure password hashing and verification mechanism, such as BCrypt
-        // Example using BCrypt:
-        return BCrypt.checkpw(rawPassword, hashedPassword);
-    }
 }
 
