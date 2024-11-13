@@ -2,11 +2,9 @@ package com.tiba.tiba.Services;
 
 import com.tiba.tiba.DTO.VitalsDTO;
 import com.tiba.tiba.Entities.Vitals;
-import com.tiba.tiba.Repositories.AllergiesRepository;
 import com.tiba.tiba.Repositories.UserRepository;
 import com.tiba.tiba.Repositories.VitalsRepository;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -98,6 +96,8 @@ public class VitalsService {
         vitalsDTO.setRespiratoryRate(vitals.getRespiratoryRate());
         vitalsDTO.setOxygenSaturation(vitals.getOxygenSaturation());
         vitalsDTO.setWeight(vitals.getWeight());
+        vitalsDTO.setMedicalRecordsId(vitals.getMedicalRecords().getId());
+        vitalsDTO.setUserId(vitals.getUser().getId());
 
         if (vitals.getMedicalRecords() != null) {
             vitalsDTO.setMedicalRecordsId(vitals.getMedicalRecords().getId());
@@ -118,6 +118,8 @@ public class VitalsService {
         vitals.setRespiratoryRate(vitalsDTO.getRespiratoryRate());
         vitals.setOxygenSaturation(vitalsDTO.getOxygenSaturation());
         vitals.setWeight(vitalsDTO.getWeight());
+        vitals.setMedicalRecords(vitals.getMedicalRecords());
+        vitals.setUser(vitals.getUser());
 
         if (vitalsDTO.getMedicalRecordsId() != null) {
             vitals.setMedicalRecords(medicalRecordsRepository.findById(vitalsDTO.getMedicalRecordsId())

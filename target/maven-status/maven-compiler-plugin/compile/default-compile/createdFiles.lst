@@ -28,6 +28,7 @@ com\tiba\tiba\Entities\Hospital.class
 com\tiba\tiba\Controllers\LabResultsController.class
 com\tiba\tiba\Entities\Prescription.class
 com\tiba\tiba\Services\VitalsAllergiesService.class
+com\tiba\tiba\DTO\VitalsAllergiesDTO.class
 com\tiba\tiba\DTO\VitalsDTO.class
 com\tiba\tiba\Services\LabResultsService.class
 com\tiba\tiba\Entities\Appointments.class
@@ -56,7 +57,6 @@ com\tiba\tiba\Entities\User.class
 com\tiba\tiba\DTO\UserSignUpDTO.class
 com\tiba\tiba\Controllers\HospitalStaffController.class
 com\tiba\tiba\Controllers\MedicalRecordsController.class
-com\tiba\tiba\DTO\Vitals_AllergiesDTO.class
 com\tiba\tiba\Controllers\HospitalAdminController$ApiResponse.class
 com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\DTO\PrescriptionDTO.class

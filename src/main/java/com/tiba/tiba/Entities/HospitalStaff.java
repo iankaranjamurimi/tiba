@@ -3,6 +3,7 @@ package com.tiba.tiba.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,8 +34,8 @@ public class HospitalStaff {
 //    @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<MedicalRecords> medicalRecords = new ArrayList<>();
 
-    @OneToOne(mappedBy = "hospitalStaff", cascade = CascadeType.ALL)
-    private Prescription prescription;
+    @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL)
+    private List<Prescription> prescription;
 
 
 }
