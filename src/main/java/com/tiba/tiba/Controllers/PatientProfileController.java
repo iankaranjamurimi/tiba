@@ -15,7 +15,7 @@ public class PatientProfileController {
         this.patientProfileService = patientProfileService;
     }
 
-    @GetMapping("/patient/profile/{email}")
+    @GetMapping("/g/patient/profile/{email}")
     public ResponseEntity<PatientProfileDTO> getPatientProfile(@PathVariable String email) {
         PatientProfileDTO profile = patientProfileService.getPatientProfile(email);
         return ResponseEntity.ok(profile);

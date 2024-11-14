@@ -33,6 +33,8 @@ public class PatientProfileService {
         profileDTO.setGender(patient.getGender());
         profileDTO.setIdNumber(patient.getIdNumber());
         profileDTO.setContactNumber(patient.getContactNumber());
+        profileDTO.setAddress(patient.getAddress());
+        profileDTO.setEmergencyContactNumber(patient.getEmergencyContactNumber());
 
         return profileDTO;
     }
@@ -54,6 +56,8 @@ public class PatientProfileService {
         patient.setGender(profileDTO.getGender());
         patient.setIdNumber(profileDTO.getIdNumber());
         patient.setContactNumber(profileDTO.getContactNumber());
+        patient.setAddress(profileDTO.getAddress());
+        patient.setEmergencyContactNumber(profileDTO.getEmergencyContactNumber());
 
         userSignUpRepository.save(user);
     }

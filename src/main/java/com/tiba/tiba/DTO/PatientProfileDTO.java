@@ -14,4 +14,6 @@ public class PatientProfileDTO {
     private String gender;
     private String idNumber;
     private String contactNumber;
+    private String address;
+    private String emergencyContactNumber;
 }
