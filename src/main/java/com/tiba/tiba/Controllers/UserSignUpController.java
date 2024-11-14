@@ -4,7 +4,6 @@ import com.tiba.tiba.DTO.UserSignUpDTO;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Services.UserSignUpService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

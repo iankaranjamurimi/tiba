@@ -78,3 +78,42 @@ public class Config {
                 .build();
     }
 }
+
+
+//
+//
+//@Configuration
+//@EnableWebSecurity
+//public class SecurityConfig {
+//
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//                .cors().and()  // Enable CORS
+//                .csrf().disable()  // Disable CSRF for API endpoints
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/api/open/**").permitAll()  // Public endpoints
+//                        .anyRequest().authenticated()
+//                );
+//
+//        return http.build();
+//    }
+//
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(Arrays.asList(
+//                "http://localhost:4200",
+//                "http://localhost:4000",
+//                "https://your-production-domain.com"
+//        ));
+//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//        configuration.setAllowedHeaders(Arrays.asList("*"));
+//        configuration.setAllowCredentials(true);
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/api/**", configuration);
+//
+//        return source;
+//    }
+//}
