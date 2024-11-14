@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/open")
+@CrossOrigin(origins = "*")
 public class ReceptionController {
 
     @Autowired

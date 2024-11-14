@@ -14,6 +14,7 @@ import java.util.Optional;
 //http://localhost:8080/tiba/patients/{idNumber}
 @RestController
 @RequestMapping("/api/open")
+@CrossOrigin(origins = "*")
 public class PatientController {
 
     @Autowired

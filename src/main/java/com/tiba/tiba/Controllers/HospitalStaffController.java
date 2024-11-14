@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/open")
+@CrossOrigin(origins = "*")
 public class HospitalStaffController {
 
     @Autowired

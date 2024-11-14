@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/open")
+@CrossOrigin(origins = "*")
 public class VitalsController {
 
     @Autowired

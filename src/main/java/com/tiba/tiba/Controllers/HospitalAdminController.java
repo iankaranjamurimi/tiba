@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/open")
 @Data
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class HospitalAdminController {
 
     @Autowired

@@ -1,23 +1,15 @@
 package com.tiba.tiba.Controllers;
 
-
 import com.tiba.tiba.DTO.UserLogInDTO;
 import com.tiba.tiba.DTO.SignUpResponseDTO;
 import com.tiba.tiba.DTO.UserLogInResponseDTO;
 import com.tiba.tiba.Entities.User;
-
-
 import com.tiba.tiba.Repositories.UserSignUpRepository;
-
 import com.tiba.tiba.Services.JwtUtil;
 import com.tiba.tiba.Services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -25,27 +17,27 @@ import java.util.Optional;
 //https://tiba.onrender.com/swagger-ui/index.html#/log-in-controller/logIn
 @RestController
 @RequestMapping("/api/open/")
+@CrossOrigin(origins = "*")
 public class LogInController {
 
-    @Autowired
-    private UserSignUpRepository userSignUpRepository;
+    private final UserSignUpRepository userSignUpRepository;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
     // Constructor
-    public LogInController(UserSignUpRepository userSignUpRepository) {
+    public LogInController(UserSignUpRepository userSignUpRepository, UserService userService, JwtUtil jwtUtil) {
         this.userSignUpRepository = userSignUpRepository;
 
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
     }
 
     @PostMapping("/user/logIn")
 
     public ResponseEntity<SignUpResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody UserLogInDTO request) {
-        // Validate request
+        // Validation request
         if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
             return ResponseEntity.badRequest()
                     .body(SignUpResponseDTO.error("Email and password are required"));

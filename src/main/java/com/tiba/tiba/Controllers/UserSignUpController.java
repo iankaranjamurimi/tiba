@@ -17,13 +17,17 @@ import java.util.List;
 //http://localhost:5050/api/open/signup
 //http://localhost:5050/api/open/logIn
 @RequestMapping("/api/open")
+@CrossOrigin(origins = "*")
 public class UserSignUpController {
 
-    @Autowired
-    private UserSignUpService userSignUpService;
+    private final UserSignUpService userSignUpService;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder passwordEncoder) {
+        this.userSignUpService = userSignUpService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<UserSignUpResponseDTO> signup(@Valid @RequestBody UserSignUpDTO request) {
