@@ -1,6 +1,7 @@
 package com.tiba.tiba.Controllers;
 
 import com.tiba.tiba.DTO.HospitalAdminDTO;
+import com.tiba.tiba.Models.ApiResponse;
 import com.tiba.tiba.Services.HospitalAdminService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -45,17 +46,17 @@ public class HospitalAdminController {
     }
 
 
-    static
-    class ApiResponse {
-        private int status;
-        private String message;
-
-        public ApiResponse(int i, String message) {
-
-        }
+//    static
+//    class ApiResponse {
+//        private int status;
+//        private String message;
+//
+//        public ApiResponse(int i, String message) {
+//
+//        }
     }
 
-}
+
 
 
 

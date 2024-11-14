@@ -8,6 +8,10 @@ import lombok.*;
 public class ApiResponse {
     private boolean success;
     private String message;
+
+    public ApiResponse(int i, String message) {
+        this.success = true;
+    }
 }
 
 

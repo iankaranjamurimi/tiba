@@ -61,7 +61,6 @@ com\tiba\tiba\Entities\User.class
 com\tiba\tiba\DTO\UserSignUpDTO.class
 com\tiba\tiba\Controllers\HospitalStaffController.class
 com\tiba\tiba\Controllers\MedicalRecordsController.class
-com\tiba\tiba\Controllers\HospitalAdminController$ApiResponse.class
 com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\DTO\PrescriptionDTO.class
 com\tiba\tiba\Repositories\LabResultsRepository.class

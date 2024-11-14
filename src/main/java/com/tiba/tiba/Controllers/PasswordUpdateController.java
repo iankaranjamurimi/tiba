@@ -1,15 +1,16 @@
 package com.tiba.tiba.Controllers;
 
+import com.tiba.tiba.DTO.PasswordUpdateDTO;
 import com.tiba.tiba.Models.ApiResponse;
 import com.tiba.tiba.Services.PasswordUpdateService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.tiba.tiba.DTO.PasswordUpdateDTO;
 
 @RestController
 @RequestMapping("/api/open")
 public class PasswordUpdateController {
+
 
     private final PasswordUpdateService passwordUpdateService;
 

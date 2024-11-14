@@ -39,8 +39,6 @@ public class PasswordUpdateService {
             throw new RuntimeException("New password and confirmation do not match");
         }
 
-        // Additional password validation
-        validatePassword(passwordUpdateDTO.getNewPassword());
 
         // Ensure new password is different from current password
         if (passwordEncoder.matches(passwordUpdateDTO.getNewPassword(), user.getPassword())) {
@@ -53,19 +51,5 @@ public class PasswordUpdateService {
         userSignUpRepository.save(user);
     }
 
-    private void validatePassword(String password) {
-        if (password.length() < 8) {
-            throw new RuntimeException("Password must be at least 8 characters long");
-        }
 
-        boolean hasUppercase = password.matches(".*[A-Z].*");
-        boolean hasLowercase = password.matches(".*[a-z].*");
-        boolean hasNumber = password.matches(".*\\d.*");
-        boolean hasSpecialChar = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?].*");
-
-        if (!(hasUppercase && hasLowercase && hasNumber && hasSpecialChar)) {
-            throw new RuntimeException("Password must contain at least one uppercase letter, one lowercase letter, " +
-                    "one number, and one special character");
-        }
-    }
 }
