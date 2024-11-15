@@ -3,7 +3,6 @@ package com.tiba.tiba.Services;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
-import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Service;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Entities.UserOTP;
