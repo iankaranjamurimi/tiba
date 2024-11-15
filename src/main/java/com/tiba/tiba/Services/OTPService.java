@@ -18,8 +18,7 @@ import java.util.Random;
 
 @Service
 public class OTPService {
-    private final Logger logger = LoggerFactory.getLogger(OTPService.class);
-    //private static final Logger logger = LoggerFactory.getLogger(OTPService.class);
+    private static final Logger logger = LoggerFactory.getLogger(OTPService.class);
 
     private final OTPRepository otpRepository;
     private final UserRepository userRepository;
