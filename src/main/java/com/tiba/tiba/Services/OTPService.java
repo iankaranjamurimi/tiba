@@ -2,6 +2,7 @@ package com.tiba.tiba.Services;
 
 import jakarta.transaction.Transactional;
 import org.springframework.mail.MailException;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Service;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Entities.UserOTP;
@@ -18,11 +19,13 @@ import java.util.Random;
 
 @Service
 public class OTPService {
+
     private static final Logger logger = LoggerFactory.getLogger(OTPService.class);
 
     private final OTPRepository otpRepository;
     private final UserRepository userRepository;
     private final JavaMailSender mailSender;
+
 
     public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender mailSender) {
         this.otpRepository = otpRepository;
@@ -39,7 +42,7 @@ public class OTPService {
             }
 
             // Find user and handle casting properly
-            Optional<Object> userOptional = userRepository.findByEmail(email);
+            Optional<User> userOptional = userRepository.findByEmail(email);
             if (userOptional.isEmpty()) {
                 throw new RuntimeException("User not found with email: " + email);
             }
