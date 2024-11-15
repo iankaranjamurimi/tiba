@@ -46,7 +46,7 @@ public class OTPService {
             if (userOptional.isEmpty()) {
                 throw new RuntimeException("User not found with email: " + email);
             }
-            User user = (User) userOptional.get();
+            User user = userOptional.get();
 
             try {
                 // Delete any existing unused OTPs

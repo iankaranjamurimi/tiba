@@ -2,6 +2,7 @@ package com.tiba.tiba.Entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@RequiredArgsConstructor
 public class UserOTP {
     @Id
     @GeneratedValue
