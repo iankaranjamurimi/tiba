@@ -11,12 +11,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserSignUpService {
 
-    @Autowired
-    private UserSignUpRepository userSignUpRepository;
+
+    private final UserSignUpRepository userSignUpRepository;
+
+//    public List<com.tiba.tiba.Entities.User> getAllUsers() {
+//        return userSignUpRepository.findAll().stream()
+//                .map(this::convertToDTO)
+//                .collect(Collectors.toList());
+//    }
+
+    public UserSignUpService(UserSignUpRepository userSignUpRepository) {
+        this.userSignUpRepository = userSignUpRepository;
+    }
 
     @Transactional
     public void registerUser(@Valid UserSignUpDTO request) {
@@ -43,8 +54,15 @@ public class UserSignUpService {
 
         userSignUpRepository.save(user);
     }
+//    private com.tiba.tiba.Entities.User convertToDTO(com.tiba.tiba.Entities.User user) {
+//        com.tiba.tiba.Entities.User dto = new com.tiba.tiba.Entities.User();
+//        dto.setId(user.getId());
+//        dto.setEmail(user.getEmail());
+//        dto.setFirstName(user.getFirstName());
+//        dto.setMiddleName(user.getMiddleName());
+//        dto.setLastName(user.getLastName());
+//        return dto;
+//    }
 
-    public List<User> getAllUsers() {
-        return new ArrayList<>(userSignUpRepository.findAll());
-    }
+
 }

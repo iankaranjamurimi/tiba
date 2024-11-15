@@ -59,9 +59,10 @@ public class Config {
                                 "/swagger-resources/**",
                                 "/webjars/**",
                                 "/configuration/ui",
-                                "/configuration/security"
-                        ).permitAll()
-                        // Your API endpoints
+                                "/configuration/security",
+                                "/api/auth/otp/**",
+                                "/api/auth/**"
+                        ).permitAll() //  API endpoints
                         .requestMatchers(
                                 "/api/open/**",
                                 "/api/open/vitals"

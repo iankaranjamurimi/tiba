@@ -58,6 +58,8 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Appointments appointments;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserOTP> userOTP = new ArrayList<>();
     // One Patient many medical records
 
 

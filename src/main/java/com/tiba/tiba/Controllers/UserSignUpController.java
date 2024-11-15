@@ -2,6 +2,7 @@ package com.tiba.tiba.Controllers;
 import com.tiba.tiba.DTO.UserSignUpResponseDTO;
 import com.tiba.tiba.DTO.UserSignUpDTO;
 import com.tiba.tiba.Entities.User;
+import com.tiba.tiba.Services.UserService;
 import com.tiba.tiba.Services.UserSignUpService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,12 @@ public class UserSignUpController {
 
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder passwordEncoder) {
+    private final UserService userService;
+
+    public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder passwordEncoder, UserService userService) {
         this.userSignUpService = userSignUpService;
         this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
     }
 
     @PostMapping("/signup")
@@ -44,8 +48,8 @@ public class UserSignUpController {
     }
 
     @GetMapping("/all_users")
-    public List<User> getAllUsers() {
-        return userSignUpService.getAllUsers();
+    public List<com.tiba.tiba.Entities.User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
 }
