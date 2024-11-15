@@ -1,6 +1,7 @@
 package com.tiba.tiba.Services;
 
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class OTPService {
     private final JavaMailSender mailSender;
 
 
+    @Autowired
     public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender mailSender) {
         this.otpRepository = otpRepository;
         this.userRepository = userRepository;

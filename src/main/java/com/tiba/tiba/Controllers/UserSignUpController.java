@@ -1,7 +1,6 @@
 package com.tiba.tiba.Controllers;
 import com.tiba.tiba.DTO.UserSignUpResponseDTO;
 import com.tiba.tiba.DTO.UserSignUpDTO;
-import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Services.UserService;
 import com.tiba.tiba.Services.UserSignUpService;
 import jakarta.validation.Valid;
@@ -22,20 +21,21 @@ public class UserSignUpController {
 
     private final UserSignUpService userSignUpService;
 
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private final UserService userService;
 
-    public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder passwordEncoder, UserService userService) {
+    public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService) {
         this.userSignUpService = userSignUpService;
-        this.passwordEncoder = passwordEncoder;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+//        this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }
 
     @PostMapping("/signup")
     public ResponseEntity<UserSignUpResponseDTO> signup(@Valid @RequestBody UserSignUpDTO request) {
         try {
-            String hashedPassword = passwordEncoder.encode(request.getPassword());
+            String hashedPassword = bCryptPasswordEncoder.encode(request.getPassword());
             request.setPassword(hashedPassword);
 
             userSignUpService.registerUser(request);
