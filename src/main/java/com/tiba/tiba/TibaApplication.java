@@ -14,14 +14,14 @@ import java.util.concurrent.Executors;
 
 @SpringBootApplication
 @EnableScheduling  // Enable scheduling here
-@ComponentScan(basePackages = {
-		"com.tiba.tiba",
-		"com.tiba.tiba.Services",
-		"com.tiba.tiba.Controllers",
-		"com.tiba.tiba.Repositories"
-})
-@EntityScan("com.tiba.tiba.Entities")
-@EnableJpaRepositories("com.tiba.tiba.Repositories")
+//@ComponentScan(basePackages = {
+//		"com.tiba.tiba",
+//		"com.tiba.tiba.Services",
+//		"com.tiba.tiba.Controllers",
+//		"com.tiba.tiba.Repositories"
+//})
+//@EntityScan("com.tiba.tiba.Entities")
+//@EnableJpaRepositories("com.tiba.tiba.Repositories")
 public class TibaApplication {
 
 	public static void main(String[] args) {
