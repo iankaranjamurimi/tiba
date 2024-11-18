@@ -18,6 +18,7 @@ com\tiba\tiba\Repositories\HospitalRepository.class
 com\tiba\tiba\Controllers\HospitalStaffController$ApiResponse.class
 com\tiba\tiba\Repositories\AllergiesRepository.class
 com\tiba\tiba\Repositories\HospitalAdminRepository.class
+com\tiba\tiba\Config\MailConfig.class
 com\tiba\tiba\Controllers\UserSignUpController.class
 com\tiba\tiba\DTO\TriageAssignmentResponseDTO.class
 com\tiba\tiba\Repositories\AppointmentsRepository.class
