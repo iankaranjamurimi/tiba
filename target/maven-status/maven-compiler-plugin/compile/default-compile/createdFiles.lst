@@ -42,6 +42,7 @@ com\tiba\tiba\Services\VitalsService.class
 com\tiba\tiba\Repositories\OTPRepository.class
 com\tiba\tiba\Services\PasswordUpdateService.class
 com\tiba\tiba\Controllers\LogInController.class
+com\tiba\tiba\Entities\UserOTP$UserOTPBuilder.class
 com\tiba\tiba\DTO\HospitalAdminDTO.class
 com\tiba\tiba\TibaApplication.class
 com\tiba\tiba\Utility\SwaggerConf.class
@@ -80,7 +81,6 @@ com\tiba\tiba\Services\PrescriptionService.class
 com\tiba\tiba\Entities\Vitals.class
 com\tiba\tiba\Repositories\UserSignUpRepository.class
 com\tiba\tiba\Services\UserService.class
-com\tiba\tiba\Config\EmailConfig.class
 com\tiba\tiba\Services\PatientProfileService.class
 com\tiba\tiba\DTO\SignUpResponseDTO.class
 com\tiba\tiba\Entities\LabResults.class
