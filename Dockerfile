@@ -11,6 +11,26 @@ ENTRYPOINT ["java", "-jar", "TibaApp.jar"]
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #
 ## Use a specific JDK version for better stability
 #FROM eclipse-temurin:22-jdk-slim
