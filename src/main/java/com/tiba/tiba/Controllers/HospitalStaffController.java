@@ -1,6 +1,7 @@
 package com.tiba.tiba.Controllers;
 
 import com.tiba.tiba.DTO.HospitalStaffDTO;
+import com.tiba.tiba.Models.ApiResponse;
 import com.tiba.tiba.Services.HospitalStaffService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -42,12 +43,12 @@ public class HospitalStaffController {
         
         
     }
-    @Data
-    @AllArgsConstructor
-    class ApiResponse {
-        private int status;
-        private String message;
-    }
+//    @Data
+//    @AllArgsConstructor
+//    class ApiResponse {
+//        private int status;
+//        private String message;
+//    }
 }
 
 
