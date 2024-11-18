@@ -24,14 +24,14 @@ public class OTPService {
 
     private final OTPRepository otpRepository;
     private final UserRepository userRepository;
-    private final JavaMailSender mailSender;
+    private final JavaMailSender javaMailSender;
 
 
     @Autowired
-    public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender mailSender) {
+    public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender javaMailSender) {
         this.otpRepository = otpRepository;
         this.userRepository = userRepository;
-        this.mailSender = mailSender;
+        this.javaMailSender = javaMailSender;
     }
 
     @Transactional
@@ -79,7 +79,7 @@ public class OTPService {
         }
     }
 
-    private String generateOTP() {
+    public String generateOTP() {
         return String.format("%06d", new Random().nextInt(999999));
     }
 
@@ -95,7 +95,7 @@ public class OTPService {
 
     private void sendOTPEmail(User user, String otp) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("your-configured-email@gmail.com"); // Add your email here
+        message.setFrom("iankaranja420@gmail.com");
         message.setTo(user.getEmail());
         message.setSubject("Your TIBA Verification Code");
         message.setText(STR."""
@@ -111,7 +111,7 @@ public class OTPService {
             """);
 
         try {
-            mailSender.send(message);
+            javaMailSender.send(message);
         } catch (MailException e) {
             logger.error("Failed to send email to {}: {}", user.getEmail(), e.getMessage());
             throw e;

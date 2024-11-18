@@ -1,27 +1,26 @@
 package com.tiba.tiba.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserOTP {
     @Id
     @GeneratedValue
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
     private String otp;
     private LocalDateTime expiryTime;
     private boolean isUsed;
     private boolean isVerified;
+
+    @OneToOne
+    private User user;
+
 }
