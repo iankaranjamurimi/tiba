@@ -26,12 +26,18 @@ public class OTPService {
     private final UserRepository userRepository;
     private final JavaMailSender javaMailSender;
 
-    @Autowired
     public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender javaMailSender) {
         this.otpRepository = otpRepository;
         this.userRepository = userRepository;
         this.javaMailSender = javaMailSender;
     }
+
+    //    @Autowired
+//    public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender javaMailSender) {
+//        this.otpRepository = otpRepository;
+//        this.userRepository = userRepository;
+//        this.javaMailSender = javaMailSender;
+//    }
     @Transactional
     public void generateAndSendOTP(String email) {
         try {
