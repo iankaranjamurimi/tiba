@@ -27,6 +27,6 @@ public class WebConfig implements WebMvcConfigurer {
                 connector.setProperty("bindOnInit", "false");
             });
         };
-    }   //
+    }
 }
 

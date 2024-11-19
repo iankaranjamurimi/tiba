@@ -15,17 +15,17 @@ public class PatientProfileController {
         this.patientProfileService = patientProfileService;
     }
 
-    @GetMapping("/g/patient/profile/{email}")
-    public ResponseEntity<PatientProfileDTO> getPatientProfile(@PathVariable String email) {
-        PatientProfileDTO profile = patientProfileService.getPatientProfile(email);
+    @GetMapping("/g/patient/profile/{userId}")
+    public ResponseEntity<PatientProfileDTO> getPatientProfile(@PathVariable Long userId) {
+        PatientProfileDTO profile = patientProfileService.getPatientProfile(userId);
         return ResponseEntity.ok(profile);
     }
 
-    @PutMapping("/patient/profile/{email}")
+    @PutMapping("/patient/profile/{userId}")
     public ResponseEntity<Void> updatePatientProfile(
-            @PathVariable String email,
+            @PathVariable Long userId,
             @RequestBody PatientProfileDTO profileDTO) {
-        patientProfileService.updatePatientProfile(email, profileDTO);
+        patientProfileService.updatePatientProfile(userId, profileDTO);
         return ResponseEntity.ok().build();
     }
 }

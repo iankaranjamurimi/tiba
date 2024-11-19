@@ -11,6 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class LabResultsService {
@@ -60,5 +64,23 @@ public class LabResultsService {
         dto.setNotes(labResults.getNotes());
         dto.setMedicalRecordsId(labResults.getMedicalRecords().getId());
         return dto;
+    }
+    public List<LabResultsDTO> getLabResultsByUserId(Long userId) {
+        // First find medical records for the user
+        List<MedicalRecords> medicalRecords = medicalRecordsRepository.findByUserId(userId);
+        if (medicalRecords.isEmpty()) {
+            throw new EntityNotFoundException("No medical records found for user with id: " + userId);
+        }
+
+        // Then find all lab results for these medical records
+        List<LabResults> labResults = new ArrayList<>();
+        for (MedicalRecords record : medicalRecords) {
+            labResults.addAll(labResultsRepository.findByMedicalRecordsId(record.getId()));
+        }
+
+        // Convert to DTOs
+        return labResults.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 }

@@ -17,8 +17,8 @@ public class PatientProfileService {
         this.userSignUpRepository = userSignUpRepository;
     }
 
-    public PatientProfileDTO getPatientProfile(String email) {
-        User user = userSignUpRepository.findByEmail(email)
+    public PatientProfileDTO getPatientProfile(Long userId) {
+        User user = userSignUpRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Patient patient = user.getPatient();
@@ -40,8 +40,8 @@ public class PatientProfileService {
     }
 
     @Transactional
-    public void updatePatientProfile(String email, PatientProfileDTO profileDTO) {
-        User user = userSignUpRepository.findByEmail(email)
+    public void updatePatientProfile(Long userId, PatientProfileDTO profileDTO) {
+        User user = userSignUpRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Patient patient = user.getPatient();

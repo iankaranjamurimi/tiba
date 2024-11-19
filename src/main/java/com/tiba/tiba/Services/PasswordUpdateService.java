@@ -21,8 +21,8 @@ public class PasswordUpdateService {
     }
 
     @Transactional
-    public void updatePassword(String email, PasswordUpdateDTO passwordUpdateDTO) {
-        User user = userSignUpRepository.findByEmail(email)
+    public void updatePassword(Long userId, PasswordUpdateDTO passwordUpdateDTO) {
+        User user = userSignUpRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // Hash the provided current password and compare with stored hash

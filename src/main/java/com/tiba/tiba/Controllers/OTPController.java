@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth/otp")
+@RequestMapping("/api/open")//auth/otp
 public class OTPController {
 
     private final OTPService otpService;

@@ -18,12 +18,12 @@ public class PasswordUpdateController {
         this.passwordUpdateService = passwordUpdateService;
     }
 
-    @PutMapping("/user/password/{email}")
+    @PutMapping("/user/password/{userId}")
     public ResponseEntity<Object> updatePassword(
-            @PathVariable String email,
+            @PathVariable Long userId,
             @Valid @RequestBody PasswordUpdateDTO passwordUpdateDTO) {
         try {
-            passwordUpdateService.updatePassword(email, passwordUpdateDTO);
+            passwordUpdateService.updatePassword(userId, passwordUpdateDTO);
             return ResponseEntity.ok()
                     .body(new ApiResponse(true, "Password updated successfully"));
         } catch (RuntimeException e) {
