@@ -5,6 +5,7 @@ package com.tiba.tiba.DTO;
 import com.tiba.tiba.Entities.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,8 @@ public class HospitalStaffDTO {
     @NotBlank(message = "Password is required")
     private String password;
 
-    @NotBlank(message = "the role is mandatory")
-    @Size(max = 20, message = "the role should be at most 20 characters")
+    @NotNull(message = "the role is mandatory")
+//    @Size(min = 1, message = "At least one role is required")
     private UserRole roles;
 
 
