@@ -3,6 +3,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\AllergiesCo
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\AppointmentsController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\HospitalAdminController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\HospitalStaffController.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\ImagingResultController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\LabResultsController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\LogInController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\MedicalRecordsController.java
@@ -20,6 +21,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\AppointmentsDTO.jav
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalAdminDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalStaffDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\ImagingResultDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LabResultsDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.java
@@ -41,6 +43,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Appointments.j
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Hospital.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\HospitalAdmin.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\HospitalStaff.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\ImagingResult.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\LabResults.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\MedicalRecords.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Entities\Patient.java
@@ -55,6 +58,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\Appointmen
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalAdminRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\HospitalStaffRepository.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\ImagingResultRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\LabResultsRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\MedicalRecordsRepository.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\OTPRepository.java
@@ -71,6 +75,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\AppointmentsSe
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\GlobalExceptionHandler.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\HospitalAdminService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\HospitalStaffService.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\ImagingResultService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\JwtUtil.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\LabResultsService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\MedicalRecordsService.java
