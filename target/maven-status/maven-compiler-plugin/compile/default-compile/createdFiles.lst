@@ -4,7 +4,6 @@ com\tiba\tiba\Services\AllergiesService.class
 com\tiba\tiba\Entities\Patient.class
 com\tiba\tiba\Repositories\PatientRepository.class
 com\tiba\tiba\Models\ApiResponse.class
-com\tiba\tiba\Entities\UserOTP.class
 com\tiba\tiba\Repositories\MedicalRecordsRepository.class
 com\tiba\tiba\DTO\HospitalDTO.class
 com\tiba\tiba\Controllers\AppointmentsController.class
@@ -17,12 +16,10 @@ com\tiba\tiba\Repositories\UserRepository.class
 com\tiba\tiba\Repositories\HospitalRepository.class
 com\tiba\tiba\Repositories\AllergiesRepository.class
 com\tiba\tiba\Repositories\HospitalAdminRepository.class
-com\tiba\tiba\Config\MailConfig.class
 com\tiba\tiba\Controllers\UserSignUpController.class
 com\tiba\tiba\DTO\TriageAssignmentResponseDTO.class
 com\tiba\tiba\Repositories\AppointmentsRepository.class
 com\tiba\tiba\Services\MedicalRecordsService.class
-com\tiba\tiba\Services\OTPService.class
 com\tiba\tiba\DTO\PatientDTO.class
 com\tiba\tiba\Entities\Allergies.class
 com\tiba\tiba\Controllers\PrescriptionController.class
@@ -36,11 +33,9 @@ com\tiba\tiba\Services\VitalsAllergiesService.class
 com\tiba\tiba\DTO\VitalsAllergiesDTO.class
 com\tiba\tiba\DTO\VitalsDTO.class
 com\tiba\tiba\Services\LabResultsService.class
-com\tiba\tiba\DTO\ImagingResultDTO.class
 com\tiba\tiba\Entities\Appointments.class
 com\tiba\tiba\DTO\HospitalStaffDTO.class
 com\tiba\tiba\Services\VitalsService.class
-com\tiba\tiba\Repositories\OTPRepository.class
 com\tiba\tiba\Services\PasswordUpdateService.class
 com\tiba\tiba\Controllers\LogInController.class
 com\tiba\tiba\DTO\HospitalAdminDTO.class
@@ -76,7 +71,6 @@ com\tiba\tiba\DTO\PatientProfileDTO.class
 com\tiba\tiba\SecurityConfig\WebConfig.class
 com\tiba\tiba\Repositories\VitalsRepository.class
 com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.class
-com\tiba\tiba\Controllers\OTPController.class
 com\tiba\tiba\Services\PrescriptionService.class
 com\tiba\tiba\Entities\Vitals.class
 com\tiba\tiba\Repositories\UserSignUpRepository.class

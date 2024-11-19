@@ -27,7 +27,7 @@ public class HospitalStaff {
     private String nationality;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn
     private User user;
 
 //    // One Patient many medical records
