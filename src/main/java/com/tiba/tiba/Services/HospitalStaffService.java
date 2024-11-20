@@ -16,22 +16,24 @@ import java.util.Optional;
 @Service
 public class HospitalStaffService {
 
-    @Autowired
-    private HospitalStaffRepository hospitalStaffRepository;
+    private final HospitalStaffRepository hospitalStaffRepository;
 
-    @Autowired
-    private UserSignUpRepository userSignUpRepository;
+    private final UserSignUpRepository userSignUpRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-@Transactional
+    public HospitalStaffService(HospitalStaffRepository hospitalStaffRepository, UserSignUpRepository userSignUpRepository, BCryptPasswordEncoder passwordEncoder) {
+        this.hospitalStaffRepository = hospitalStaffRepository;
+        this.userSignUpRepository = userSignUpRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @Transactional
     public void registerHospitalStaff(HospitalStaffDTO hospitalStaffDTO ) {
 
     if (userSignUpRepository.findByEmail(hospitalStaffDTO.getEmail()).isPresent()) {
         throw new RuntimeException("Email already exists!");
     }
-
                 // Create and save User
                 User user = new User();
                 user.setFirstName(hospitalStaffDTO.getFirstName());
@@ -42,7 +44,7 @@ public class HospitalStaffService {
                 user.setRoles(hospitalStaffDTO.getRoles());
 
 
-             userSignUpRepository.save(user);
+
 
                 //Create and save HospitalStaff
 
@@ -55,12 +57,17 @@ public class HospitalStaffService {
                 hospitalStaff.setAddress(hospitalStaffDTO.getAddress());
                 hospitalStaff.setNationality(hospitalStaffDTO.getNationality());
                 hospitalStaff.setUser (user);
-                hospitalStaff.setHospitalName(hospitalStaffDTO.getHospitalName());
+                hospitalStaff.setHospitalName(hospitalStaffDTO.getHospitalname());
 
+               userSignUpRepository.save(user);
 
                hospitalStaffRepository.save(hospitalStaff);
 
-               userSignUpRepository.save(user);
+               hospitalStaffRepository.save(hospitalStaff);
+
+
+//               userSignUpRepository.save(user);
+
 
 
         // Fetch the User entity using user Email

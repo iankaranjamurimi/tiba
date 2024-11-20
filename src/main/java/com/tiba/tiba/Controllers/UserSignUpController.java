@@ -24,7 +24,6 @@ public class UserSignUpController {
     public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService) {
         this.userSignUpService = userSignUpService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-//        this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }
 

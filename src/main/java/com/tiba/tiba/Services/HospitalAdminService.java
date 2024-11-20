@@ -77,10 +77,6 @@ public class HospitalAdminService {
         // Save hospital admin
         hospitalAdminRepository.save(hospitalAdmin);
 
-//        userSignUpRepository.save(user);
-
-//        user.setHospitalAdmin(hospitalAdmin);
-//        hospitalAdmin.setUser(user);
     }
 
 }

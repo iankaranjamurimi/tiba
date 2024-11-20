@@ -30,10 +30,6 @@ public class AppointmentsService {
         Appointments appointment = convertToEntity(appointmentDTO, user, hospitalStaff);
         Appointments savedAppointment = appointmentsRepository.save(appointment);
         return convertToDTO(savedAppointment);
-//
-//        Appointments appointment = convertToEntity(appointmentDTO, user);
-//        Appointments savedAppointment = appointmentsRepository.save(appointment);
-//        return convertToDTO(savedAppointment);
     }
 
     public List<AppointmentsDTO> getAppointmentsByUserId(Long userId) {
