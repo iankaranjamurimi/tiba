@@ -16,17 +16,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class HospitalAdminService {
 
-    @Autowired
-    private HospitalAdminRepository hospitalAdminRepository;
+    private final HospitalAdminRepository hospitalAdminRepository;
 
-    @Autowired
-    UserSignUpRepository userSignUpRepository;
+    private final UserSignUpRepository userSignUpRepository;
 
-    @Autowired
-    HospitalRepository hospitalRepository;
+    private final HospitalRepository hospitalRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    public HospitalAdminService(HospitalAdminRepository hospitalAdminRepository, UserSignUpRepository userSignUpRepository, HospitalRepository hospitalRepository) {
+        this.hospitalAdminRepository = hospitalAdminRepository;
+        this.userSignUpRepository = userSignUpRepository;
+        this.hospitalRepository = hospitalRepository;
+    }
 
     @Transactional
     public void registerUser (@Valid HospitalAdminDTO request) {

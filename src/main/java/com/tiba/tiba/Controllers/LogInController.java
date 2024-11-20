@@ -5,8 +5,10 @@ import com.tiba.tiba.DTO.SignUpResponseDTO;
 import com.tiba.tiba.DTO.UserLogInResponseDTO;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserSignUpRepository;
+import com.tiba.tiba.Services.HospitalAdminService;
 import com.tiba.tiba.Services.JwtUtil;
 import com.tiba.tiba.Services.UserService;
+import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +26,17 @@ public class LogInController {
 
     private final UserService userService;
 
+    @Getter
+    private final HospitalAdminService hospitalAdminService;
+
     private final JwtUtil jwtUtil;
 
     // Constructor
-    public LogInController(UserSignUpRepository userSignUpRepository, UserService userService, JwtUtil jwtUtil) {
+    public LogInController(UserSignUpRepository userSignUpRepository, UserService userService, HospitalAdminService hospitalAdminService, JwtUtil jwtUtil) {
         this.userSignUpRepository = userSignUpRepository;
 
         this.userService = userService;
+        this.hospitalAdminService = hospitalAdminService;
         this.jwtUtil = jwtUtil;
     }
 

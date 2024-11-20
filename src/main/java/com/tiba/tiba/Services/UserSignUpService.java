@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserSignUpService {
 
-
     private final UserSignUpRepository userSignUpRepository;
-
 
     public UserSignUpService(UserSignUpRepository userSignUpRepository) {
         this.userSignUpRepository = userSignUpRepository;
@@ -25,11 +23,11 @@ public class UserSignUpService {
             throw new RuntimeException("Email already exists!");
         }
 
-           User user = new User();
+        User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setFirstName(request.getFirstname());
-        user.setMiddleName(request.getMiddleName());
+        user.setMiddleName(request.getMiddlename());
         user.setLastName(request.getLastname());
 
         Patient patient = new Patient();
@@ -38,7 +36,6 @@ public class UserSignUpService {
         patient.setIdNumber(request.getIdNumber());
         patient.setContactNumber(request.getContactNumber());
         user.setRoles(request.getRoles());
-
         user.setPatient(patient);
         patient.setUser(user);
 

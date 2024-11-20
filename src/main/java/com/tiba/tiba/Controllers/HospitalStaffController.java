@@ -43,12 +43,7 @@ public class HospitalStaffController {
         
         
     }
-//    @Data
-//    @AllArgsConstructor
-//    class ApiResponse {
-//        private int status;
-//        private String message;
-//    }
+
 }
 
 

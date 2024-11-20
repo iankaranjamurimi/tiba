@@ -32,16 +32,10 @@ public class Patient {
 
     private Integer age;
 
-    @Past  (message = "ie. the DOB must be in the past")
     private LocalDate dateOfBirth;
 
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-
-
-
-
 
 }

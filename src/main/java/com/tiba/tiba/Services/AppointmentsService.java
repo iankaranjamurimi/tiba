@@ -2,8 +2,11 @@ package com.tiba.tiba.Services;
 
 import com.tiba.tiba.DTO.AppointmentsDTO;
 import com.tiba.tiba.Entities.Appointments;
+import com.tiba.tiba.Entities.HospitalStaff;
+import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.AppointmentsRepository;
-import jakarta.transaction.Transactional;
+import com.tiba.tiba.Repositories.HospitalStaffRepository;
+import com.tiba.tiba.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,50 +16,55 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AppointmentsService {
-
     private final AppointmentsRepository appointmentsRepository;
+    private final UserRepository userRepository;
+    private final HospitalStaffRepository hospitalStaffRepository;
 
-    public Appointments createAppointment(AppointmentsDTO appointmentDTO) {
-        Appointments appointment = new Appointments();
-        // Map appointmentsDTO to appointment entity
-        return saveAppointment(appointment);
+    public AppointmentsDTO createAppointment(AppointmentsDTO appointmentDTO) {
+        User user = userRepository.findById(appointmentDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        HospitalStaff hospitalStaff = hospitalStaffRepository.findById(appointmentDTO.getHospitalStaffId())
+                .orElseThrow(() -> new RuntimeException("Hospital Staff not found"));
+
+        Appointments appointment = convertToEntity(appointmentDTO, user, hospitalStaff);
+        Appointments savedAppointment = appointmentsRepository.save(appointment);
+        return convertToDTO(savedAppointment);
+//
+//        Appointments appointment = convertToEntity(appointmentDTO, user);
+//        Appointments savedAppointment = appointmentsRepository.save(appointment);
+//        return convertToDTO(savedAppointment);
     }
 
-    public Appointments updateAppointment(Long appointmentId, AppointmentsDTO appointmentDTO) {
-        Appointments appointment = appointmentsRepository.findById(appointmentId)
-                .orElseThrow(() -> new RuntimeException("Appointment not found"));
-        // Update appointment entity from appointmentDTO
-        return saveAppointment(appointment);
-    }
-
-    public void deleteAppointment(Long appointmentsId) {
-        appointmentsRepository.deleteById(appointmentsId);
-    }
-
-    public List<AppointmentsDTO> getAppointmentsByProvider(Long providerId) {
-        List<Appointments> appointments = appointmentsRepository.findByHospitalStaffId(providerId);
-        return appointments.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    public List<AppointmentsDTO> getAppointmentsByUser(Long userId) {
+    public List<AppointmentsDTO> getAppointmentsByUserId(Long userId) {
         List<Appointments> appointments = appointmentsRepository.findByUserId(userId);
         return appointments.stream()
-                .map(this::mapToDTO)
+                .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    private AppointmentsDTO mapToDTO(Appointments appointment) {
-        // Map appointment entity to AppointmentDTO
-        return null;
+    private Appointments convertToEntity(AppointmentsDTO dto, User user, HospitalStaff hospitalStaff) {
+        Appointments appointment = new Appointments();
+        appointment.setUser(user);
+        appointment.setAppointmentType(dto.getAppointmentType());
+        appointment.setStartTime(dto.getStartTime());
+        appointment.setStatus(dto.getStatus());
+        appointment.setSubmittedAt(dto.getSubmittedAt());
+        appointment.setSubmittedBy(dto.getSubmittedBy());
+        appointment.setHospitalStaff(hospitalStaff);
+
+        return appointment;
     }
 
-    private Appointments saveAppointment(Appointments appointment) {
-        return appointmentsRepository.save(appointment);
-    }
-
-    public AppointmentsDTO createAppointmentsDTO(AppointmentsDTO appointmentsDTO) {
-        return null;
+    private AppointmentsDTO convertToDTO(Appointments entity) {
+        AppointmentsDTO dto = new AppointmentsDTO();
+        dto.setUserId(entity.getUser().getId());
+        dto.setAppointmentType(entity.getAppointmentType());
+        dto.setStartTime(entity.getStartTime());
+        dto.setStatus(entity.getStatus());
+        dto.setSubmittedAt(entity.getSubmittedAt());
+        dto.setSubmittedBy(entity.getSubmittedBy());
+        dto.setHospitalStaffId(entity.getHospitalStaff().getId());
+        return dto;
     }
 }

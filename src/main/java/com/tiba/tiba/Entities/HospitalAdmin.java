@@ -35,7 +35,6 @@ public class HospitalAdmin {
     @JoinColumn(name = "hospital_id")
     private Hospital hospital;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

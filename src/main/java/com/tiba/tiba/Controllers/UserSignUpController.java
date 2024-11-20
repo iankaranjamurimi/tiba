@@ -13,16 +13,12 @@ import java.util.List;
 
 @Valid
 @RestController
-//http://localhost:5050/api/open/signup
-//http://localhost:5050/api/open/logIn
 @RequestMapping("/api/open")
 @CrossOrigin(origins = "*")
 public class UserSignUpController {
 
     private final UserSignUpService userSignUpService;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     private final UserService userService;
 
     public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService) {

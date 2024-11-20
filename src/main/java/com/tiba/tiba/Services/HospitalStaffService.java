@@ -55,6 +55,7 @@ public class HospitalStaffService {
                 hospitalStaff.setAddress(hospitalStaffDTO.getAddress());
                 hospitalStaff.setNationality(hospitalStaffDTO.getNationality());
                 hospitalStaff.setUser (user);
+                hospitalStaff.setHospitalName(hospitalStaffDTO.getHospitalName());
 
 
                hospitalStaffRepository.save(hospitalStaff);

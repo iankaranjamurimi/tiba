@@ -57,7 +57,7 @@ public class MedicalRecordsService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + userId));
 
-        return medicalRecordsRepository.findByuserId (user.getId()).stream()
+        return medicalRecordsRepository.findByUserId (user.getId()).stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }

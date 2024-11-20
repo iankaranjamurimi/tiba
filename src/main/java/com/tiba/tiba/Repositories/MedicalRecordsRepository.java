@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface MedicalRecordsRepository extends JpaRepository<MedicalRecords, Long> {
     List<MedicalRecords> findByUserId(Long userId);
 
-Optional<MedicalRecords> findByuserId(Long userId);
+//    Optional<MedicalRecords> findByuserId(Long userId);
 
 }

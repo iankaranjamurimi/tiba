@@ -42,6 +42,7 @@ public class HospitalStaffDTO {
     private String dateOfBirth;
     private String address;
     private String nationality;
+    private String hospitalName;
 
 
 }

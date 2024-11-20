@@ -10,10 +10,11 @@ import lombok.*;
 import java.time.LocalDate;
 
 
-//@Data
+@Data
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class HospitalAdminDTO {
 
