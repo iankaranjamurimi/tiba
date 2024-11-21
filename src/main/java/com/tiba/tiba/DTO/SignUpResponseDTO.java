@@ -18,8 +18,4 @@ public class SignUpResponseDTO<T> {
         return new SignUpResponseDTO<>(false, message, null);
     }
 
-    public static Object success(String signedInSuccessfully, UserSignUpResponseDTO userResponse) {
-        SignUpResponseDTO.signedInSuccessfully = signedInSuccessfully;
-        return new SignUpResponseDTO<>(true, signedInSuccessfully, userResponse);
-    }
 }

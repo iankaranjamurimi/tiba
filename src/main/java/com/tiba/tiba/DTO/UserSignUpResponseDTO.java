@@ -1,14 +1,8 @@
 package com.tiba.tiba.DTO;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+import lombok.Data;
+
 @Data
 public class UserSignUpResponseDTO {
-
     private final String message;
-
-
 }

@@ -13,39 +13,22 @@ public class Vitals {
     @Id
     @GeneratedValue
     private Long id;
-
     private Integer temperature;
-
     private Integer bpSystolic;
-
     private Integer bpDiastolic;
-
     private Integer heartRate;
-
     private Integer respiratoryRate;
-
     private Integer oxygenSaturation;
-
     private Integer weight;
-
     private Integer height;
-
     private String bloodGroup;
-
 
     @ManyToOne
     @JoinColumn(name = "medical_Records_id")
     private MedicalRecords medicalRecords;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-
-//    @OneToOne
-//    @JoinColumn(name = "medicalRecords_id")
-//    private Patient patient
-
-
 
 }

@@ -1,17 +1,10 @@
 package com.tiba.tiba.DTO;
 
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Data
-@Getter
-@Setter
-@RequiredArgsConstructor
-@AllArgsConstructor
 public class LabResultsDTO {
-
-//    private Long resultId;
     private String testName;
     private String testCode;
     private String resultValue;
@@ -23,12 +16,4 @@ public class LabResultsDTO {
     private String notes;
     private Long medicalRecordsId;
 
-
-//    public Long getMedicalRecordsId() {
-//        return null;
-//    }
-//
-//    public void setMedicalRecordsId(Long id) {
-//
-//    }
 }

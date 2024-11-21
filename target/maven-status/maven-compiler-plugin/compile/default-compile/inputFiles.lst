@@ -23,7 +23,6 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\VitalsContr
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\AllergiesDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\AppointmentsDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalAdminDTO.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalStaffDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\ImagingResultDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LabResultsDTO.java
@@ -31,13 +30,10 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInRequestDTO.jav
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PasswordUpdateDTO.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientProfileDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PrescriptionDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\ReferralDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\SignUpResponseDTO.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\TriageAssignmentDTO.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\TriageAssignmentResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserLogInDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserLogInResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\UserSignUpDTO.java

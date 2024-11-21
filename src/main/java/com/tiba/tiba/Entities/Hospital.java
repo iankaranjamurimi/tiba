@@ -8,37 +8,20 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table
 @Getter
 @Setter
 @RequiredArgsConstructor
 public class Hospital {
-
     @Id
     @GeneratedValue
     private Long id;
-
     private String hospitalName;
-
     private String hospitalAddress;
-
     private String hospitalLocation;
-
     private String hospitalContactNumber;
 
     @OneToOne
     @JoinColumn(name = "hospitalAdmin_id")
     private HospitalAdmin hospitalAdmin;
 
-//    @OneToOne(mappedBy = "hospital", cascade = CascadeType.ALL)
-//    private Vitals vitals;
-
-
-    public static void setIdNumber(@NotBlank(message = "The National Id Number is mandatory") @Size(max = 10, message = "The National Id Number should be at most 10 characters") String idNumber) {
-
-    }
-
-    public void setHospitalAdmin(HospitalAdmin hospitalAdmin) {
-
-    }
 }

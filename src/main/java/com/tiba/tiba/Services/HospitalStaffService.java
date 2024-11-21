@@ -74,7 +74,7 @@ public class HospitalStaffService {
         hospitalStaff.setAddress(dto.getAddress());
         hospitalStaff.setNationality(dto.getNationality());
         hospitalStaff.setUser(user);
-        hospitalStaff.setHospitalName(dto.getHospitalname());
+        hospitalStaff.setHospitalName(dto.getHospitalName());
 
         return hospitalStaff;
     }
@@ -103,7 +103,7 @@ public class HospitalStaffService {
         dto.setDateOfBirth(hospitalStaff.getDateOfBirth().toString());
         dto.setAddress(hospitalStaff.getAddress());
         dto.setNationality(hospitalStaff.getNationality());
-        dto.setHospitalname(hospitalStaff.getHospitalName());
+        dto.setHospitalName(hospitalStaff.getHospitalName());
 
         // Note: Do not set password when returning DTO
         return dto;

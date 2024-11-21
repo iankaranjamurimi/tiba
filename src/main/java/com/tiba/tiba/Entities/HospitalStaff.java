@@ -14,34 +14,21 @@ public class HospitalStaff {
     @Id
     @GeneratedValue
     private Long id;
-
     private String phoneNumber;
-
     private String gender;
-
     private Integer idNumber;
-
     private LocalDate dateOfBirth;
-
     private String address;
-
     private String nationality;
-
     private String hospitalName;
 
     @OneToOne
     @JoinColumn
     private User user;
 
-//    // One Patient many medical records
-//    @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<MedicalRecords> medicalRecords = new ArrayList<>();
-
     @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL)
     private List<Prescription> prescription;
 
     @OneToMany(mappedBy = "hospitalStaff", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Appointments> appointments  = new ArrayList<>();
-
-
 }

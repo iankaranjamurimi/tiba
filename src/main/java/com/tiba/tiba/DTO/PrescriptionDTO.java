@@ -2,20 +2,10 @@ package com.tiba.tiba.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-//import net.minidev.json.annotate.JsonIgnore;
-
 import java.time.LocalDate;
 
 @Data
-@Getter
-@Setter
-@RequiredArgsConstructor
 public class PrescriptionDTO {
-
-
     private String dosage;
     private String frequency;
     private String duration;
@@ -24,7 +14,7 @@ public class PrescriptionDTO {
     private String status;
     private String notes;
 
-    // Keep these fields for input but don't include them in JSON response
+    // fields for input only but not included in JSON response
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long userId;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

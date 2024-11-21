@@ -9,7 +9,6 @@ com\tiba\tiba\Entities\Referral.class
 com\tiba\tiba\Models\ApiResponse.class
 com\tiba\tiba\SecurityConfig\CloudinaryConfig.class
 com\tiba\tiba\Repositories\MedicalRecordsRepository.class
-com\tiba\tiba\DTO\HospitalDTO.class
 com\tiba\tiba\Controllers\AppointmentsController.class
 com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\Services\ReferralService.class
@@ -22,11 +21,9 @@ com\tiba\tiba\Repositories\HospitalRepository.class
 com\tiba\tiba\Repositories\AllergiesRepository.class
 com\tiba\tiba\Repositories\HospitalAdminRepository.class
 com\tiba\tiba\Controllers\UserSignUpController.class
-com\tiba\tiba\DTO\TriageAssignmentResponseDTO.class
 com\tiba\tiba\Repositories\AppointmentsRepository.class
 com\tiba\tiba\Entities\ReferralStatus.class
 com\tiba\tiba\Services\MedicalRecordsService.class
-com\tiba\tiba\DTO\PatientDTO.class
 com\tiba\tiba\Entities\Allergies.class
 com\tiba\tiba\Controllers\PrescriptionController.class
 com\tiba\tiba\Services\PatientService.class
@@ -50,12 +47,12 @@ com\tiba\tiba\TibaApplication.class
 com\tiba\tiba\Controllers\AuthenticationController.class
 com\tiba\tiba\Utility\SwaggerConf.class
 com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.class
+com\tiba\tiba\Entities\ImagingResult.class
 com\tiba\tiba\DTO\LogInRequestDTO$LogInRequestDTOBuilder.class
 com\tiba\tiba\SecurityConfig\Config.class
 com\tiba\tiba\DTO\LogInResponseDTO.class
 com\tiba\tiba\DTO\AppointmentsDTO.class
 com\tiba\tiba\DTO\UserSignUpResponseDTO.class
-com\tiba\tiba\DTO\TriageAssignmentDTO.class
 com\tiba\tiba\Repositories\HospitalStaffRepository.class
 com\tiba\tiba\Entities\HospitalAdmin.class
 com\tiba\tiba\Services\HospitalAdminService.class

@@ -2,42 +2,28 @@ package com.tiba.tiba.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Table(name = "Users")
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String middleName;
-
-    @Column(nullable = false)
     private String lastName;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String password;
+    @Column
+    private String profilePictureUrl;
 
     @Enumerated(EnumType.STRING)
     private UserRole roles;
-
-    @Column
-    private String profilePictureUrl;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Patient patient;

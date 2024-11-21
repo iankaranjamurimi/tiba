@@ -1,7 +1,6 @@
 package com.tiba.tiba.DTO;
 
 import lombok.Data;
-
 import java.time.LocalDate;
 
 @Data

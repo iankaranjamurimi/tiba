@@ -1,10 +1,5 @@
 package com.tiba.tiba.Entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-//@Getter
 public enum UserRole {
 
     PATIENT,

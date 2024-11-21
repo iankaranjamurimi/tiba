@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 public class PasswordUpdateDTO {
-    @NotBlank(message = "Current password is required")
+    @NotBlank(message = "Current password required")
     private String currentPassword;
 
-    @NotBlank(message = "New password is required")
+    @NotBlank(message = "New password required")
     private String newPassword;
 
-    @NotBlank(message = "Password confirmation is required")
+    @NotBlank(message = "Password confirmation required")
     private String confirmPassword;
 }

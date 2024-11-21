@@ -1,16 +1,9 @@
 package com.tiba.tiba.DTO;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Data
-@Getter
-@Setter
-@RequiredArgsConstructor
 public class VitalsDTO {
-
     private Integer temperature;
     private Integer bpSystolic;
     private Integer bpDiastolic;
@@ -20,5 +13,4 @@ public class VitalsDTO {
     private Integer weight;
     private Long medicalRecordsId;
     private Long userId;
-
 }

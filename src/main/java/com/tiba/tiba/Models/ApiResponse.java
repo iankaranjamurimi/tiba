@@ -14,14 +14,14 @@ public class ApiResponse {
     private int statusCode;
     private Object data;
 
-    // Constructor for simple success/failure responses
+    //Constructor for success/failure responses
     public ApiResponse(boolean success, String message) {
         this.success = success;
         this.message = message;
         this.statusCode = success ? HttpStatus.OK.value() : HttpStatus.BAD_REQUEST.value();
     }
 
-    // Constructor for responses with status code
+    //Constructor for responses with status code
     public ApiResponse(boolean success, String message, HttpStatus status) {
         this.success = success;
         this.message = message;

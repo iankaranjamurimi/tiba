@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 @Data
 public class MedicalRecordsUpdateDTO {
-
         private String notes;
         private String diagnosis;
         private String treatment;
