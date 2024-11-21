@@ -8,8 +8,6 @@ import java.util.Optional;
 @Repository
 public interface UserSignUpRepository extends JpaRepository<User, Long> {
 
-    Optional<com.tiba.tiba.Entities.User> findByEmail(String email);
-
-
+    Optional<User> findByEmail(String email);
 
 }

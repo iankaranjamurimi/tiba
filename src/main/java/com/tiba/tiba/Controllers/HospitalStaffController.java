@@ -4,18 +4,20 @@ import com.tiba.tiba.DTO.HospitalStaffDTO;
 import com.tiba.tiba.Models.ApiResponse;
 import com.tiba.tiba.Services.HospitalStaffService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/open")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class HospitalStaffController {
 
-    @Autowired
-    private HospitalStaffService hospitalStaffService;
+    private final HospitalStaffService hospitalStaffService;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/hospitalstaff/{id}")
     public ResponseEntity<ApiResponse> getHospitalStaff(@PathVariable Integer id) {
@@ -40,10 +42,22 @@ public class HospitalStaffController {
     @PostMapping("/create/hospitalstaff")
     public ResponseEntity<ApiResponse> createHospitalStaff(@Valid @RequestBody HospitalStaffDTO hospitalStaffDTO) {
         try {
+            // Validate password
+            if (hospitalStaffDTO.getPassword() == null || hospitalStaffDTO.getPassword().isEmpty()) {
+                return ResponseEntity.badRequest().body(
+                        ApiResponse.badRequest("Password cannot be empty")
+                );
+            }
 
-            hospitalStaffService.registerHospitalStaff(hospitalStaffDTO);
+            // Hash the password
+            String hashedPassword = passwordEncoder.encode(hospitalStaffDTO.getPassword());
+            hospitalStaffDTO.setPassword(hashedPassword);
+
+            // Register hospital staff
+            HospitalStaffDTO registeredStaff = hospitalStaffService.registerHospitalStaff(hospitalStaffDTO);
+
             return ResponseEntity.status(HttpStatus.CREATED).body(
-                    new ApiResponse(true, "Hospital Staff created successfully", HttpStatus.CREATED, hospitalStaffDTO)
+                    new ApiResponse(true, "Hospital Staff created successfully", HttpStatus.CREATED, registeredStaff)
             );
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(
@@ -51,9 +65,7 @@ public class HospitalStaffController {
             );
         }
     }
-
 }
-
 //@PutMapping("/hospitalstaff/{id}")
 //public ResponseEntity<ApiResponse> updateHospitalStaff(
 //        @PathVariable Integer id,

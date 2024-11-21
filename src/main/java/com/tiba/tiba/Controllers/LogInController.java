@@ -23,23 +23,18 @@ import java.util.Optional;
 public class LogInController {
 
     private final UserSignUpRepository userSignUpRepository;
-
     private final UserService userService;
 
     @Getter
     private final HospitalAdminService hospitalAdminService;
-
     private final JwtUtil jwtUtil;
 
-    // Constructor
     public LogInController(UserSignUpRepository userSignUpRepository, UserService userService, HospitalAdminService hospitalAdminService, JwtUtil jwtUtil) {
         this.userSignUpRepository = userSignUpRepository;
-
         this.userService = userService;
         this.hospitalAdminService = hospitalAdminService;
         this.jwtUtil = jwtUtil;
     }
-
     @PostMapping("/user/logIn")
 
     public ResponseEntity<SignUpResponseDTO<UserLogInResponseDTO>> logIn(@RequestBody UserLogInDTO request) {

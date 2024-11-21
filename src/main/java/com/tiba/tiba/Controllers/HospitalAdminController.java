@@ -4,17 +4,15 @@ import com.tiba.tiba.DTO.HospitalAdminDTO;
 import com.tiba.tiba.Models.ApiResponse;
 import com.tiba.tiba.Services.HospitalAdminService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/open")
-@Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class HospitalAdminController {
 
@@ -24,14 +22,22 @@ public class HospitalAdminController {
     @PostMapping("/create/hospitaladmin")
     public ResponseEntity<ApiResponse> signup(@Valid @RequestBody HospitalAdminDTO request) {
         try {
+            // Validate password
+            if (request.getPassword() == null || request.getPassword().isEmpty()) {
+                return ResponseEntity.badRequest().body(
+                        ApiResponse.badRequest("Password cannot be empty")
+                );
+            }
+
             // Hashing the password before passing it to service
             String hashedPassword = passwordEncoder.encode(request.getPassword());
             request.setPassword(hashedPassword);
 
-            hospitalAdminService.registerUser(request);
+            // Attempt to register the user
+            HospitalAdminDTO registeredUser = hospitalAdminService.registerUser(request);
 
-            return ResponseEntity.ok(
-                    ApiResponse.ok("User registered successfully", request)
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    ApiResponse.ok("Hospital Admin registered successfully", registeredUser)
             );
 
         } catch (Exception e) {
@@ -39,7 +45,8 @@ public class HospitalAdminController {
                     ApiResponse.badRequest(e.getMessage())
             );
         }
-    }}
+    }
+}
 
 //    @GetMapping("/hospitaladmin/{id}")
 //    public ResponseEntity<ApiResponse> getAdminById(@PathVariable Long id) {

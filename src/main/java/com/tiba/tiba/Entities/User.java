@@ -36,6 +36,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole roles;
 
+    @Column
+    private String profilePictureUrl;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Patient patient;
 

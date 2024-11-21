@@ -4,7 +4,6 @@ import com.tiba.tiba.Entities.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,7 +14,6 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class HospitalAdminDTO {
 
     @NotBlank(message = "First name is required")
@@ -44,6 +42,14 @@ public class HospitalAdminDTO {
     private LocalDate dateOfBirth;
     private String address;
     private String nationality;
+    @Setter
+    private String hospitalName;
+    @Setter
+    private String hospitalAddress;
+    @Setter
+    private String hospitalLocation;
+    @Setter
+    private String hospitalContactNumber;
 
     public String getHospitalName() {
             return null;
@@ -58,10 +64,6 @@ public class HospitalAdminDTO {
     }
 
     public String getHospitalContactNumber() {
-        return null;
-    }
-
-    public String Email() {
         return null;
     }
 
