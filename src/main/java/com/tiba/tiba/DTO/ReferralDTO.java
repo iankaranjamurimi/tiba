@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 public class ReferralDTO {
     private Long id;
 
-    private Long hospitalStaffId;
+    private Long referringHospitalStaffId;
 
-//    private Long referredDoctorId;
+    private Long referredHospitalStaffId;
 
     private Long patientId;
 

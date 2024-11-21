@@ -16,7 +16,9 @@ public class Referral {
     @GeneratedValue
     private Long id;
     //referringDoctorId
-    private Long hospitalStaffId;
+    private Long referringHospitalStaffId;
+
+    private Long referredHospitalStaffId;
 
     private Long patientId;
 
