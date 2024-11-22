@@ -1,6 +1,5 @@
 package com.tiba.tiba.Services;
 
-import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,12 +18,13 @@ public class UserService {
     }
 
     public boolean verifyPassword(String rawPassword, String hashedPassword) {
-        // Using the password encoder to match the raw password with the hashed password
         return passwordEncoder.matches(rawPassword, hashedPassword);
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll().stream()
+    // method to get all users
+    public List<com.tiba.tiba.Entities.User> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -36,6 +36,7 @@ public class UserService {
         dto.setFirstName(user.getFirstName());
         dto.setMiddleName(user.getMiddleName());
         dto.setLastName(user.getLastName());
+        dto.setRoles(user.getRoles());
         return dto;
     }
 }

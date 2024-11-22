@@ -53,7 +53,4 @@ public class PatientController {
         }
     }
 
-
-
-    //https://tiba.onrender.com/swagger-ui/index.html#/patient-controller/getPatientById
 }

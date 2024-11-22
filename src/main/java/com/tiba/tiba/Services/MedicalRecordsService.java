@@ -44,8 +44,6 @@ public class MedicalRecordsService {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getUserId()));
 
-//        HospitalStaff staff = hospitalStaffRepository.findById(dto.getHospitalStaffId())
-//                .orElseThrow(() -> new EntityNotFoundException("Hospital staff not found with id: " + dto.getHospitalStaffId()));
 
         updateMedicalRecordFromDTO(existingRecord, dto, user); /*staff*/
         MedicalRecords updatedRecord = medicalRecordsRepository.save(existingRecord);
@@ -76,7 +74,6 @@ public class MedicalRecordsService {
         record.setTreatment(dto.getTreatment());
         record.setSubmittedAt(dto.getSubmittedAt());
         record.setSubmittedBy(dto.getSubmittedBy());
-//        record.setUser(user);
 
     }
 
@@ -87,7 +84,7 @@ public class MedicalRecordsService {
         dto.setTreatment(record.getTreatment());
         dto.setSubmittedAt(record.getSubmittedAt());
         dto.setSubmittedBy(record.getSubmittedBy());
-//        dto.setUserId(record.getUser().getId());
+
         return dto;
     }
 }

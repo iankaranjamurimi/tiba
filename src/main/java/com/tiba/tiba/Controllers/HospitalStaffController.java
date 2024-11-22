@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/open")
 @CrossOrigin(origins = "*")
@@ -82,6 +84,10 @@ public class HospitalStaffController {
         }
     }
 
+    @GetMapping("/hospitalStaff/s")
+    public ResponseEntity<List<HospitalStaffDTO>> getAllHospitalStaff() {
+        List<HospitalStaffDTO> hospitalStaffList = hospitalStaffService.getAllHospitalStaff();
+        return ResponseEntity.ok(hospitalStaffList);
+    }
+
 }
-
-

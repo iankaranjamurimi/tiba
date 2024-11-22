@@ -14,8 +14,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class VitalsController {
 
-    @Autowired
-    private VitalsService vitalsService;
+    private final VitalsService vitalsService;
+
+    public VitalsController(VitalsService vitalsService) {
+        this.vitalsService = vitalsService;
+    }
 
     @PostMapping("/vitals")
     public ResponseEntity<VitalsDTO> createVitals(@RequestBody VitalsDTO vitalsDTO) {

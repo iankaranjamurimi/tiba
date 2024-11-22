@@ -1,6 +1,7 @@
 package com.tiba.tiba.Controllers;
 import com.tiba.tiba.DTO.UserSignUpResponseDTO;
 import com.tiba.tiba.DTO.UserSignUpDTO;
+import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Services.UserService;
 import com.tiba.tiba.Services.UserSignUpService;
 import jakarta.validation.Valid;
@@ -42,10 +43,10 @@ public class UserSignUpController {
 
     }
 
-    @GetMapping("/all_users")
-    public List<com.tiba.tiba.Entities.User> getAllUsers() {
-        return userService.getAllUsers();
+    @GetMapping("/AllUsers")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
-
 }
 

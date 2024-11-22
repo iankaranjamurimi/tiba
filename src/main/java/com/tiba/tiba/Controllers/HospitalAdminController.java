@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/open")
 @RequiredArgsConstructor
@@ -59,7 +61,15 @@ public class HospitalAdminController {
                     ApiResponse.badRequest(e.getMessage())
             );
         }
+
     }
+    @GetMapping("/hospitalAdmins")
+    public ResponseEntity<List<HospitalAdminDTO>> getAllHospitalAdmins() {
+        List<HospitalAdminDTO> hospitalAdmins = hospitalAdminService.getAllHospitalAdmins();
+        return ResponseEntity.ok(hospitalAdmins);
+    }
+
+}
 
 //    @GetMapping("/hospitaladmin/{id}")
 //    public ResponseEntity<ApiResponse> getAdminById(@PathVariable Long id) {
@@ -81,5 +91,5 @@ public class HospitalAdminController {
 //    }
 
 
-}
+
 

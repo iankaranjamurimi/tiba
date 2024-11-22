@@ -12,11 +12,8 @@ import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
-//http://localhost:8080/tiba/auth/logIn
-//https://tiba.onrender.com/swagger-ui/index.html#/log-in-controller/logIn
 @RestController
 @RequestMapping("/api/open/")
 @CrossOrigin(origins = "*")
