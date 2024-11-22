@@ -21,4 +21,3 @@ public class AllergiesController {
         return ResponseEntity.ok(updatedAllergies);
     }
 }
-

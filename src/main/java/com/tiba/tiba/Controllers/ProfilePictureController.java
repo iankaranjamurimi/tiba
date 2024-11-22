@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/open")
@@ -20,27 +22,39 @@ public class ProfilePictureController {
     }
 
     @PostMapping("/{userId}/profile-picture")
-    public ResponseEntity<String> uploadProfilePicture(
+    public ResponseEntity<Map<String, Object>> uploadProfilePicture(
             @PathVariable Long userId,
             @RequestPart("file") MultipartFile file
     ) {
+        Map<String, Object> response = new HashMap<>();
         try {
             profilePictureService.uploadProfilePicture(userId, file);
-            return ResponseEntity.ok("Profile Picture Uploaded successfully");
+            response.put("success", true);
+            response.put("message", "Profile Picture uploaded successfully");
+            return ResponseEntity.ok(response);
         } catch (IOException e) {
+            response.put("success", false);
+            response.put("message", "Failed to upload profile picture");
+            response.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to upload profile picture");
+                    .body(response);
         }
     }
 
     @DeleteMapping("/{userId}/delete-profile-picture")
-    public ResponseEntity<Void> deleteProfilePicture(@PathVariable Long userId) {
+    public ResponseEntity<Map<String, Object>> deleteProfilePicture(@PathVariable Long userId) {
+        Map<String, Object> response = new HashMap<>();
         try {
             profilePictureService.deleteProfilePicture(userId);
-            return ResponseEntity.noContent().build();
+            response.put("success", true);
+            response.put("message", "Profile Picture deleted successfully");
+            return ResponseEntity.ok(response);
         } catch (IOException e) {
+            response.put("success", false);
+            response.put("message", "Failed to delete profile picture");
+            response.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);
+                    .body(response);
         }
     }
 }

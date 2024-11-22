@@ -85,4 +85,3 @@ public class UserSignUpController {
         return ResponseEntity.ok(users);
     }
 }
-

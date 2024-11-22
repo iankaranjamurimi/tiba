@@ -50,6 +50,3 @@ public class VitalsController {
         return ResponseEntity.noContent().build();
     }
 }
-
-
-

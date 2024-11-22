@@ -33,7 +33,6 @@ public class UserLogInController {
         this.jwtUtil = jwtUtil;
     }
     @PostMapping("/user/logIn")
-
     public ResponseEntity<SignUpResponseDTO<PatientLogInResponseDTO>> logIn(@RequestBody UserLogInDTO request) {
         // Validation request
         if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
