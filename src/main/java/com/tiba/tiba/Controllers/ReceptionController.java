@@ -3,7 +3,6 @@ package com.tiba.tiba.Controllers;
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +19,10 @@ public class ReceptionController {
     @Autowired
     private PatientService patientService;
 
-    @GetMapping("/patients")
-    public List<Patient> getAllPatients() {
-        return patientService.getAllPatients();
-    }
+//    @GetMapping("/patients")
+//    public List<Patient> getAllPatients() {
+//        return patientService.getAllPatients();
+//    }
 
     @GetMapping("/reception/exists/{idNumber}")
     public ResponseEntity<Map<String, Object>> checkPatientAndGetProfile(@PathVariable String idNumber) {

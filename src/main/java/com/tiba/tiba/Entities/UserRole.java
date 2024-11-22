@@ -9,5 +9,9 @@ public enum UserRole {
     LAB_TECHNICIAN,
     IMAGING_TECHNICIAN,
     HOSPITAL_ADMIN,
-    SUPER_ADMIN
+    SUPER_ADMIN;
+
+    public boolean contains(String hospitalAdmin) {
+        return false;
+    }
 }

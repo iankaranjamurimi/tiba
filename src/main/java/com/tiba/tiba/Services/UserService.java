@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public boolean verifyPassword(String rawPassword, String hashedPassword) {
-        return passwordEncoder.matches(rawPassword, hashedPassword);
+        return !passwordEncoder.matches(rawPassword, hashedPassword);
     }
 
     // method to get all users

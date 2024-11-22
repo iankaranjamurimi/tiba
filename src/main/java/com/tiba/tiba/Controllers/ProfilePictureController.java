@@ -25,8 +25,8 @@ public class ProfilePictureController {
             @RequestPart("file") MultipartFile file
     ) {
         try {
-            String profilePictureUrl = profilePictureService.uploadProfilePicture(userId, file);
-            return ResponseEntity.ok(profilePictureUrl);
+            profilePictureService.uploadProfilePicture(userId, file);
+            return ResponseEntity.ok("Profile Picture Uploaded successfully");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to upload profile picture");
