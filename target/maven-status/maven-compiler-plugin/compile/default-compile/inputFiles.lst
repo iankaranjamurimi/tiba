@@ -26,6 +26,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalAdminDTO.ja
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\HospitalStaffDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\ImagingResultDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LabResultsDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LoginDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInRequestDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\LogInResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.java
@@ -78,6 +79,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\CustomAu
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\WebConfig.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\AllergiesService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\AppointmentsService.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\CloudinaryService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\GlobalExceptionHandler.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\HospitalAdminService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\HospitalStaffService.java

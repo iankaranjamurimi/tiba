@@ -47,6 +47,28 @@ public class HospitalStaffService {
         return convertToDTO(hospitalStaff);
     }
 
+    @Transactional
+    public void deleteHospitalStaff(Integer id) {
+        HospitalStaff hospitalStaff = hospitalStaffRepository.findByIdNumber(id)
+                .orElseThrow(() -> new RuntimeException("Hospital staff not found with ID: " + id));
+
+        try {
+            // Get the associated user
+            User user = hospitalStaff.getUser();
+
+            // Delete the hospital staff first (child entity)
+            hospitalStaffRepository.delete(hospitalStaff);
+
+            // Delete the associated user (parent entity)
+            if (user != null) {
+                userSignUpRepository.delete(user);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting hospital staff: " + e.getMessage(), e);
+        }
+    }
+
+
     private User createUserEntity(HospitalStaffDTO dto) {
         User user = new User();
         user.setFirstName(dto.getFirstName());

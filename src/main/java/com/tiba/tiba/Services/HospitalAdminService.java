@@ -7,6 +7,7 @@ import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.HospitalAdminRepository;
 import com.tiba.tiba.Repositories.HospitalRepository;
 import com.tiba.tiba.Repositories.UserSignUpRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,22 +25,18 @@ public class HospitalAdminService {
 
     @Transactional
     public HospitalAdminDTO registerUser(@Valid HospitalAdminDTO request) {
-        // Validate email uniqueness
+        // Validating the  email
         userSignUpRepository.findByEmail(request.getEmail())
                 .ifPresent(existingUser -> {
                     throw new RuntimeException("Email already exists!");
                 });
 
-        // Create User Entity
         User user = createUserEntity(request);
 
-        // Create Hospital Entity
         Hospital hospital = createHospitalEntity(request);
 
-        // Create HospitalAdmin Entity
         HospitalAdmin hospitalAdmin = createHospitalAdminEntity(request, user, hospital);
 
-        // Save entities
         try {
             userSignUpRepository.save(user);
             hospitalRepository.save(hospital);
@@ -48,9 +45,31 @@ public class HospitalAdminService {
             throw new RuntimeException("Error saving hospital admin: " + e.getMessage(), e);
         }
 
-        // Convert and return DTO (optional, depends on your requirements)
         return mapToDTO(hospitalAdmin);
     }
+
+
+
+    @Transactional
+    public void deleteAdmin(Long id) {
+        HospitalAdmin hospitalAdmin = hospitalAdminRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Hospital admin not found with id: " + id));
+
+        // Getting the associated entities
+        User user = hospitalAdmin.getUser();
+        Hospital hospital = hospitalAdmin.getHospital();
+
+        // Removing the relationships
+        hospital.setHospitalAdmin(null);
+        hospitalAdmin.setHospital(null);
+        hospitalAdmin.setUser(null);
+
+        // Deleting the  entities
+        hospitalAdminRepository.delete(hospitalAdmin);
+        hospitalRepository.delete(hospital);
+        userSignUpRepository.delete(user);
+    }
+
 
     private User createUserEntity(HospitalAdminDTO request) {
         User user = new User();
@@ -80,7 +99,7 @@ public class HospitalAdminService {
         hospitalAdmin.setAddress(request.getAddress());
         hospitalAdmin.setDateOfBirth(request.getDateOfBirth());
 
-        // Setting relationships
+        // Setting the relationships
         hospitalAdmin.setUser(user);
         hospitalAdmin.setHospital(hospital);
         hospital.setHospitalAdmin(hospitalAdmin);
@@ -91,7 +110,7 @@ public class HospitalAdminService {
     private HospitalAdminDTO mapToDTO(HospitalAdmin hospitalAdmin) {
         HospitalAdminDTO dto = new HospitalAdminDTO();
 
-        // Map user details
+        // Mapping user
         User user = hospitalAdmin.getUser();
         dto.setFirstName(user.getFirstName());
         dto.setMiddleName(user.getMiddleName());
@@ -99,21 +118,20 @@ public class HospitalAdminService {
         dto.setEmail(user.getEmail());
         dto.setRoles(user.getRoles());
 
-        // Map hospital admin details
+        // Mapping hospital admin
         dto.setPhoneNumber(hospitalAdmin.getPhoneNumber());
         dto.setIdNumber(hospitalAdmin.getIdNumber());
         dto.setGender(hospitalAdmin.getGender());
         dto.setAddress(hospitalAdmin.getAddress());
         dto.setDateOfBirth(hospitalAdmin.getDateOfBirth());
 
-        // Map hospital details
+        // Mapping hospital
         Hospital hospital = hospitalAdmin.getHospital();
         dto.setHospitalName(hospital.getHospitalName());
         dto.setHospitalAddress(hospital.getHospitalAddress());
         dto.setHospitalLocation(hospital.getHospitalLocation());
         dto.setHospitalContactNumber(hospital.getHospitalContactNumber());
 
-        // Note: Do not set password when returning DTO
         return dto;
     }
 }

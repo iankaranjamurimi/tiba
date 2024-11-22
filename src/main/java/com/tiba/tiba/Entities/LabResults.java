@@ -15,15 +15,10 @@ public class LabResults {
     @GeneratedValue
     private Long id;
     private String testName;
-    private String testCode;
-    private String resultValue;
-    private String unit;
-    private String referenceRange;
-    private String status; // pending, completed, cancelled
-    private LocalDateTime performedAt;
-    private LocalDateTime reportedAt;
+    private String testResult;
     private String notes;
-
+    private LocalDateTime performedAt;
+    private String hospitalName;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medicalRecords_id")
     private MedicalRecords medicalRecords;

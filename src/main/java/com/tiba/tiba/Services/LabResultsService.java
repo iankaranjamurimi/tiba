@@ -19,11 +19,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class LabResultsService {
 
-    @Autowired
-    private LabResultsRepository labResultsRepository;
+    private final LabResultsRepository labResultsRepository;
 
-    @Autowired
-    private  MedicalRecordsRepository medicalRecordsRepository;
+    private final MedicalRecordsRepository medicalRecordsRepository;
 
     @Transactional
     public LabResultsDTO createLabResults(LabResultsDTO labResultsDTO) {
@@ -40,28 +38,20 @@ public class LabResultsService {
 
     private void updateLabResultsFromDTO(LabResults labResults, LabResultsDTO dto, MedicalRecords medicalRecords) {
         labResults.setTestName(dto.getTestName());
-        labResults.setTestCode(dto.getTestCode());
-        labResults.setResultValue(dto.getResultValue());
-        labResults.setUnit(dto.getUnit());
-        labResults.setReferenceRange(dto.getReferenceRange());
-        labResults.setStatus(dto.getStatus());
-        labResults.setPerformedAt(dto.getPerformedAt());
-        labResults.setReportedAt(dto.getReportedAt());
+        labResults.setTestResult(dto.getTestResult());
         labResults.setNotes(dto.getNotes());
+        labResults.setPerformedAt(dto.getPerformedAt());
+        labResults.setHospitalName(dto.getHospitalName());
         labResults.setMedicalRecords(medicalRecords);
     }
 
     private LabResultsDTO convertToDTO(LabResults labResults) {
         LabResultsDTO dto = new LabResultsDTO();
         dto.setTestName(labResults.getTestName());
-        dto.setTestCode(labResults.getTestCode());
-        dto.setResultValue(labResults.getResultValue());
-        dto.setUnit(labResults.getUnit());
-        dto.setReferenceRange(labResults.getReferenceRange());
-        dto.setStatus(labResults.getStatus());
-        dto.setPerformedAt(labResults.getPerformedAt());
-        dto.setReportedAt(labResults.getReportedAt());
+        dto.setTestResult(labResults.getTestResult());
         dto.setNotes(labResults.getNotes());
+        dto.setPerformedAt(labResults.getPerformedAt());
+        dto.setHospitalName(labResults.getHospitalName());
         dto.setMedicalRecordsId(labResults.getMedicalRecords().getId());
         return dto;
     }

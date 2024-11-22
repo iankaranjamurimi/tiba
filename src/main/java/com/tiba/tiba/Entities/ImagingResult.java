@@ -17,5 +17,7 @@ public class ImagingResult {
     private String results;
     private LocalDate createdAt;
     private String submittedBy;
-    private String image;
+    // Cloudinary-specific fields
+    private String imagePublicId; // Cloudinary's public ID for the image
+    private String imageUrl; // URL of the uploaded image
 }

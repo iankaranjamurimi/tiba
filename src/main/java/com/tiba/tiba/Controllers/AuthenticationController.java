@@ -43,7 +43,7 @@ public class AuthenticationController {
     public ResponseEntity<LogInResponseDTO> login(@RequestBody LogInRequestDTO loginRequest) {
         log.info("Login attempt for email: {}", loginRequest.getEmail());
 
-        // Validate input
+        // Validating the  input
         if (loginRequest.getEmail() == null || loginRequest.getPassword() == null) {
             log.warn("Login attempt with missing email or password");
             return ResponseEntity.badRequest().body(
@@ -53,7 +53,7 @@ public class AuthenticationController {
             );
         }
 
-        // Find user by email
+        // Finding  user by email
         Optional<User> userOptional = userSignUpRepository.findByEmail(loginRequest.getEmail());
 
         // Debug logging

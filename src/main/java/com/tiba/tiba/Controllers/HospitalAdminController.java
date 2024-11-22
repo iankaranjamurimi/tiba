@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class HospitalAdminController {
 
     private final HospitalAdminService hospitalAdminService;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @PostMapping("/create/hospitaladmin")
     public ResponseEntity<ApiResponse> signup(@Valid @RequestBody HospitalAdminDTO request) {
@@ -30,7 +30,7 @@ public class HospitalAdminController {
             }
 
             // Hashing the password before passing it to service
-            String hashedPassword = passwordEncoder.encode(request.getPassword());
+            String hashedPassword = bCryptPasswordEncoder.encode(request.getPassword());
             request.setPassword(hashedPassword);
 
             // Attempt to register the user
@@ -46,7 +46,20 @@ public class HospitalAdminController {
             );
         }
     }
-}
+
+    @DeleteMapping("/hospitaladmin/{id}")
+    public ResponseEntity<ApiResponse> deleteAdmin(@PathVariable Long id) {
+        try {
+            hospitalAdminService.deleteAdmin(id);
+            return ResponseEntity.ok(
+                    ApiResponse.ok("Hospital admin deleted successfully")
+            );
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(
+                    ApiResponse.badRequest(e.getMessage())
+            );
+        }
+    }
 
 //    @GetMapping("/hospitaladmin/{id}")
 //    public ResponseEntity<ApiResponse> getAdminById(@PathVariable Long id) {
@@ -66,17 +79,7 @@ public class HospitalAdminController {
 //            );
 //        }
 //    }
-//
-//    @DeleteMapping("/hospitaladmin/{id}")
-//    public ResponseEntity<ApiResponse> deleteAdmin(@PathVariable Long id) {
-//        try {
-//            hospitalAdminService.deleteAdmin(id);
-//            return ResponseEntity.ok(
-//                    ApiResponse.ok("Hospital admin deleted successfully")
-//            );
-//        } catch (Exception e) {
-//            return ResponseEntity.badRequest().body(
-//                    ApiResponse.badRequest(e.getMessage())
-//            );
-//        }
-//    }
+
+
+}
+
