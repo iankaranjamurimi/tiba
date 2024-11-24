@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -23,5 +25,8 @@ public class Hospital {
     @OneToOne
     @JoinColumn(name = "hospitalAdmin_id")
     private HospitalAdmin hospitalAdmin;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<MedicalRecords> medicalRecords;
 
 }

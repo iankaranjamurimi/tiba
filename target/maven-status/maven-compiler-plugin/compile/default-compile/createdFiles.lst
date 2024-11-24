@@ -82,6 +82,7 @@ com\tiba\tiba\Controllers\VitalsController.class
 com\tiba\tiba\Repositories\ReferralRepository.class
 com\tiba\tiba\Services\UserSignUpService.class
 com\tiba\tiba\Entities\User.class
+com\tiba\tiba\Services\HospitalService.class
 com\tiba\tiba\Controllers\AdminStaffController.class
 com\tiba\tiba\Repositories\LabResultsRepository.class
 com\tiba\tiba\Repositories\VitalsRepository.class
