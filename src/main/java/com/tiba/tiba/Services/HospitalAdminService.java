@@ -14,7 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -111,25 +113,37 @@ public class HospitalAdminService {
     }
 
     private HospitalAdminDTO mapToDTO(HospitalAdmin hospitalAdmin) {
+        if (hospitalAdmin == null) {
+            throw new EntityNotFoundException("Hospital admin cannot be null");
+        }
+
         HospitalAdminDTO dto = new HospitalAdminDTO();
 
-        // Mapping user
+        // Mapping user details with null check
         User user = hospitalAdmin.getUser();
+        if (user == null) {
+            throw new EntityNotFoundException("User not found for hospital admin with ID: " + hospitalAdmin.getId());
+        }
+
         dto.setFirstName(user.getFirstName());
         dto.setMiddleName(user.getMiddleName());
         dto.setLastName(user.getLastName());
         dto.setEmail(user.getEmail());
         dto.setRoles(user.getRoles());
 
-        // Mapping hospital admin
+        // Mapping hospital admin details
         dto.setPhoneNumber(hospitalAdmin.getPhoneNumber());
         dto.setIdNumber(hospitalAdmin.getIdNumber());
         dto.setGender(hospitalAdmin.getGender());
         dto.setAddress(hospitalAdmin.getAddress());
         dto.setDateOfBirth(hospitalAdmin.getDateOfBirth());
 
-        // Mapping hospital
+        // Mapping hospital details with null check
         Hospital hospital = hospitalAdmin.getHospital();
+        if (hospital == null) {
+            throw new EntityNotFoundException("Hospital not found for hospital admin with ID: " + hospitalAdmin.getId());
+        }
+
         dto.setHospitalName(hospital.getHospitalName());
         dto.setHospitalAddress(hospital.getHospitalAddress());
         dto.setHospitalLocation(hospital.getHospitalLocation());
@@ -137,10 +151,61 @@ public class HospitalAdminService {
 
         return dto;
     }
+
     public List<HospitalAdminDTO> getAllHospitalAdmins() {
         List<HospitalAdmin> hospitalAdmins = hospitalAdminRepository.findAll();
+
+        if (hospitalAdmins.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         return hospitalAdmins.stream()
-                .map(this::mapToDTO)
+                .filter(Objects::nonNull)  // Filter out any null entries
+                .map(admin -> {
+                    try {
+                        return mapToDTO(admin);
+                    } catch (EntityNotFoundException e) {
+                        // Log the error
+                        // logger.error("Error mapping hospital admin to DTO: " + e.getMessage());
+                        return null;
+                    }
+                })
+                .filter(Objects::nonNull)  // Filter out any failed mappings
                 .collect(Collectors.toList());
     }
 }
+
+//    private HospitalAdminDTO mapToDTO(HospitalAdmin hospitalAdmin) {
+//        HospitalAdminDTO dto = new HospitalAdminDTO();
+//
+//        // Mapping user
+//        User user = hospitalAdmin.getUser();
+//        dto.setFirstName(user.getFirstName());
+//        dto.setMiddleName(user.getMiddleName());
+//        dto.setLastName(user.getLastName());
+//        dto.setEmail(user.getEmail());
+//        dto.setRoles(user.getRoles());
+//
+//        // Mapping hospital admin
+//        dto.setPhoneNumber(hospitalAdmin.getPhoneNumber());
+//        dto.setIdNumber(hospitalAdmin.getIdNumber());
+//        dto.setGender(hospitalAdmin.getGender());
+//        dto.setAddress(hospitalAdmin.getAddress());
+//        dto.setDateOfBirth(hospitalAdmin.getDateOfBirth());
+//
+//        // Mapping hospital
+//        Hospital hospital = hospitalAdmin.getHospital();
+//        dto.setHospitalName(hospital.getHospitalName());
+//        dto.setHospitalAddress(hospital.getHospitalAddress());
+//        dto.setHospitalLocation(hospital.getHospitalLocation());
+//        dto.setHospitalContactNumber(hospital.getHospitalContactNumber());
+//
+//        return dto;
+//    }
+//    public List<HospitalAdminDTO> getAllHospitalAdmins() {
+//        List<HospitalAdmin> hospitalAdmins = hospitalAdminRepository.findAll();
+//        return hospitalAdmins.stream()
+//                .map(this::mapToDTO)
+//                .collect(Collectors.toList());
+//    }
+//}
