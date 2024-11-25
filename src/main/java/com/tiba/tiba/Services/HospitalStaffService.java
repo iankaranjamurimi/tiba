@@ -131,10 +131,12 @@ public class HospitalStaffService {
 
         return dto;
     }
-    public List<HospitalStaffDTO> getAllHospitalStaff() {
-        List<HospitalStaff> hospitalStaffList = hospitalStaffRepository.findAll();
-        return hospitalStaffList.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
+
+public List<HospitalStaffDTO> getAllHospitalStaff() {
+    List<HospitalStaff> hospitalStaffList = hospitalStaffRepository.findAll();
+    return hospitalStaffList.stream()
+            .filter(staff -> staff.getUser() != null) // Filter out records with null users
+            .map(this::convertToDTO)
+            .collect(Collectors.toList());
+}
 }

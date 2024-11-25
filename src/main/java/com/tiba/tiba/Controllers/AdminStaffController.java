@@ -59,7 +59,7 @@ public class AdminStaffController {
         this.jwtUtil = jwtUtil;
     }
 
-    // Authentication endpoint
+    // LogIn
     @PostMapping("/admin/staff/login")
     public ResponseEntity<SignUpResponseDTO<AdminStaffLogInResponseDTO>> login(@RequestBody UserLogInDTO request) {
         if (!StringUtils.hasText(request.getEmail()) || !StringUtils.hasText(request.getPassword())) {
@@ -94,7 +94,7 @@ public class AdminStaffController {
         return ResponseEntity.ok().body(new SignUpResponseDTO<>(true, "Logged in successfully", userResponse));
     }
 
-    // Hospital Admin endpoints
+    // Hospital_Admin
     @PostMapping("/create/hospitaladmin")
     public ResponseEntity<ApiResponse> createHospitalAdmin(@Valid @RequestBody HospitalAdminDTO request) {
         try {
@@ -139,7 +139,7 @@ public class AdminStaffController {
         return ResponseEntity.ok(hospitalAdmins);
     }
 
-    // Hospital Staff endpoints
+    // Hospital_Staff
     @PostMapping("/create/hospitalstaff")
     public ResponseEntity<ApiResponse> createHospitalStaff(@Valid @RequestBody HospitalStaffDTO hospitalStaffDTO) {
         try {
@@ -204,7 +204,7 @@ public class AdminStaffController {
         return ResponseEntity.ok(hospitalStaffList);
     }
 
-    // Patient endpoints
+    // Patients
     @GetMapping("/patients")
     public List<Patient> getAllPatients() {
         return patientService.getAllPatients();

@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,13 @@ public class MedicalRecordsController {
     @GetMapping("/{id}")
     public ResponseEntity<MedicalRecordsUpdateDTO> getMedicalRecord(@PathVariable Long id) {
         return ResponseEntity.ok(medicalRecordsService.getMedicalRecord(id));
+    }
+
+    @GetMapping("/all_medicalRecords")
+    @PreAuthorize("hasRole('SUPER_ADMIN')")  // Ensures that only the super admin can access all records
+    public ResponseEntity<List<MedicalRecordsUpdateDTO>> getAllMedicalRecords() {
+        List<MedicalRecordsUpdateDTO> records = medicalRecordsService.getAllMedicalRecords();
+        return ResponseEntity.ok(records);
     }
 
     @ExceptionHandler(Exception.class)

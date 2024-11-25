@@ -126,4 +126,10 @@ public class MedicalRecordsService {
 
         return dto;
     }
+    @Transactional(readOnly = true)
+    public List<MedicalRecordsUpdateDTO> getAllMedicalRecords() {
+        return medicalRecordsRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 }
