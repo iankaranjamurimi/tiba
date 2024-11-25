@@ -19,6 +19,7 @@ public class LabResults {
     private String notes;
     private LocalDateTime performedAt;
     private String hospitalName;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medicalRecords_id")
     private MedicalRecords medicalRecords;

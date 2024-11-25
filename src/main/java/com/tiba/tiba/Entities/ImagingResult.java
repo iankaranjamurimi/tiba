@@ -12,12 +12,18 @@ public class ImagingResult {
     @Id
     @GeneratedValue
     private Long id;
-    private String examType; // X-Ray, MRI, CT Scan, Ultrasound
-    private String bodyPart; // Chest, Head, Abdomen
+    private String examType;  // X-Ray, MRI, CT Scan, Ultrasound
+    private String bodyPart;
     private String results;
     private LocalDate createdAt;
     private String submittedBy;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     // Cloudinary-specific fields
-    private String imagePublicId; // Cloudinary's public ID for the image
-    private String imageUrl; // URL of the uploaded image
+    private String imagePublicId;
+    private String imageUrl;
+
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/open")
 public class PasswordUpdateController {
 
-
     private final PasswordUpdateService passwordUpdateService;
 
     public PasswordUpdateController(PasswordUpdateService passwordUpdateService) {

@@ -50,16 +50,6 @@ public class UserSignUpController {
 
     }
 
-    @GetMapping("/exists/{idNumber}")
-    public ResponseEntity<Map<String, Object>> checkPatientIdExists(@PathVariable String idNumber) {
-        boolean exists = patientService.getPatientByIdNumber(idNumber).isPresent();
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("exists", exists);
-        response.put("message", exists ? "Patient exists." : "Patient does not exist.");
-
-        return ResponseEntity.ok(response);
-    }
 
     @GetMapping("/firstname/check/{idNumber}")
     public ResponseEntity<Map<String, Object>> getPatientFirstNameIfExists(@PathVariable String idNumber) {

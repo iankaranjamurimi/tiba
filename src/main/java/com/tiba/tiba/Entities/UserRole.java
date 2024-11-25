@@ -11,7 +11,4 @@ public enum UserRole {
     HOSPITAL_ADMIN,
     SUPER_ADMIN;
 
-    public boolean contains(String hospitalAdmin) {
-        return false;
-    }
 }
