@@ -125,6 +125,8 @@ public class HospitalAdminService {
             throw new EntityNotFoundException("User not found for hospital admin with ID: " + hospitalAdmin.getId());
         }
 
+        dto.setUserId(user.getId());
+
         dto.setFirstName(user.getFirstName());
         dto.setMiddleName(user.getMiddleName());
         dto.setLastName(user.getLastName());
@@ -175,37 +177,3 @@ public class HospitalAdminService {
     }
 }
 
-//    private HospitalAdminDTO mapToDTO(HospitalAdmin hospitalAdmin) {
-//        HospitalAdminDTO dto = new HospitalAdminDTO();
-//
-//        // Mapping user
-//        User user = hospitalAdmin.getUser();
-//        dto.setFirstName(user.getFirstName());
-//        dto.setMiddleName(user.getMiddleName());
-//        dto.setLastName(user.getLastName());
-//        dto.setEmail(user.getEmail());
-//        dto.setRoles(user.getRoles());
-//
-//        // Mapping hospital admin
-//        dto.setPhoneNumber(hospitalAdmin.getPhoneNumber());
-//        dto.setIdNumber(hospitalAdmin.getIdNumber());
-//        dto.setGender(hospitalAdmin.getGender());
-//        dto.setAddress(hospitalAdmin.getAddress());
-//        dto.setDateOfBirth(hospitalAdmin.getDateOfBirth());
-//
-//        // Mapping hospital
-//        Hospital hospital = hospitalAdmin.getHospital();
-//        dto.setHospitalName(hospital.getHospitalName());
-//        dto.setHospitalAddress(hospital.getHospitalAddress());
-//        dto.setHospitalLocation(hospital.getHospitalLocation());
-//        dto.setHospitalContactNumber(hospital.getHospitalContactNumber());
-//
-//        return dto;
-//    }
-//    public List<HospitalAdminDTO> getAllHospitalAdmins() {
-//        List<HospitalAdmin> hospitalAdmins = hospitalAdminRepository.findAll();
-//        return hospitalAdmins.stream()
-//                .map(this::mapToDTO)
-//                .collect(Collectors.toList());
-//    }
-//}
