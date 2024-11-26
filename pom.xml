@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
+<!--			<scope>runtime</scope>-->
 		</dependency>
 
 		<!-- JWT dependencies -->
@@ -132,7 +132,7 @@
 			<version>3.12.0</version>
 		</dependency>
 
-		<!-- Thumbnailator (Image Processing) -->
+		<!-- Thumbnail (Image Processing) -->
 		<dependency>
 			<groupId>net.coobird</groupId>
 			<artifactId>thumbnailator</artifactId>
