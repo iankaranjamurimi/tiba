@@ -11,7 +11,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
@@ -59,9 +58,6 @@ public class OTPService {
             throw new RuntimeException("Failed to process OTP request: " + e.getMessage());
         }
     }
-
-
-
 
     public String generateOTP() {
         return String.format("%06d", new Random().nextInt(999999));
