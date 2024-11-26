@@ -1,6 +1,8 @@
 package com.tiba.tiba.Services;
 
+import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -38,5 +40,16 @@ public class UserService {
         dto.setLastName(user.getLastName());
         dto.setRoles(user.getRoles());
         return dto;
+    }
+    @Transactional
+    public void updatePassword(String email, String newPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Encode the new password before saving
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+
+        userRepository.save(user);
     }
 }

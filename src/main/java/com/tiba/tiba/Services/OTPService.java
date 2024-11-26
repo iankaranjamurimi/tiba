@@ -30,45 +30,29 @@ public class OTPService {
         this.javaMailSender = javaMailSender;
     }
 
-
     @Transactional
     public void generateAndSendOTP(String email) {
         try {
-            // Validate email
-            if (email == null || email.trim().isEmpty()) {
-                throw new IllegalArgumentException("Email cannot be empty");
-            }
-
-            // Find user and handle casting properly
             Optional<User> userOptional = userRepository.findByEmail(email);
             if (userOptional.isEmpty()) {
                 throw new RuntimeException("User not found with email: " + email);
             }
             User user = userOptional.get();
 
-            try {
-                // Delete any existing unused OTPs
-                otpRepository.deleteByUserEmail(email);
+            // Find existing OTP or create new one
+            UserOTP userOTP = otpRepository.findByUser(user)
+                    .orElse(new UserOTP());
 
-                // Generate 6-digit OTP
-                String otp = generateOTP();
+            // Update the OTP
+            String otp = generateOTP();
+            userOTP.setUser(user);
+            userOTP.setOtp(otp);
+            userOTP.setExpiryTime(LocalDateTime.now().plusMinutes(5));
+            userOTP.setUsed(false);
+            userOTP.setVerified(false);
 
-                // Save OTP to database
-                UserOTP userOTP = createUserOTP(user, otp);
-                otpRepository.save(userOTP);
-
-                // Send OTP via email
-                sendOTPEmail(user, otp);
-
-                log.info("OTP generated and sent successfully for email: {}", email);
-
-            } catch (MailException e) {
-                log.error("Failed to send OTP email: {}", e.getMessage());
-                throw new RuntimeException("Failed to send OTP email. Please try again later.", e);
-            } catch (Exception e) {
-                log.error("Error in OTP generation process: {}", e.getMessage());
-                throw new RuntimeException("Error in OTP generation process. Please try again.", e);
-            }
+            otpRepository.save(userOTP);
+            sendOTPEmail(user, otp);
 
         } catch (Exception e) {
             log.error("Error in generateAndSendOTP: {}", e.getMessage());
@@ -76,18 +60,11 @@ public class OTPService {
         }
     }
 
+
+
+
     public String generateOTP() {
         return String.format("%06d", new Random().nextInt(999999));
-    }
-
-    private UserOTP createUserOTP(User user, String otp) {
-        UserOTP userOTP = new UserOTP();
-        userOTP.setUser(user);
-        userOTP.setOtp(otp);
-        userOTP.setExpiryTime(LocalDateTime.now().plusMinutes(5));
-        userOTP.setUsed(false);
-        userOTP.setVerified(false);
-        return userOTP;
     }
 
     private void sendOTPEmail(User user, String otp) {
@@ -104,7 +81,7 @@ public class OTPService {
             If you didn't request this code, please ignore this email.
 
             Best regards,
-            TIBA Team
+            TIBA
             """);
 
         try {

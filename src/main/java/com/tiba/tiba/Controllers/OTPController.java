@@ -1,9 +1,12 @@
 package com.tiba.tiba.Controllers;
 
+import com.tiba.tiba.DTO.ForgotPasswordDTO;
 import com.tiba.tiba.Entities.User;
-import com.tiba.tiba.Repositories.OTPRepository;
 import com.tiba.tiba.Repositories.UserRepository;
 import com.tiba.tiba.Services.OTPService;
+import com.tiba.tiba.Services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +15,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/open")
 public class OTPController {
 
+    private static final Logger log = LoggerFactory.getLogger(OTPController.class);
     private final OTPService otpService;
     private final UserRepository userRepository;
+    private final UserService userService;
 
-    public OTPController(OTPService otpService, UserRepository userRepository) {
+    public OTPController(OTPService otpService, UserRepository userRepository, UserService userService) {
         this.otpService = otpService;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @PostMapping("/generate/{email}")
@@ -38,19 +44,32 @@ public class OTPController {
         }
     }
 
-    @PostMapping("/verify/{email}/{otp}")
-    public ResponseEntity<String> verifyOTP(@PathVariable String email, @PathVariable String otp) {
-        try {
-            // Use existing service method to verify OTP
-            boolean isValid = otpService.verifyOTP(email, otp);
 
-            if (isValid) {
-                return ResponseEntity.ok("OTP verified successfully");
-            } else {
-                return ResponseEntity.badRequest().body("Invalid or expired OTP");
+    @PostMapping("/forgot/password")
+    public ResponseEntity<?> resetPassword(@RequestBody ForgotPasswordDTO request) {
+        try {
+            // First verify the OTP
+            boolean isOtpValid = otpService.verifyOTP(request.getEmail(), request.getOtp());
+
+            if (!isOtpValid) {
+                return ResponseEntity
+                        .badRequest()
+                        .body("Invalid or expired OTP");
             }
+
+            // If OTP is valid, proceed with password reset
+            userService.updatePassword(request.getEmail(), request.getNewPassword());
+
+            return ResponseEntity
+                    .ok()
+                    .body("Password reset successful");
+
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Verification failed: " + e.getMessage());
+            log.error("Error in password reset: {}", e.getMessage());
+            return ResponseEntity
+                    .internalServerError()
+                    .body("Failed to reset password: " + e.getMessage());
         }
     }
+
 }

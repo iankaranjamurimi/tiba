@@ -1,5 +1,6 @@
 package com.tiba.tiba.Repositories;
 
+import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Entities.UserOTP;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,4 +11,6 @@ import java.util.Optional;
 public interface OTPRepository extends JpaRepository<UserOTP, Long> {
     void deleteByUserEmail(String email);
     Optional<UserOTP> findByUserEmailAndOtpAndIsUsedFalse(String email, String otp);
+
+    Optional<UserOTP> findByUser(User user);
 }

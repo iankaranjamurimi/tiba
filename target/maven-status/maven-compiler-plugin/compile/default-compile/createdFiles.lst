@@ -60,6 +60,7 @@ com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\Services\ReferralService.class
 com\tiba\tiba\Repositories\UserRepository.class
 com\tiba\tiba\Repositories\ImagingResultRepository.class
+com\tiba\tiba\DTO\ForgotPasswordDTO.class
 com\tiba\tiba\Repositories\AppointmentsRepository.class
 com\tiba\tiba\Entities\ReferralStatus.class
 com\tiba\tiba\Services\OTPService.class

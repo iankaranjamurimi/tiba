@@ -22,7 +22,8 @@ public class UserOTP {
 
     private boolean isVerified;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
 }
