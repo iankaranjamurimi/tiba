@@ -50,6 +50,17 @@ public class ProfilePictureService {
         return profilePictureUrl;
     }
 
+    public String getProfilePicture(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        if (user.getProfilePictureUrl() == null) {
+            return ""; // Or return a default profile picture URL
+        }
+
+        return user.getProfilePictureUrl();
+    }
+
     public void deleteProfilePicture(Long userId) throws IOException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));

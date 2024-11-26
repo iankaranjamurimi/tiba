@@ -41,6 +41,12 @@ public class ProfilePictureController {
         }
     }
 
+    @GetMapping("/display/profile-pic/{userId}")
+    public ResponseEntity<String> getProfilePicture(@PathVariable Long userId) {
+        String profilePictureUrl = profilePictureService.getProfilePicture(userId);
+        return ResponseEntity.ok(profilePictureUrl);
+    }
+
     @DeleteMapping("/{userId}/delete-profile-picture")
     public ResponseEntity<Map<String, Object>> deleteProfilePicture(@PathVariable Long userId) {
         Map<String, Object> response = new HashMap<>();
