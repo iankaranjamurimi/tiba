@@ -12,3 +12,4 @@ public enum UserRole {
     SUPER_ADMIN;
 
 }
+// hospital staff: DOCTOR, TRIAGE_NURSE, RECEPTIONIST, LAB_TECHNICIAN, IMAGING_TECHNICIAN

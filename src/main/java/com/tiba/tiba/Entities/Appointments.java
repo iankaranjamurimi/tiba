@@ -15,7 +15,7 @@ public class Appointments {
     private Long Id;
     private String appointmentType;
     private LocalDateTime startTime;
-    private String status = "scheduled"; // the default value
+    private String status;
     private LocalDate submittedAt;
     private String submittedBy;
 
@@ -27,3 +27,4 @@ public class Appointments {
     @JoinColumn(name = "user_id")
     private User user;
 }
+//  Status: the default value: scheduled:

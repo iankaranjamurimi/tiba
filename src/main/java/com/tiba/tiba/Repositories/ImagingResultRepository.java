@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ImagingResultRepository extends JpaRepository<ImagingResult, Long> {
-
-
     List<ImagingResult> findByUser(User user);
 }

@@ -13,8 +13,7 @@ public class PrescriptionDTO {
     private LocalDate prescribedDate;
     private String status;
     private String notes;
-
-    // fields for input only but not included in JSON response
+    // ie; fields for input only but are not included in the JSON response
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long userId;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

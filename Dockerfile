@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY ./target/TibaApp-0.0.1-SNAPSHOT.jar TibaApp.jar
 
-#EXPOSE ${PORT}
-EXPOSE 5051
+EXPOSE 5050
 
 ENTRYPOINT ["java", "-jar", "TibaApp.jar"]

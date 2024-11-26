@@ -23,7 +23,7 @@ public class Hospital {
     private String hospitalContactNumber;
 
     @OneToOne
-    @JoinColumn(name = "hospitalAdmin_id")
+    @JoinColumn(name = "hospital_Admin_id")
     private HospitalAdmin hospitalAdmin;
 
     @OneToMany(mappedBy = "hospital")

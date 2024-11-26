@@ -13,9 +13,7 @@ public class MedicalRecordsUpdateDTO {
         private LocalDate submittedAt;
         private String submittedBy;
         private String hospitalName;
-
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private Long userId;
-
         
 }

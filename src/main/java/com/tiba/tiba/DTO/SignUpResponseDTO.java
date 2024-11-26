@@ -13,7 +13,6 @@ public class SignUpResponseDTO<T> {
     private String message;
     private T data;
 
-
     public static <T> SignUpResponseDTO<T> error(String message) {
         return new SignUpResponseDTO<>(false, message, null);
     }

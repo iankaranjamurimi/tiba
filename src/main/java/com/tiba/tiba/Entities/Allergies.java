@@ -17,11 +17,12 @@ public class Allergies {
     private String allergen;
     private String reaction_type;
     private String treatmentMedication;
-    private String severity;    //mild, moderate, severe
-    private Date date;     // date diagnosed
+    private String severity;
+    private Date date;
     private String notes;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 }
+// severity: mild, moderate, severe

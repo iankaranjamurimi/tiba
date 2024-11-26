@@ -24,5 +24,4 @@ public class LabResults {
     @JoinColumn(name = "medicalRecords_id")
     private MedicalRecords medicalRecords;
 
-
 }

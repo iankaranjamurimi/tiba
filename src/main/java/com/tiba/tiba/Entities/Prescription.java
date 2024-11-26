@@ -20,7 +20,7 @@ public class Prescription {
     private String duration;
     private Integer quantity;
     private LocalDate prescribedDate;
-    private String status = "active";
+    private String status;
     private String notes;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -32,3 +32,4 @@ public class Prescription {
     private HospitalStaff hospitalStaff;
 
 }
+// status: active, completed

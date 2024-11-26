@@ -1,5 +1,3 @@
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Config\Jwt.java
-C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Config\MailConfig.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\AdminStaffController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\AllergiesController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\AppointmentsController.java
@@ -72,6 +70,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Repositories\VitalsRepo
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\CloudinaryConfig.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\Config.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\CustomAuthorizationFilter.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\MailConfig.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\SecurityConfig\WebConfig.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\AllergiesService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\AppointmentsService.java

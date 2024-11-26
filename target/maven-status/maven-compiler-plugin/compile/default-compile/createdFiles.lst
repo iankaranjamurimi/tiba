@@ -58,6 +58,7 @@ com\tiba\tiba\Repositories\MedicalRecordsRepository.class
 com\tiba\tiba\Controllers\AppointmentsController.class
 com\tiba\tiba\Services\GlobalExceptionHandler.class
 com\tiba\tiba\Services\ReferralService.class
+com\tiba\tiba\SecurityConfig\MailConfig.class
 com\tiba\tiba\Repositories\UserRepository.class
 com\tiba\tiba\Repositories\ImagingResultRepository.class
 com\tiba\tiba\DTO\ForgotPasswordDTO.class

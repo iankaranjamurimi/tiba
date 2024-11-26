@@ -1,4 +1,4 @@
-package com.tiba.tiba.Config;
+package com.tiba.tiba.SecurityConfig;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

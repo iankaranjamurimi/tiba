@@ -1,6 +1,5 @@
 package com.tiba.tiba.Models;
 
-import com.tiba.tiba.DTO.ImagingResultDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,10 +34,6 @@ public class ApiResponse {
         this.message = message;
         this.statusCode = status.value();
         this.data = data;
-    }
-
-    public ApiResponse(boolean success, String imagingResultUploadedSuccessfully, ImagingResultDTO savedDTO) {
-
     }
 
     // Static factory methods for common responses
