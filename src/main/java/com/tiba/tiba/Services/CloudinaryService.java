@@ -18,8 +18,8 @@ public class CloudinaryService {
         this.cloudinary = cloudinary;
     }
 
+    // Upload image to Cloudinary
     public Map uploadImage(MultipartFile file) throws IOException {
-        // Upload image to Cloudinary
         return cloudinary.uploader().upload(file.getBytes(),
                 ObjectUtils.asMap(
                         "folder", "medical_imaging/",
@@ -28,8 +28,8 @@ public class CloudinaryService {
         );
     }
 
+    // Delete image from Cloudinary
     public void deleteImage(String publicId) throws IOException {
-        // Delete image from Cloudinary
-        cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+                cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
     }
 }

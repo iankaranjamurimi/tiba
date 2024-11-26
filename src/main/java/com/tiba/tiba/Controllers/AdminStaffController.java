@@ -10,6 +10,7 @@ import com.tiba.tiba.Repositories.UserSignUpRepository;
 import com.tiba.tiba.Repositories.HospitalAdminRepository;
 import com.tiba.tiba.Repositories.HospitalStaffRepository;
 import com.tiba.tiba.Services.*;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -118,11 +119,10 @@ public class AdminStaffController {
             );
         }
     }
-
-    @DeleteMapping("/hospitaladmin/{id}")
-    public ResponseEntity<ApiResponse> deleteHospitalAdmin(@PathVariable Long id) {
+    @DeleteMapping("/hospitaladmin/{userId}")
+    public ResponseEntity<ApiResponse> deleteHospitalAdmin(@PathVariable Long userId) {
         try {
-            hospitalAdminService.deleteAdmin(id);
+            hospitalAdminService.deleteAdminByUserId(userId);
             return ResponseEntity.ok(
                     ApiResponse.ok("Hospital admin deleted successfully")
             );
@@ -130,7 +130,7 @@ public class AdminStaffController {
             return ResponseEntity.badRequest().body(
                     ApiResponse.badRequest(e.getMessage())
             );
-        }
+       }
     }
 
     @GetMapping("/hospital/admins")

@@ -56,25 +56,31 @@ public class HospitalAdminService {
 
 
     @Transactional
-    public void deleteAdmin(Long id) {
-        HospitalAdmin hospitalAdmin = hospitalAdminRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Hospital admin not found with id: " + id));
+    public void deleteAdminByUserId(Long userId) {
+        // First find the user
+        User user = userSignUpRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
 
-        // Getting the associated entities
-        User user = hospitalAdmin.getUser();
+        // Find the associated hospital admin
+        HospitalAdmin hospitalAdmin = hospitalAdminRepository.findByUser(user)
+                .orElseThrow(() -> new EntityNotFoundException("Hospital admin not found for user id: " + userId));
+
+        // Get the associated hospital
         Hospital hospital = hospitalAdmin.getHospital();
+        if (hospital == null) {
+            throw new EntityNotFoundException("Hospital not found for user id: " + userId);
+        }
 
-        // Removing the relationships
+        // Remove the relationships
         hospital.setHospitalAdmin(null);
         hospitalAdmin.setHospital(null);
         hospitalAdmin.setUser(null);
 
-        // Deleting the  entities
+        // Delete the entities in the correct order to maintain referential integrity
         hospitalAdminRepository.delete(hospitalAdmin);
         hospitalRepository.delete(hospital);
         userSignUpRepository.delete(user);
     }
-
 
     private User createUserEntity(HospitalAdminDTO request) {
         User user = new User();
