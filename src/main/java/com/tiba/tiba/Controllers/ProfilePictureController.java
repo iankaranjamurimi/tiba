@@ -42,10 +42,23 @@ public class ProfilePictureController {
     }
 
     @GetMapping("/display/profile-pic/{userId}")
-    public ResponseEntity<String> getProfilePicture(@PathVariable Long userId) {
-        String profilePictureUrl = profilePictureService.getProfilePicture(userId);
-        return ResponseEntity.ok(profilePictureUrl);
+    public ResponseEntity<Map<String, Object>> getProfilePicture(@PathVariable Long userId) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            String profilePictureUrl = profilePictureService.getProfilePicture(userId);
+            response.put("success", true);
+            response.put("message", "Profile picture retrieved successfully");
+            response.put("data", profilePictureUrl);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "Failed to retrieve profile picture");
+            response.put("error", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(response);
+        }
     }
+
 
     @DeleteMapping("/{userId}/delete-profile-picture")
     public ResponseEntity<Map<String, Object>> deleteProfilePicture(@PathVariable Long userId) {
