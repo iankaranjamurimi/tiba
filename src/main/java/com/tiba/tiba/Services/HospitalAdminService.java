@@ -32,7 +32,7 @@ public class HospitalAdminService {
     public HospitalAdminDTO registerUser(@Valid HospitalAdminDTO request) {
         // Validating the  email
         userSignUpRepository.findByEmail(request.getEmail())
-                .ifPresent(existingUser -> {
+                .ifPresent(_ -> {
                     throw new RuntimeException("Email already exists!");
                 });
 

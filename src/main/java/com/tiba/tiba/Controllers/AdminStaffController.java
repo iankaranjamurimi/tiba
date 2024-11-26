@@ -10,7 +10,6 @@ import com.tiba.tiba.Repositories.UserSignUpRepository;
 import com.tiba.tiba.Repositories.HospitalAdminRepository;
 import com.tiba.tiba.Repositories.HospitalStaffRepository;
 import com.tiba.tiba.Services.*;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
