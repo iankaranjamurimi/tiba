@@ -20,8 +20,10 @@ public class Prescription {
     private String duration;
     private Integer quantity;
     private LocalDate prescribedDate;
-    private String status;
     private String notes;
+
+    @Enumerated(EnumType.STRING)
+    private PrescriptionStatus status;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

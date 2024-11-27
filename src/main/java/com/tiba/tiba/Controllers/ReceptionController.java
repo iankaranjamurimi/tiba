@@ -16,13 +16,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class ReceptionController {
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-//    @GetMapping("/patients")
-//    public List<Patient> getAllPatients() {
-//        return patientService.getAllPatients();
-//    }
+    public ReceptionController(PatientService patientService) {
+        this.patientService = patientService;
+    }
 
     @GetMapping("/reception/exists/{idNumber}")
     public ResponseEntity<Map<String, Object>> checkPatientAndGetProfile(@PathVariable String idNumber) {

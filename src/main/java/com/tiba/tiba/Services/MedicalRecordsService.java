@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class MedicalRecordsService {
     private final MedicalRecordsRepository medicalRecordsRepository;
     private final UserRepository userRepository;
-    private final HospitalService hospitalService;  // Changed from HospitalRepository
+    private final HospitalService hospitalService;
 
     @Transactional
     public MedicalRecordsUpdateDTO createMedicalRecord(MedicalRecordsUpdateDTO dto) {
@@ -30,7 +30,7 @@ public class MedicalRecordsService {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + dto.getUserId()));
 
-        // Using HospitalService instead of direct repository access
+        // Using HospitalService
         Hospital hospital = null;
         if (dto.getHospitalName() != null && !dto.getHospitalName().trim().isEmpty()) {
             hospital = hospitalService.getOrCreateHospital(dto.getHospitalName());
@@ -57,7 +57,7 @@ public class MedicalRecordsService {
             throw new SecurityException("Not authorized to update this medical record");
         }
 
-        // Using HospitalService instead of direct repository access
+        // Using HospitalService
         Hospital hospital = null;
         if (dto.getHospitalName() != null && !dto.getHospitalName().trim().isEmpty()) {
             hospital = hospitalService.getOrCreateHospital(dto.getHospitalName());

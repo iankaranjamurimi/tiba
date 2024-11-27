@@ -32,7 +32,7 @@ public class VitalsController {
         return ResponseEntity.ok(vitals);
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/vitals/{userId}")
     public ResponseEntity<List<VitalsDTO>> getVitalsByUserId(@PathVariable Long userId) {
         List<VitalsDTO> vitalsList = vitalsService.getVitalsByUserId(userId);
         return ResponseEntity.ok(vitalsList);

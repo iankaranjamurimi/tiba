@@ -9,4 +9,8 @@ import java.util.List;
 public interface ReferralRepository extends JpaRepository<Referral, Long> {
     List<Referral> findByReferringHospitalStaffId(Long hospitalStaffId);
     List<Referral> findByReferredHospitalStaffId(Long hospitalStaffId);
+
+    List<Referral> findByReferringHospitalId(Long hospitalId);
+
+    List<Referral> findByReferredHospitalId(Long hospitalId);
 }

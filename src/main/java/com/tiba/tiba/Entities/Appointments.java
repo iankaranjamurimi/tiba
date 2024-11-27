@@ -15,9 +15,11 @@ public class Appointments {
     private Long Id;
     private String appointmentType;
     private LocalDateTime startTime;
-    private String status;
     private LocalDate submittedAt;
     private String submittedBy;
+
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status;
 
     @ManyToOne
     @JoinColumn(name = "hospital_Staff_id")

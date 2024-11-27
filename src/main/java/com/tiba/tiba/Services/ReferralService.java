@@ -15,8 +15,12 @@ import java.util.stream.Stream;
 
 @Service
 public class ReferralService {
-    @Autowired
-    private ReferralRepository referralRepository;
+
+    private final ReferralRepository referralRepository;
+
+    public ReferralService(ReferralRepository referralRepository) {
+        this.referralRepository = referralRepository;
+    }
 
     @Transactional
     public ReferralDTO createReferral(ReferralDTO referralDTO) {
@@ -46,6 +50,17 @@ public class ReferralService {
                 .toList();
 
         return allReferrals.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ReferralDTO> getReferralsByHospital(Long hospitalId) {
+        // Get both incoming and outgoing referrals for the hospital
+        List<Referral> incomingReferrals = referralRepository.findByReferredHospitalId(hospitalId);
+        List<Referral> outgoingReferrals = referralRepository.findByReferringHospitalId(hospitalId);
+
+        // Combine both lists and convert to DTOs
+        return Stream.concat(incomingReferrals.stream(), outgoingReferrals.stream())
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
