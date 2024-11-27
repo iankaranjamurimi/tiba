@@ -32,7 +32,7 @@ public class AdminStaffController {
     private final UserService userService;
     private final HospitalStaffService hospitalStaffService;
     private final HospitalAdminService hospitalAdminService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Getter
     private final PatientService patientService;
@@ -46,7 +46,7 @@ public class AdminStaffController {
             HospitalAdminService hospitalAdminService,
             HospitalStaffService hospitalStaffService,
             PatientService patientService,
-            BCryptPasswordEncoder bCryptPasswordEncoder,
+            BCryptPasswordEncoder passwordEncoder,
             JwtUtil jwtUtil) {
         this.userSignUpRepository = userSignUpRepository;
         this.hospitalAdminRepository = hospitalAdminRepository;
@@ -55,7 +55,7 @@ public class AdminStaffController {
         this.hospitalAdminService = hospitalAdminService;
         this.hospitalStaffService = hospitalStaffService;
         this.patientService = patientService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
     }
 
@@ -104,7 +104,7 @@ public class AdminStaffController {
                 );
             }
 
-            String hashedPassword = bCryptPasswordEncoder.encode(request.getPassword());
+            String hashedPassword = passwordEncoder.encode(request.getPassword());
             request.setPassword(hashedPassword);
 
             HospitalAdminDTO registeredAdmin = hospitalAdminService.registerUser(request);
@@ -148,7 +148,7 @@ public class AdminStaffController {
                 );
             }
 
-            String hashedPassword = bCryptPasswordEncoder.encode(hospitalStaffDTO.getPassword());
+            String hashedPassword = passwordEncoder.encode(hospitalStaffDTO.getPassword());
             hospitalStaffDTO.setPassword(hashedPassword);
 
             HospitalStaffDTO registeredStaff = hospitalStaffService.registerHospitalStaff(hospitalStaffDTO);

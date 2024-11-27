@@ -5,9 +5,7 @@ import com.tiba.tiba.Entities.Referral;
 import com.tiba.tiba.Entities.ReferralStatus;
 import com.tiba.tiba.Repositories.ReferralRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +24,6 @@ public class ReferralService {
     public ReferralDTO createReferral(ReferralDTO referralDTO) {
         Referral referral = convertToEntity(referralDTO);
         referral.setCreatedAt(LocalDateTime.now());
-        //user.setRoles(request.getRoles());
         referral.setStatus(ReferralStatus.PENDING);
 
         Referral savedReferral = referralRepository.save(referral);
@@ -55,10 +52,9 @@ public class ReferralService {
     }
 
     public List<ReferralDTO> getReferralsByHospital(Long hospitalId) {
-        // Get both incoming and outgoing referrals for the hospital
+        // Get both the incoming and outgoing referrals for the hospital
         List<Referral> incomingReferrals = referralRepository.findByReferredHospitalId(hospitalId);
         List<Referral> outgoingReferrals = referralRepository.findByReferringHospitalId(hospitalId);
-
         // Combine both lists and convert to DTOs
         return Stream.concat(incomingReferrals.stream(), outgoingReferrals.stream())
                 .map(this::convertToDTO)

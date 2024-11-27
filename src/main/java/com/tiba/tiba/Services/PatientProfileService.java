@@ -24,7 +24,7 @@ public class PatientProfileService {
         Patient patient = user.getPatient();
         PatientProfileDTO profileDTO = new PatientProfileDTO();
 
-        // Map entity to DTO
+        // Map to DTO
         profileDTO.setFirstName(user.getFirstName());
         profileDTO.setMiddleName(user.getMiddleName());
         profileDTO.setLastName(user.getLastName());
@@ -46,12 +46,11 @@ public class PatientProfileService {
 
         Patient patient = user.getPatient();
 
-        // Update user details
+        // Updating both user and patient details
         user.setFirstName(profileDTO.getFirstName());
         user.setMiddleName(profileDTO.getMiddleName());
         user.setLastName(profileDTO.getLastName());
 
-        // Update patient details
         patient.setDateOfBirth(profileDTO.getDateOfBirth());
         patient.setGender(profileDTO.getGender());
         patient.setIdNumber(profileDTO.getIdNumber());

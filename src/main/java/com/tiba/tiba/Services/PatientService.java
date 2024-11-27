@@ -21,7 +21,7 @@ public class PatientService {
 
     }
 
-    public List<com.tiba.tiba.Entities.Patient> getAllPatients() {
+    public List<Patient> getAllPatients() {
         return patientRepository.findAll().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

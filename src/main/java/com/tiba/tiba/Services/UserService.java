@@ -20,7 +20,7 @@ public class UserService {
     }
 
     public boolean verifyPassword(String rawPassword, String hashedPassword) {
-        return passwordEncoder.matches(rawPassword, hashedPassword);
+        return !passwordEncoder.matches(rawPassword, hashedPassword);
     }
 
 
@@ -49,8 +49,9 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // Encoding the password before saving it
-        String encodedPassword = passwordEncoder.encode(newPassword);
-        user.setPassword(encodedPassword);
+        String hashedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(hashedPassword);
+
 
         userRepository.save(user);
     }

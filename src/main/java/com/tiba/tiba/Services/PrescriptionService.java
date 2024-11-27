@@ -5,7 +5,6 @@ import com.tiba.tiba.Entities.HospitalStaff;
 import com.tiba.tiba.Entities.Prescription;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.PrescriptionRepository;
-import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 public class PrescriptionService {
     private final PrescriptionRepository prescriptionRepository;
 
-    // Find all prescriptions for a specific user
+    // All prescriptions for a specific user
     public List<PrescriptionDTO> findPrescriptionsByUserId(Long userId) {
         List<Prescription> prescriptions = prescriptionRepository.findByUser_Id(userId);
         return prescriptions.stream()
