@@ -6,6 +6,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\LabResultsC
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\MedicalRecordsController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\OTPController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\PasswordUpdateController.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\PatientController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\PrescriptionController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\ProfilePictureController.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Controllers\ReceptionController.java
@@ -27,6 +28,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\MedicalRecordsUpdat
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PasswordUpdateDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientLogInResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientProfileDTO.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PatientResponseDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\PrescriptionDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\ReferralDTO.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\DTO\SignUpResponseDTO.java
@@ -87,6 +89,7 @@ C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\LabResultsServ
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\MedicalRecordsService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\OTPService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\PasswordUpdateService.java
+C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\PatientLookupService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\PatientProfileService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\PatientService.java
 C:\Users\user\Downloads\tiba\src\main\java\com\tiba\tiba\Services\PrescriptionService.java

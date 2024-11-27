@@ -36,7 +36,7 @@ public class UserSignUpController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<UserSignUpResponseDTO> signup(@Valid @RequestBody UserSignUpDTO request) {
+    public ResponseEntity<UserSignUpResponseDTO> registerUser(@Valid @RequestBody UserSignUpDTO request) {
         try {
             String hashedPassword = bCryptPasswordEncoder.encode(request.getPassword());
             request.setPassword(hashedPassword);

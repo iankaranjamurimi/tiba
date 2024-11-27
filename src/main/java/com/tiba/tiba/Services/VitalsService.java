@@ -7,8 +7,6 @@ import com.tiba.tiba.Repositories.VitalsRepository;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,17 +25,10 @@ public class VitalsService {
         this.userRepository = userRepository;
     }
 
-
     public VitalsDTO createVitals(VitalsDTO vitalsDTO) {
         Vitals vitals = convertToEntity(vitalsDTO);
         Vitals savedVitals = vitalsRepository.save(vitals);
         return convertToDTO(savedVitals);
-    }
-
-    public VitalsDTO getVitalsById(Long id) {
-        Vitals vitals = vitalsRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Vitals not found with id: " + id));
-        return convertToDTO(vitals);
     }
 
     public List<VitalsDTO> getVitalsByUserId(Long userId) {
@@ -47,21 +38,6 @@ public class VitalsService {
                 .collect(Collectors.toList());
     }
 
-    public VitalsDTO updateVitals(Long id, VitalsDTO vitalsDTO) {
-        Vitals existingVitals = vitalsRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Vitals not found with id: " + id));
-
-        updateVitalsEntity(existingVitals, vitalsDTO);
-        Vitals updatedVitals = vitalsRepository.save(existingVitals);
-        return convertToDTO(updatedVitals);
-    }
-
-    public void deleteVitals(Long id) {
-        if (!vitalsRepository.existsById(id)) {
-            throw new RuntimeException("Vitals not found with id: " + id);
-        }
-        vitalsRepository.deleteById(id);
-    }
 
     private Vitals convertToEntity(VitalsDTO vitalsDTO) {
         Vitals vitals = new Vitals();
@@ -73,7 +49,7 @@ public class VitalsService {
         vitals.setOxygenSaturation(vitalsDTO.getOxygenSaturation());
         vitals.setWeight(vitalsDTO.getWeight());
 
-        // Set relationships
+        // Setting relationships
         if (vitalsDTO.getMedicalRecordsId() != null) {
             vitals.setMedicalRecords(medicalRecordsRepository.findById(vitalsDTO.getMedicalRecordsId())
                     .orElseThrow(() -> new RuntimeException("Medical Record not found")));

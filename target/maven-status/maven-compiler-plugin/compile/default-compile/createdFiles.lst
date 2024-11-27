@@ -26,13 +26,17 @@ com\tiba\tiba\Repositories\OTPRepository.class
 com\tiba\tiba\Services\PasswordUpdateService.class
 com\tiba\tiba\Utility\SwaggerConf.class
 com\tiba\tiba\DTO\MedicalRecordsUpdateDTO.class
+com\tiba\tiba\DTO\PatientResponseDTO$PatientResponseDTOBuilder.class
+com\tiba\tiba\DTO\PatientResponseDTO.class
 com\tiba\tiba\DTO\UserSignUpResponseDTO.class
 com\tiba\tiba\Services\HospitalAdminService.class
 com\tiba\tiba\Repositories\PrescriptionRepository.class
 com\tiba\tiba\Controllers\ReceptionController.class
 com\tiba\tiba\Services\ProfilePictureService.class
+com\tiba\tiba\Services\PatientLookupService.class
 com\tiba\tiba\DTO\UserSignUpDTO.class
 com\tiba\tiba\Controllers\MedicalRecordsController.class
+com\tiba\tiba\Controllers\PatientController.class
 com\tiba\tiba\DTO\PrescriptionDTO.class
 com\tiba\tiba\DTO\LabResultsDTO.class
 com\tiba\tiba\Entities\UserRole.class

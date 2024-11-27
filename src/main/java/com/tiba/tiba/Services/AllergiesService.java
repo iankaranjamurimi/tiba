@@ -24,10 +24,10 @@ public class AllergiesService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
 
-        // Create new allergies or update existing ones
+        // Create new or update existing allergies
         Allergies allergies;
 
-        // if ID is valid find existing allergies
+        // if UserId is valid find existing allergies
         if (allergiesDTO.getUserId() != null && allergiesDTO.getUserId() > 0) {
             try {
                 allergies = allergiesRepository.findById(allergiesDTO.getUserId())

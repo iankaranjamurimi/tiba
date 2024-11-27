@@ -29,13 +29,14 @@ public class UserSignUpService {
         user.setFirstName(request.getFirstname());
         user.setMiddleName(request.getMiddlename());
         user.setLastName(request.getLastname());
+        user.setRoles(request.getRoles());
 
         Patient patient = new Patient();
         patient.setDateOfBirth(request.getDateOfBirth());
         patient.setGender(request.getGender());
         patient.setIdNumber(request.getIdNumber());
         patient.setContactNumber(request.getContactNumber());
-        user.setRoles(request.getRoles());
+
         user.setPatient(patient);
         patient.setUser(user);
 

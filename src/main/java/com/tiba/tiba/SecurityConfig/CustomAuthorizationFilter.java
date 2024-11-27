@@ -23,7 +23,7 @@ import java.util.*;
 public class CustomAuthorizationFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
     private static final Logger log = LoggerFactory.getLogger(CustomAuthorizationFilter.class);
-    private final JsonMapper jsonMapper = new JsonMapper();  // Reuse JsonMapper
+    private final JsonMapper jsonMapper = new JsonMapper();
 
     public CustomAuthorizationFilter(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
@@ -32,7 +32,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        // A list of allowed paths is defined
+        // list of allowed paths
         List<String> pathsAllowed = Arrays.asList("/api/open/**", "/api/", "/swagger-ui/**", "/api-docs/**","**/swagger-ui/**","/api/auth/**","/api/auth/otp/**","/api/**");
 
         if (isAllowedPath(pathsAllowed, request.getServletPath()) ||

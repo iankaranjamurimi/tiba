@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class AllergiesController {
     private final AllergiesService allergiesService;
 
-    @PostMapping("/allergies/{patientId}")
+    @PostMapping("/allergies/{userId}")
     public ResponseEntity<AllergiesDTO> updateAllergies(
-            @PathVariable Long patientId,
+            @PathVariable Long userId,
             @RequestBody AllergiesDTO allergiesDTO) {
-        AllergiesDTO updatedAllergies = allergiesService.updateAllergies(patientId, allergiesDTO);
+        AllergiesDTO updatedAllergies = allergiesService.updateAllergies(userId, allergiesDTO);
         return ResponseEntity.ok(updatedAllergies);
     }
 }

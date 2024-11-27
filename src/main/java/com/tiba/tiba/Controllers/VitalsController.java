@@ -20,33 +20,17 @@ public class VitalsController {
         this.vitalsService = vitalsService;
     }
 
-    @PostMapping("/vitals")
+    @PostMapping("/createVitals")
     public ResponseEntity<VitalsDTO> createVitals(@RequestBody VitalsDTO vitalsDTO) {
         VitalsDTO createdVitals = vitalsService.createVitals(vitalsDTO);
         return new ResponseEntity<>(createdVitals, HttpStatus.CREATED);
     }
 
-    @GetMapping("/vitals/{id}")
-    public ResponseEntity<VitalsDTO> getVitalsById(@PathVariable Long id) {
-        VitalsDTO vitals = vitalsService.getVitalsById(id);
-        return ResponseEntity.ok(vitals);
-    }
-
-    @GetMapping("/user/vitals/{userId}")
+    @GetMapping("/getVitalsByUserId/{userId}")
     public ResponseEntity<List<VitalsDTO>> getVitalsByUserId(@PathVariable Long userId) {
         List<VitalsDTO> vitalsList = vitalsService.getVitalsByUserId(userId);
         return ResponseEntity.ok(vitalsList);
     }
 
-    @PutMapping("/p/{id}")
-    public ResponseEntity<VitalsDTO> updateVitals(@PathVariable Long id, @RequestBody VitalsDTO vitalsDTO) {
-        VitalsDTO updatedVitals = vitalsService.updateVitals(id, vitalsDTO);
-        return ResponseEntity.ok(updatedVitals);
-    }
 
-    @DeleteMapping("/d/{id}")
-    public ResponseEntity<Void> deleteVitals(@PathVariable Long id) {
-        vitalsService.deleteVitals(id);
-        return ResponseEntity.noContent().build();
-    }
 }

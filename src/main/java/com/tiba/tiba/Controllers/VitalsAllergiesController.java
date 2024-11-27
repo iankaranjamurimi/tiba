@@ -14,7 +14,6 @@ public class VitalsAllergiesController {
 
     private final VitalsAllergiesService vitalsAllergiesService;
 
-    @Autowired
     public VitalsAllergiesController(VitalsAllergiesService vitalsAllergiesService) {
         this.vitalsAllergiesService = vitalsAllergiesService;
     }

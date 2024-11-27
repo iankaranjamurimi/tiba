@@ -20,19 +20,19 @@ public class UserService {
     }
 
     public boolean verifyPassword(String rawPassword, String hashedPassword) {
-        return !passwordEncoder.matches(rawPassword, hashedPassword);
+        return passwordEncoder.matches(rawPassword, hashedPassword);
     }
 
-    // method to get all users
-    public List<com.tiba.tiba.Entities.User> getAllUsers() {
+
+    public List<User> getAllUsers() {
         return userRepository.findAll()
                 .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    private com.tiba.tiba.Entities.User convertToDTO(com.tiba.tiba.Entities.User user) {
-        com.tiba.tiba.Entities.User dto = new com.tiba.tiba.Entities.User();
+    private User convertToDTO(User user) {
+        User dto = new User();
         dto.setId(user.getId());
         dto.setEmail(user.getEmail());
         dto.setFirstName(user.getFirstName());
@@ -41,12 +41,14 @@ public class UserService {
         dto.setRoles(user.getRoles());
         return dto;
     }
+
+    //changing password
     @Transactional
     public void updatePassword(String email, String newPassword) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Encode the new password before saving
+        // Encoding the password before saving it
         String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(encodedPassword);
 
