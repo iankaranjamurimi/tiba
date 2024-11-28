@@ -6,16 +6,14 @@ import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserSignUpRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserSignUpService {
 
     private final UserSignUpRepository userSignUpRepository;
-
-    public UserSignUpService(UserSignUpRepository userSignUpRepository) {
-        this.userSignUpRepository = userSignUpRepository;
-    }
 
     @Transactional
     public void registerUser(@Valid UserSignUpDTO request) {

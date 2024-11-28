@@ -5,6 +5,7 @@ import com.tiba.tiba.Entities.Referral;
 import com.tiba.tiba.Entities.ReferralStatus;
 import com.tiba.tiba.Repositories.ReferralRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,13 +13,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
+@RequiredArgsConstructor
 public class ReferralService {
 
     private final ReferralRepository referralRepository;
-
-    public ReferralService(ReferralRepository referralRepository) {
-        this.referralRepository = referralRepository;
-    }
 
     @Transactional
     public ReferralDTO createReferral(ReferralDTO referralDTO) {

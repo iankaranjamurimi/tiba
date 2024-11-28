@@ -2,6 +2,7 @@ package com.tiba.tiba.Controllers;
 
 import com.tiba.tiba.DTO.PatientResponseDTO;
 import com.tiba.tiba.Services.PatientLookupService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +11,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/open")
+@RequiredArgsConstructor
 public class PatientController {
 
     private final PatientLookupService patientLookupService;
-
-    public PatientController(PatientLookupService patientLookupService) {
-        this.patientLookupService = patientLookupService;
-    }
 
     @GetMapping("/lookup/{idNumber}")
     @ResponseBody

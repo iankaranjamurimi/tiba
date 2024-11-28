@@ -2,6 +2,7 @@ package com.tiba.tiba.Controllers;
 
 import com.tiba.tiba.DTO.PrescriptionDTO;
 import com.tiba.tiba.Services.PrescriptionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/open")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class PrescriptionController {
 
     private final PrescriptionService prescriptionService;
 
-    public PrescriptionController(PrescriptionService prescriptionService) {
-        this.prescriptionService = prescriptionService;
-    }
 
     @PostMapping("/prescriptions/{userId}/{hospitalStaffId}")
     public ResponseEntity<PrescriptionDTO> createPrescription(

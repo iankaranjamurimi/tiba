@@ -1,6 +1,7 @@
 package com.tiba.tiba.Controllers;
 
 import com.tiba.tiba.Services.ProfilePictureService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +13,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/open")
+@RequiredArgsConstructor
 public class ProfilePictureController {
     private final ProfilePictureService profilePictureService;
 
-    public ProfilePictureController(ProfilePictureService profilePictureService) {
-        this.profilePictureService = profilePictureService;
-    }
 
     @PostMapping("/{userId}/profile-picture")
     public ResponseEntity<Map<String, Object>> uploadProfilePicture(

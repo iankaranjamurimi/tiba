@@ -3,16 +3,13 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.DTO.PatientResponseDTO;
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Repositories.PatientRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class PatientLookupService {
-
     private final PatientRepository patientRepository;
-
-    public PatientLookupService(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
-    }
 
     public PatientResponseDTO findPatientByIdNumber(String idNumber) {
         Patient patient = patientRepository.findByIdNumber(idNumber)

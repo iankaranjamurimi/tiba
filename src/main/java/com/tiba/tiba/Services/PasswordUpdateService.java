@@ -4,22 +4,18 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.DTO.PasswordUpdateDTO;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserSignUpRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
+@RequiredArgsConstructor
 public class PasswordUpdateService {
 
     private final UserSignUpRepository userSignUpRepository;
-
     private final PasswordEncoder passwordEncoder;
-
-    public PasswordUpdateService(UserSignUpRepository userSignUpRepository, PasswordEncoder passwordEncoder) {
-        this.userSignUpRepository = userSignUpRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Transactional
     public void updatePassword(Long userId, PasswordUpdateDTO passwordUpdateDTO) {

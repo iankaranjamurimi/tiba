@@ -2,19 +2,17 @@ package com.tiba.tiba.Services;
 
 import com.tiba.tiba.Entities.Patient;
 import com.tiba.tiba.Repositories.PatientRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class PatientService {
 
     private final PatientRepository patientRepository;
-
-    public PatientService(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
-    }
 
     public Optional<Patient> getPatientByIdNumber(String idNumber) {
         return patientRepository.findByIdNumber(idNumber);

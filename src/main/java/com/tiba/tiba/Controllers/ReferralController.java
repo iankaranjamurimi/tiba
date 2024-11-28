@@ -4,7 +4,7 @@ import com.tiba.tiba.DTO.ReferralDTO;
 import com.tiba.tiba.Entities.ReferralStatus;
 import com.tiba.tiba.Services.ReferralService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +15,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/open")
+@RequiredArgsConstructor
 public class ReferralController {
-    @Autowired
-    private ReferralService referralService;
+
+    private final ReferralService referralService;
 
     @PostMapping("/referrals")
     public ResponseEntity<ReferralDTO> createReferral(@Valid @RequestBody ReferralDTO referralDTO) {

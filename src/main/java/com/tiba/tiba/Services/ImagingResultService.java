@@ -5,6 +5,7 @@ import com.tiba.tiba.Entities.ImagingResult;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.ImagingResultRepository;
 import com.tiba.tiba.Repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,20 +19,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ImagingResultService {
     private final ImagingResultRepository imagingResultRepository;
     private final CloudinaryService cloudinaryService;
     private final UserRepository userRepository;
-
-    @Autowired
-    public ImagingResultService(
-            ImagingResultRepository imagingResultRepository,
-            CloudinaryService cloudinaryService,
-            UserRepository userRepository) {
-        this.imagingResultRepository = imagingResultRepository;
-        this.cloudinaryService = cloudinaryService;
-        this.userRepository = userRepository;
-    }
 
     public ImagingResultDTO createImagingResult(ImagingResultDTO imagingResultDTO) throws IOException {
         MultipartFile file = imagingResultDTO.getImageFile();

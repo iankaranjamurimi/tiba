@@ -5,6 +5,7 @@ import com.tiba.tiba.Entities.Vitals;
 import com.tiba.tiba.Repositories.UserRepository;
 import com.tiba.tiba.Repositories.VitalsRepository;
 import com.tiba.tiba.Repositories.MedicalRecordsRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -13,17 +14,12 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class VitalsService {
 
     private final VitalsRepository vitalsRepository;
     private final MedicalRecordsRepository medicalRecordsRepository;
     private final UserRepository userRepository;
-
-    public VitalsService(VitalsRepository vitalsRepository, MedicalRecordsRepository medicalRecordsRepository, UserRepository userRepository) {
-        this.vitalsRepository = vitalsRepository;
-        this.medicalRecordsRepository = medicalRecordsRepository;
-        this.userRepository = userRepository;
-    }
 
     public VitalsDTO createVitals(VitalsDTO vitalsDTO) {
         Vitals vitals = convertToEntity(vitalsDTO);

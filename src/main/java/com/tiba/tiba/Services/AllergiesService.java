@@ -20,14 +20,13 @@ public class AllergiesService {
 
     @Transactional
     public AllergiesDTO updateAllergies(Long userId, AllergiesDTO allergiesDTO) {
-        // find patient
+        // finding the  patient using the userId
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
 
         // Create new or update existing allergies
-        Allergies allergies;
-
         // if UserId is valid find existing allergies
+        Allergies allergies;
         if (allergiesDTO.getUserId() != null && allergiesDTO.getUserId() > 0) {
             try {
                 allergies = allergiesRepository.findById(allergiesDTO.getUserId())
@@ -44,7 +43,7 @@ public class AllergiesService {
             allergies = new Allergies();
         }
 
-        // Update the allergies entity with DTO values
+        // Update the allergies entity
         updateAllergiesFromDTO(allergies, allergiesDTO, user);
 
         // Save and return

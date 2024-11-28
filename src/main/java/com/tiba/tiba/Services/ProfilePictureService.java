@@ -5,6 +5,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,14 +14,11 @@ import java.io.IOException;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class ProfilePictureService {
     private final Cloudinary cloudinary;
     private final UserRepository userRepository;
 
-    public ProfilePictureService(Cloudinary cloudinary, UserRepository userRepository) {
-        this.cloudinary = cloudinary;
-        this.userRepository = userRepository;
-    }
 
     public String uploadProfilePicture(Long userId, MultipartFile file) throws IOException {
         if (file.isEmpty()) {

@@ -7,6 +7,7 @@ import com.tiba.tiba.Services.PatientService;
 import com.tiba.tiba.Services.UserService;
 import com.tiba.tiba.Services.UserSignUpService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/open")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class UserSignUpController {
 
     private final UserSignUpService userSignUpService;
@@ -28,12 +30,6 @@ public class UserSignUpController {
     private final UserService userService;
     private final PatientService patientService;
 
-    public UserSignUpController(UserSignUpService userSignUpService, BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService, PatientService patientService) {
-        this.userSignUpService = userSignUpService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.userService = userService;
-        this.patientService = patientService;
-    }
 
     @PostMapping("/signup")
     public ResponseEntity<UserSignUpResponseDTO> registerUser(@Valid @RequestBody UserSignUpDTO request) {

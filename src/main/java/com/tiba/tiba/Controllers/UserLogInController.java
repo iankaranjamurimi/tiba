@@ -9,6 +9,7 @@ import com.tiba.tiba.Services.HospitalAdminService;
 import com.tiba.tiba.Services.JwtUtil;
 import com.tiba.tiba.Services.UserService;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/open/")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class UserLogInController {
 
     private final UserSignUpRepository userSignUpRepository;
@@ -26,12 +28,6 @@ public class UserLogInController {
     private final HospitalAdminService hospitalAdminService;
     private final JwtUtil jwtUtil;
 
-    public UserLogInController(UserSignUpRepository userSignUpRepository, UserService userService, HospitalAdminService hospitalAdminService, JwtUtil jwtUtil) {
-        this.userSignUpRepository = userSignUpRepository;
-        this.userService = userService;
-        this.hospitalAdminService = hospitalAdminService;
-        this.jwtUtil = jwtUtil;
-    }
     @PostMapping("/user/logIn")
     public ResponseEntity<SignUpResponseDTO<PatientLogInResponseDTO>> logIn(@RequestBody UserLogInDTO request) {
         // Validation request

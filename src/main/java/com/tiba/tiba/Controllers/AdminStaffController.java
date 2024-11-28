@@ -12,6 +12,7 @@ import com.tiba.tiba.Repositories.HospitalStaffRepository;
 import com.tiba.tiba.Services.*;
 import jakarta.validation.Valid;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,6 +25,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/open")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class AdminStaffController {
 
     private final UserSignUpRepository userSignUpRepository;
@@ -37,27 +39,6 @@ public class AdminStaffController {
     @Getter
     private final PatientService patientService;
     private final JwtUtil jwtUtil;
-
-    public AdminStaffController(
-            UserSignUpRepository userSignUpRepository,
-            HospitalAdminRepository hospitalAdminRepository,
-            HospitalStaffRepository hospitalStaffRepository,
-            UserService userService,
-            HospitalAdminService hospitalAdminService,
-            HospitalStaffService hospitalStaffService,
-            PatientService patientService,
-            BCryptPasswordEncoder passwordEncoder,
-            JwtUtil jwtUtil) {
-        this.userSignUpRepository = userSignUpRepository;
-        this.hospitalAdminRepository = hospitalAdminRepository;
-        this.hospitalStaffRepository = hospitalStaffRepository;
-        this.userService = userService;
-        this.hospitalAdminService = hospitalAdminService;
-        this.hospitalStaffService = hospitalStaffService;
-        this.patientService = patientService;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtUtil = jwtUtil;
-    }
 
     // LogIn
     @PostMapping("/admin/staff/login")

@@ -1,5 +1,6 @@
 package com.tiba.tiba.Services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.tiba.tiba.DTO.PatientProfileDTO;
 import com.tiba.tiba.Entities.Patient;
@@ -9,13 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
+@RequiredArgsConstructor
 public class PatientProfileService {
 
     private final UserSignUpRepository userSignUpRepository;
-
-    public PatientProfileService(UserSignUpRepository userSignUpRepository) {
-        this.userSignUpRepository = userSignUpRepository;
-    }
 
     public PatientProfileDTO getPatientProfile(Long userId) {
         User user = userSignUpRepository.findById(userId)

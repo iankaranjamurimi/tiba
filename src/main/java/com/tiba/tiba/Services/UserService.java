@@ -3,21 +3,18 @@ package com.tiba.tiba.Services;
 import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-
-    public UserService(BCryptPasswordEncoder passwordEncoder, UserRepository userRepository) {
-        this.passwordEncoder = passwordEncoder;
-        this.userRepository = userRepository;
-    }
 
     public boolean verifyPassword(String rawPassword, String hashedPassword) {
         return !passwordEncoder.matches(rawPassword, hashedPassword);

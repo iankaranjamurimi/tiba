@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 public class LabResultsService {
 
     private final LabResultsRepository labResultsRepository;
-
     private final MedicalRecordsRepository medicalRecordsRepository;
 
     @Transactional

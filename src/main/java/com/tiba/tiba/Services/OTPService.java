@@ -1,6 +1,7 @@
 package com.tiba.tiba.Services;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Service;
 import com.tiba.tiba.Entities.User;
@@ -16,18 +17,13 @@ import java.util.Optional;
 import java.util.Random;
 
 @Service
+@RequiredArgsConstructor
 public class OTPService {
     private static final Logger log = LoggerFactory.getLogger(OTPService.class);
 
     private final OTPRepository otpRepository;
     private final UserRepository userRepository;
     private final JavaMailSender javaMailSender;
-
-    public OTPService(OTPRepository otpRepository, UserRepository userRepository, JavaMailSender javaMailSender) {
-        this.otpRepository = otpRepository;
-        this.userRepository = userRepository;
-        this.javaMailSender = javaMailSender;
-    }
 
     @Transactional
     public void generateAndSendOTP(String email) {

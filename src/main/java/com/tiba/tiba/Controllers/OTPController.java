@@ -5,6 +5,7 @@ import com.tiba.tiba.Entities.User;
 import com.tiba.tiba.Repositories.UserRepository;
 import com.tiba.tiba.Services.OTPService;
 import com.tiba.tiba.Services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +17,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/open")
+@RequiredArgsConstructor
 public class OTPController {
 
     private static final Logger log = LoggerFactory.getLogger(OTPController.class);
     private final OTPService otpService;
     private final UserRepository userRepository;
     private final UserService userService;
-
-    public OTPController(OTPService otpService, UserRepository userRepository, UserService userService) {
-        this.otpService = otpService;
-        this.userRepository = userRepository;
-        this.userService = userService;
-    }
 
     @PostMapping("/generate/{email}")
     public ResponseEntity<Map<String, Object>> generateOTP(@PathVariable String email) {
